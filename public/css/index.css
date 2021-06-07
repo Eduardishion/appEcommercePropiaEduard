@@ -1,0 +1,249 @@
+/* colores a usar
+    iconos
+    https://fonts.google.com/icons
+    #333333 : color de fondo de barra de navegacion 
+    #0071E3 : color de fondo de botones y color enlaces
+    #FFFFFF : color de texto en botones y texto de enlaces de barra de nacegacion, color de divisiones
+    #1D1D1F : color de titulares
+    #909091 : color de parrafos y color enlaces pie de pagina 
+    #F2F2F2 : color de fondo body
+*/
+
+/* --------------estilos generales-------------- */
+*{
+    /* para no sumar a los elementos sus bordes y sus rellenos */
+    box-sizing: border-box;
+}
+
+p{
+    font-size: 3vw;
+    
+}
+
+body{
+    /* fondo de toda la pagina  */
+    background-color: #F2F2F2;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img{
+    max-width: 100%;
+}
+
+
+/* --------------estilos generales-------------- */
+
+
+/* ------------------------encabeado----------------------------------- */
+#encabesado{
+    /* color de fondo de la barra de navegacion */
+    background-color: #141414;
+    /* relleno interno de barra de navegacion */
+    padding: 5px;
+}
+
+#logo{
+    /* margen alrededor del logo */
+    margin: 0 15px;
+    padding: 5px;
+    width: 50px;
+}
+
+#logoSearch,
+#logoShop,
+#logoShop{
+    width: 25px;
+}
+
+#barraNavegacion ul{
+    /* estilos para barra de navegacion  */
+
+    /* para quitar estilos a listas */
+    list-style: none;
+
+    /* quitar rellenos y margen  */
+    margin: 0;
+    padding: 0;
+
+}
+
+#barraNavegacion a{
+    /* Estilos para enlaces de barra de navegacion */
+
+    /* para quitar el reyado de enlaces */
+    text-decoration: none;
+    /* color de letra en elaces */
+    color: #c7c7c7dc; 
+    /* tamaño de fuente */ 
+    font-size: 13px;
+    
+    /* espacio exterior del elemento  */ 
+	/* margin:10px; */
+	/* espacio interior del elementos solo de iquierda y derecha */
+	padding:0 50px;
+    /* color de fondo de enlaces solo para pruebas */
+    /* background-color: #4800ff; */
+    /* border-radius: 30px; */
+
+}
+
+#barraNavegacion a:hover{
+    /* color de letra en elaces */
+    color: white; 
+}
+/* ------------------------encabeado-------------------------------------- */
+
+/* ------------------------ footer ----------------------------------------*/
+
+#piePagina{
+    /* estilos para pie de pagina  */
+    height: 100px;
+    /* color de fondo de la barra de navegacion */
+    background-color: #141414;
+    /* relleno interno de barra de navegacion */
+    padding: 5px;
+}
+
+#piePagina ul{
+    /* estilos para lista de pie de pagina  */
+    /* para quitar estilos a listas */
+    list-style: none;
+
+    /* quitar rellenos y margen  */
+    margin: 0; 
+    padding: 0;
+}
+
+#piePagina a{
+     /* estilos para enlaces de pie de pagina */
+     /* para quitar el reyado de enlaces */
+     text-decoration: none;
+     /* color de letra en elaces */
+     color: #c7c7c7dc; 
+     /* tamaño de fuente */
+     font-size: 10px;
+     
+     /* espacio exterior del elemento  */ 
+     /* margin:10px; */
+     /* espacio interior del elementos solo de iquierda y derecha */
+     padding:0 10px;
+}
+
+/* pseudoselectores */
+#piePagina a:hover{
+    /* color de letra en elaces */
+    color: white; 
+}
+/* ------------------------ footer ----------------------------------------*/
+
+
+
+@media (min-width:556px){
+    
+    .subir{
+        left: 490px;
+    }
+}
+
+/* media querys */
+/* medida esccritorio */
+@media (min-width: 768px){
+    
+    .subir{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        left: 700px;
+    }
+
+
+    #contenedor2{
+        display: flex;
+        align-items: center;
+    }
+
+    #contenedor2 #logoPrincipal, .redes{
+        display: flex;
+        justify-content: center;
+    }
+ 
+
+    /* ------------------------encabeado----------------------------------- */
+    #encabesado{
+        /* border: solid 1px red; */
+        /* para alinear el logo y barra de navegacion el uno despues del otro en fila */
+        display: flex;
+        /* para centar la barra de navegacion */
+        justify-content: center;
+    }
+
+    #barraNavegacion{
+         
+        /* para colocar nav centro verticalmente*/
+        display: flex;
+        align-items: center;
+     
+    }
+
+    #barraNavegacion ul{
+    /* para colocar los enlaces de la barra de navegacion en fila */
+        display: flex;    
+    }
+
+    #logos{
+        /* tamaño de div contenedor de logos */
+        width: 200px;
+        /* border: solid 1px blue; */
+        display: flex;
+        /* alineacion de logos horiosntalmente y con espacio entre y fuera de los elementos   */
+        justify-content: space-around;
+    }
+    /* ------------------------encabeado----------------------------------- */
+
+
+
+    /* ------------------------ footer ----------------------------------------*/
+    #piePagina{
+        /* volvemos el contenedor piePagina  flexible */
+        /* border: solid 1px blue; */
+        display: flex;
+        /* centrar la lista horisontalmente en el contendedor piePagina */
+        justify-content: center;
+    }
+
+    #piePagina ul{
+        /* border: solid 1px red; */
+        /* acomoddamos los elementos de lista en fila*/
+        display: flex;
+        /* centramos la lista verticamente en el contendedor*/
+        align-items: center;
+    
+    }
+    /* ------------------------ footer ----------------------------------------*/
+
+   
+}
+
+@media (min-width:992px){
+    
+    #areaPrincipal{
+        max-width: 990px;
+    }
+}
+
+@media (min-width:1200px){
+   
+    #areaPrincipal{
+        max-width: 1200px;
+    }
+}
+
+
+@media (min-width:1400px){
+    
+    #areaPrincipal{
+        max-width: 1400px;
+    }
+}
+
+
