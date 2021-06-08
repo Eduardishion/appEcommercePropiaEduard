@@ -9,6 +9,8 @@ const app = express();
 const publicPath = path.resolve(__dirname,'./public');
 app.use(express.static(publicPath));
 
+//configuracion de puerto
+app.set('port', process.env.PORT || 3000 );
 
 //enrutamiento de endpoints y midellwares
 app.get('/', (req, res) => {
@@ -25,7 +27,6 @@ app.get('/CarritoCompra.html', (req, res) => {
 });
 
 //configuracion de ruta de acceso al servidor 
-//onst PORT = process.env.port  || 3030;
-app.listen(3000,()=>{
-    console.log("El servidor se ha inicialiado..., puedes acceder a al mediante http://localhost:3000/, para detener preciona Ctrl + C");
+app.listen(app.get('port'),()=>{
+    console.log(`El servidor se ha inicialiado..., puedes acceder a al mediante http://localhost:${app.get('port')} , para detener preciona Ctrl + C`);
 });
