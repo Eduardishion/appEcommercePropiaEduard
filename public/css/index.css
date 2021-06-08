@@ -134,28 +134,99 @@ img{
     /* color de letra en elaces */
     color: white; 
 }
-/* ------------------------ footer ----------------------------------------*/
 
-
-
-@media (min-width:556px){
-    
-    .subir{
-        left: 490px;
-    }
+#redes-sociales{
+    color: white;
 }
 
+/* ------------------------ footer ----------------------------------------*/
+
 /* media querys */
-/* medida esccritorio */
-@media (min-width: 768px){
-    
-    .subir{
+
+/* medida movil */
+@media (min-width:200px){
+    /*-------------------barra de navegacion--------------------*/
+    #encabesado{
         display: flex;
+        justify-content: space-around;
         align-items: center;
-        justify-content: center;
-        left: 700px;
     }
 
+    #menuAmbuergesa{
+        /* border: solid 1px red; */
+        color: white;
+    }
+
+    #barraNavegacion{
+        display: none;
+    }
+   
+    
+    /*-------------------barra de navegacion--------------------*/
+    /* ------------------------ footer ----------------------------------------*/
+   
+    #piePagina{
+        /* volvemos el contenedor piePagina  flexible */
+        
+        display: flex;
+        /* centrar la lista horisontalmente en el contendedor piePagina */
+        justify-content: center;
+        
+    }
+
+    #piePagina ul{
+        /* border: solid 1px blue; */
+        /* acomoddamos los elementos de lista en fila*/
+        display: flex;
+        /* centramos la lista verticamente en el contendedor*/
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    
+    }
+
+    #logoFooter,#redes-sociales{
+        width: 15%;
+        
+    }
+
+    #piePagina ul{
+        width: 70%;
+        /* border: solid 1px red; */
+    }
+    
+    #piePagina ul a{
+        /* color: aqua; */
+        font-weight: 400;
+        font-family: 'KoHo', sans-serif;
+    }
+
+    #redes-sociales{
+        
+        display: flex;    
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        
+    }
+
+    #logoFooter{
+        display: flex;    
+        align-items: center;
+        justify-content: center;
+    }
+    /* ------------------------ footer ----------------------------------------*/
+
+
+}
+
+
+/* medida escritorio */
+@media (min-width: 768px){
+    
+    #menuAmbuergesa{
+        display: none;
+    }
 
     #contenedor2{
         display: flex;
@@ -200,50 +271,40 @@ img{
     }
     /* ------------------------encabeado----------------------------------- */
 
-
-
     /* ------------------------ footer ----------------------------------------*/
-    #piePagina{
-        /* volvemos el contenedor piePagina  flexible */
-        /* border: solid 1px blue; */
-        display: flex;
-        /* centrar la lista horisontalmente en el contendedor piePagina */
-        justify-content: center;
+    #piePagina ul{
+        flex-direction: row;
     }
+    /* #piePagina ul a{
+        font-size: xx-small;
+    } */
 
     #piePagina ul{
+        width: 80%;
         /* border: solid 1px red; */
-        /* acomoddamos los elementos de lista en fila*/
-        display: flex;
-        /* centramos la lista verticamente en el contendedor*/
-        align-items: center;
+    }
     
+    #logoFooter,#redes-sociales{
+        width: 20%;
+        /* border: solid 1px red; */
+    }
+
+    #redes-sociales{
+        flex-direction: row;
     }
     /* ------------------------ footer ----------------------------------------*/
-
+    
    
 }
 
-@media (min-width:992px){
-    
-    #areaPrincipal{
-        max-width: 990px;
-    }
-}
-
+/* medida  extra grande esccritorio */
 @media (min-width:1200px){
    
     #areaPrincipal{
         max-width: 1200px;
     }
+ 
 }
 
-
-@media (min-width:1400px){
-    
-    #areaPrincipal{
-        max-width: 1400px;
-    }
-}
 
 
