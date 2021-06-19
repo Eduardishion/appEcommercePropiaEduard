@@ -91,6 +91,56 @@ img{
     /* color de letra en elaces */
     color: white; 
 }
+
+/* ---------------menu verical---------------- */
+
+
+#menuVertical{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+
+
+#menuVertical a{
+   
+    /* Estilos para enlaces de barra de navegacion */
+    /* color de fondo de elementos */
+    background-color: #141414;
+    /* para quitar el reyado de enlaces */
+    text-decoration: none;
+    /* color de letra en elaces */
+    color: #c7c7c7dc; 
+    /* tamaño de fuente */ 
+    font-size: 13px;
+   
+
+    /* espacio exterior del elemento  */ 
+	/* margin:10px; */
+	/* espacio interior del elementos solo de iquierda y derecha */
+	padding:0 50px;
+    /* color de fondo de enlaces solo para pruebas */
+    /* background-color: #4800ff; */
+    /* border-radius: 30px; */
+
+    border: solid 1px red;
+    width: 100%;
+}
+
+#menuVertical a:hover{
+    /* color de letra en elaces */
+    color: white; 
+}
+
+/* selectores de atributos*/
+input[type="checkbox"]:checked + #menuVertical{
+    display: block;
+}
+
+/* ---------------menu verical---------------- */
+
 /* ------------------------encabeado-------------------------------------- */
 
 /* ------------------------ footer ----------------------------------------*/
@@ -157,11 +207,17 @@ img{
         color: white;
     }
 
+
     #barraNavegacion{
         display: none;
     }
-   
     
+    
+    #logoSearch, #logoShop, #logoShop2{
+        width: 15px;
+    }
+
+
     /*-------------------barra de navegacion--------------------*/
     /* ------------------------ footer ----------------------------------------*/
    
@@ -227,7 +283,7 @@ img{
     #menuAmbuergesa{
         display: none;
     }
-
+    
     #contenedor2{
         display: flex;
         align-items: center;

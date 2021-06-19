@@ -1,3 +1,24 @@
+/* --------------estilos generales-------------- */
+*{
+    /* para no sumar a los elementos sus bordes y sus rellenos */
+    box-sizing: border-box;
+}
+
+
+
+body{
+    /* fondo de toda la pagina  */
+    background-color: #F2F2F2;
+    font-family: 'Montserrat', sans-serif;
+}
+
+img{
+    max-width: 100%;
+}
+
+
+/* --------------estilos generales-------------- */
+
 #locacionPagina p{
     margin: 7px 20px;
     font-size: medium;
@@ -75,7 +96,7 @@
 }
 
 #precios > *{
-    margin: 0 2px;
+    margin: 0 4px;
 }
 
 #cantidad{
@@ -103,6 +124,10 @@
 
 /* medida movil pequeño*/
 @media (min-width:200px){
+    p{
+        font-size: 3vw;   
+    }
+
     /* ----vistaProducto---- */
     #imagenProducto{
         display: flex;
@@ -140,7 +165,10 @@
 }
 
 /* medida escritorio */
-@media (min-width: 768px){
+@media (min-width: 790px){
+    p{
+        font-size: 1vw;   
+    }
     /*-------area principal -------*/
     #areaPrincipal{
         display: flex;
