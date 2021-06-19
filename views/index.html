@@ -1,3 +1,7 @@
+<!-- 
+     Perfil de 🦊 Iván
+linkedin.com/in/iscivansanchez0 
+ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +11,8 @@
     <link rel="shortcut icon" href="images/imagenesIndex/logo_16_x_16.svg" type="image/x-icon">
     <!-- iconos -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" -->
     <!-- fuentes externas -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
@@ -16,6 +20,7 @@ rel="stylesheet" />
     <!-- hojas de estilo -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/modal-styles.css">
     <title>Index</title>
 </head>
 <body>
@@ -31,14 +36,88 @@ rel="stylesheet" />
             </ul>
         </nav>
         <div id="menuAmbuergesa">
-            <i class="fas fa-bars"></i>
+            <label for="desplegar">
+                <i class="fas fa-bars"></i>
+            </label>
         </div>
         <div id="logos">
             <img  id="logoSearch" src="images/imagenesIndex/search_white_24dp.svg"/>
-            <img  id="logoShop" src="images/imagenesIndex/shopping_cart_white_24dp.svg"/>
-            <img  id="logoShop" src="images/imagenesIndex/perm_identity_white_24dp.svg"/>
+            <label for="desplegar2">
+                <img  id="logoShop" src="images/imagenesIndex/shopping_cart_white_24dp.svg" class="btn_despiega"/>
+            </label>
+            <img  id="logoShop2" src="images/imagenesIndex/perm_identity_white_24dp.svg"/>
         </div>
     </header>
+    <!-- menu desplegable  -->
+    <input type="checkbox" name="desplegar" id="desplegar" hidden>
+    <ul id="menuVertical" >
+        <li><a href="index.html">Index</a></li>
+        <li><a href="DetalleProducto.html">Producto</a></li>
+        <li><a href="CarritoCompra.html">Carrito</a></li>
+        <li><a href="#">Enlace</a></li>
+        <li><a href="#">Enlace</a></li>
+    </ul>
+    <!-- menu desplegable  -->
+    <!-- menu de productos  -->
+    <input type="checkbox" name="desplegar2" id="desplegar2" hidden >
+    <div class="model-overlay active" ><!--caja transparente-->
+        <div class="modal"><!--caja blanca-->
+            <div id="form">
+                <h2>Lista de productos</h2>
+                <form action="/CarritoCompra" method="get" id="formulario">
+                    <a href="/DetalleProducto">
+                        <div class="productoLista">
+                            <div class="eliminar">
+                                <img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
+                            </div>
+                            <div>
+                                <img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
+                            </div>
+                            <div>
+                                <p class="nombreLista">
+                                    Pro System Audiotek Tablero Arcade Videojuegos
+                                </p>
+                            </div>   
+                        </div>
+                    </a>
+                    <a href="/DetalleProducto">
+                        <div class="productoLista">
+                            <div class="eliminar">
+                                <img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
+                            </div>
+                            <div>
+                                <img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
+                            </div>
+                            <div>
+                                <p class="nombreLista">
+                                    Pro System Audiotek Tablero Arcade Videojuegos
+                                </p>
+                            </div>   
+                        </div>
+                    </a>
+                    <a href="/DetalleProducto">
+                        <div class="productoLista">
+                            <div class="eliminar">
+                                <img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
+                            </div>
+                            <div>
+                                <img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
+                            </div>
+                            <div>
+                                <p class="nombreLista">
+                                    Pro System Audiotek Tablero Arcade Videojuegos
+                                </p>
+                            </div>   
+                        </div>
+                    </a>
+                    <div class="input-group actions">
+                        <a href="/CarritoCompra" type="submit" class="botonPrimario">Ver carrito</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- menu de productos  -->
     <main id="areaPrincipal">
     <h1>index</h1>
     </main>
