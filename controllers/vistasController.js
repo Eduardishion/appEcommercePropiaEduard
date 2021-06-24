@@ -1,4 +1,4 @@
-const productosController ={
+const vistasController ={
     vistaIndex: (req, res) => {
         res.render('Index');
     },
@@ -16,4 +16,4 @@ const productosController ={
     },
 }
 
-module.exports = productosController;
+module.exports = vistasController;
