@@ -3,20 +3,20 @@ const express = require('express');
 //enrutador
 const router = express.Router();
 //controlador de productos 
-const productosController = require('../controllers/vistasController');
+const vistasController = require('../controllers/vistasController');
 
 //enrutamiento para rutas de productos
 //vista principal
-router.get('/', productosController.vistaIndex);
+router.get('/', vistasController.vistaIndex);
 //vista index
-router.get('/Index', productosController.vistaIndex);
+router.get('/Index', vistasController.vistaIndex);
 //vista detalle producto
-router.get('/DetalleProducto', productosController.vistaDetalleProducto);
+router.get('/DetalleProducto', vistasController.vistaDetalleProducto);
 //vista carrito de compra
-router.get('/CarritoCompra', productosController.vistaCarritoCompra);
+router.get('/CarritoCompra', vistasController.vistaCarritoCompra);
 //vista carrito de compra
-router.get('/InicioSesion', productosController.vistaInicioSesion);
+router.get('/InicioSesion', vistasController.vistaInicioSesion);
 //vista carrito de compra
-router.get('/Registro', productosController.vistaRegistro);
+router.get('/Registro', vistasController.vistaRegistro);
 
 module.exports = router;

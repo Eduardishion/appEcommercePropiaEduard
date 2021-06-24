@@ -1,8 +1,12 @@
 	//librerias nativas necesarias
 	const express = require('express'); 
 	const path = require('path'); 
-	//rutas de operaciones CRUD de productos
+	//rutas de operaciones CRUD de vistas
 	const rutasVistas = require('./routes/rutasVistas');
+	//rutas de operaciones CRUD de productos
+	const rutasProductos = require('./routes/rutasProductos');
+	//rutas de operaciones CRUD de usuarios
+	const rutasUsuarios = require('./routes/rutasUsuarios');
 	//componente para poder hacer peticiones put y delete
 	const methodOverride = require('method-override');
 
@@ -32,8 +36,12 @@
 	
 
 	//------------------rutas------------------
-	// rutas de productos 
+	// rutas de vistas 
 	app.use('/', rutasVistas);
+	// rutas de productos 
+	app.use('/', rutasProductos);
+	// rutas de usuarios 
+	app.use('/', rutasUsuarios);
 	//------------------rutas------------------	
 
 
