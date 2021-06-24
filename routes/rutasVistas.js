@@ -14,5 +14,9 @@ router.get('/Index', productosController.vistaIndex);
 router.get('/DetalleProducto', productosController.vistaDetalleProducto);
 //vista carrito de compra
 router.get('/CarritoCompra', productosController.vistaCarritoCompra);
+//vista carrito de compra
+router.get('/InicioSesion', productosController.vistaInicioSesion);
+//vista carrito de compra
+router.get('/Registro', productosController.vistaRegistro);
 
 module.exports = router;

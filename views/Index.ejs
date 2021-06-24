@@ -24,8 +24,8 @@ linkedin.com/in/iscivansanchez0
     <title>Index</title>
 </head>
 <body>
-    <!-- viata parcial de header -->
-    <%- include('./partials/header') %>
+    <!-- vista parcial de header -->
+    <%- include('partials/Header.ejs') %>
     <!-- menu desplegable  -->
     <input type="checkbox" name="desplegar" id="desplegar" hidden>
     <ul id="menuVertical" >
@@ -99,25 +99,7 @@ linkedin.com/in/iscivansanchez0
     <main id="areaPrincipal">
     <h1>index</h1>
     </main>
-    <footer id="piePagina">
-        <div id="logoFooter">
-            <img id="logo" src="images/imagenesIndex/logo_48_x_48.svg"/> 
-        </div>
-        <ul>
-            <li><a href="">EDUARDISHION SHOP</a></li>
-            <li><a href="">AVISO DE PRIVACIDAD</a> </li>
-            <li><a href="">TERMINOS DE SERVICIO</a></li>
-            <!-- <li><a href="">POLITICA DE REENVOLSOS</a> </li>        -->
-            <!-- <li><a href="">POLITICA DE REENVOLSOS</a> </li>
-            <li><a href="">POLITICA DE ENVIOS</a> </li>  
-            <li><a href="">TERMINOS DE SERVICIO</a></li>
-            <li><a href="">POLITICA DE PRIVACIDAD</a> </li> -->
-        </ul>
-        <div id="redes-sociales">
-            <i class="fab fa-facebook-f"></i>
-            <i class="fab fa-whatsapp"></i>
-            <i class="fab fa-instagram"></i>
-        </div>
-    </footer>
+    <!-- vista parcial de Footer -->
+    <%- include('partials/Footer.ejs') %>
 </body>
 </html>
