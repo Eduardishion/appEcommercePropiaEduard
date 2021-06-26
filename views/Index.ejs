@@ -21,7 +21,7 @@ linkedin.com/in/iscivansanchez0
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/modal-styles.css">
-    <title>Index</title>
+    <title>Eduardishion-shop</title>
 </head>
 <body>
     <!-- vista parcial de header -->
@@ -36,8 +36,9 @@ linkedin.com/in/iscivansanchez0
         <li><a href="#">Enlace</a></li>
     </ul>
     <!-- menu desplegable  -->
-    <!-- menu de productos  -->
-    <input type="checkbox" name="desplegar2" id="desplegar2" hidden >
+   
+    <!-- menu de lista productos  -->
+    <input type="checkbox" name="desplegar2" id="desplegar2" hidden>
     <div class="model-overlay active" ><!--caja transparente-->
         <div class="modal"><!--caja blanca-->
             <div id="form">
@@ -95,9 +96,83 @@ linkedin.com/in/iscivansanchez0
             </div>
         </div>
     </div>
-    <!-- menu de productos  -->
+    <!-- menu de lista productos  -->
     <main id="areaPrincipal">
-    <h1>index</h1>
+        <section>
+             <!-- banner publicitario -->
+        </section>
+        <section>
+            <h2>Ofertas</h2>
+            <ul>
+            <% for(let i=0; i<productos.length; i++){ %>
+                <li>
+                    <img src="<%= productos[i].image%>" >
+                    <br>
+                    <%= productos[i].price%>
+                    <br>
+                    % <%= productos[i].discountRate%>
+                    <br>
+                    <a href="/<%= productos[i].id%> ">
+                        <%= productos[i].name%>  
+                    </a>                        
+                </li>                       
+            <%}%>
+            </ul>
+        </section>
+        <section>
+            <h2>Ofertas</h2>
+            <ul>
+            <% for(let i=0; i<productos.length; i++){ %>
+                <li>
+                    <img src="<%= productos[i].image%>" >
+                    <br>
+                    <%= productos[i].price%>
+                    <br>
+                    % <%= productos[i].discountRate%>
+                    <br>
+                    <a href="/<%= productos[i].id%> ">
+                        <%= productos[i].name%>  
+                    </a>                        
+                </li>                       
+            <%}%>
+            </ul>
+        </section>
+        <section>
+            <h2>Ofertas</h2>
+            <ul>
+            <% for(let i=0; i<productos.length; i++){ %>
+                <li>
+                    <img src="<%= productos[i].image%>" >
+                    <br>
+                    <%= productos[i].price%>
+                    <br>
+                    % <%= productos[i].discountRate%>
+                    <br>
+                    <a href="/<%= productos[i].id%> ">
+                        <%= productos[i].name%>  
+                    </a>                        
+                </li>                       
+            <%}%>
+            </ul>
+        </section>
+        <section>
+           <h2>Ofertas</h2>
+            <ul>
+            <% for(let i=0; i<productos.length; i++){ %>
+                <li>
+                    <img src="<%= productos[i].image%>" >
+                    <br>
+                    <%= productos[i].price%>
+                    <br>
+                    % <%= productos[i].discountRate%>
+                    <br>
+                    <a href="/<%= productos[i].id%> ">
+                        <%= productos[i].name%>  
+                    </a>                        
+                </li>                       
+            <%}%>
+            </ul>
+        </section>
     </main>
     <!-- vista parcial de Footer -->
     <%- include('partials/Footer.ejs') %>

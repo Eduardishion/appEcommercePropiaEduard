@@ -1,0 +1,45 @@
+
+/*estilos de lista */
+.cat {
+	list-style-type: none;
+	margin: 0 0 25px 10px;
+	padding: 0px;
+	float: left;
+}
+
+
+/*tamaño de vista miniatura*/
+li .min {
+	width: 75px;
+	height: 64px;
+	padding: 6px 20px 20px 7px;
+}
+
+/*para ocultar la vista de imagen grande */
+li .max{
+	visibility: hidden;
+
+	/*posicionamiento de imagen grande */
+	position: absolute;
+	top: 256px; /* Provoca la separacion del borde superior */
+	left: 506px; /* Separa la imagen grande de la pequeña */
+}
+
+
+
+a:hover .max {
+	visibility: visible;
+}
+
+/*imagen inicial de la galeria*/
+#borde {
+	/*tamaño de la caja contenedora de la galeria*/
+	width: 405px;
+	height: 305px;
+
+	/*posicionamiento de imagen grande */
+	position: absolute;
+	top: 250px;
+	left: 50%;
+	background: url(./img/galeria.png);
+}

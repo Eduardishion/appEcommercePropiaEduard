@@ -2,6 +2,7 @@
 *{
     /* para no sumar a los elementos sus bordes y sus rellenos */
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
