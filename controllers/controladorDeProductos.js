@@ -11,7 +11,7 @@ const controladorDeProductos = {
       let listaProductos = modeloDeProductos.aperturaDeArchivo();
       
       //busqueda de producto
-      let productoEncontrado = buscarProducto(listaProductos, req);
+      let productoEncontrado = modeloDeProductos.buscarProducto(listaProductos, req);
 
       //verificacion de no estar vacio 
       if(productoEncontrado != null){
@@ -90,6 +90,9 @@ const controladorDeProductos = {
         //apertura de archivo
         listaProductos = modeloDeProductos.aperturaDeArchivo();
         
+        //eliminacion de imagen previamente cargada y no exista despus de ser actualisada con nueva imagen
+        modeloDeProductos.eliminarArchivoImagen(productoEncontrado.image);
+
         //redireccion a editar productos
         res.render('listaProductos', {productos : listaProductos} );
 
@@ -108,6 +111,9 @@ const controladorDeProductos = {
 
         if(indice != -1){
 
+          //eliminacion de imagen previamente cargada y no exista despues de ser eliminada
+          modeloDeProductos.eliminarArchivoImagen(listaProductos[indice].image);
+
           //eliminacion del producto de la lista 
           listaProductos.splice(indice, 1);
 
@@ -115,8 +121,8 @@ const controladorDeProductos = {
           modeloDeProductos.escrituraDeArchivo(listaProductos);
           
           //redireccion a editar productos
-          res.render('listaProductos', {  productos : listaProductos} );
-
+          res.render('listaProductos', {  productos : listaProductos} );          
+          
         }else{
           res.send("producto no encontrado...");
         } 

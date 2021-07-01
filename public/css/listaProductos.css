@@ -20,6 +20,11 @@ body{
     /* border: solid 1px red; */
 }
 
+.miniaturaImage{
+    width: 50px;
+    margin: 0 10px;
+}
+
 .colorTenue{
     background-color:#F2F2F2;
 }
@@ -36,8 +41,6 @@ body{
     text-align: center;
     
 }
-
-
 
 .info{
     width: 75%;

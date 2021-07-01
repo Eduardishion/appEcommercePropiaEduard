@@ -34,50 +34,16 @@
           <% for(let i= 0; i< productos.length ; i++){%> 
             <% if(i % 2 == 0 ){ %>
             <div id="producto" class="colorTenue">
-                <div class="info">
-                  <p class="estiloParrafo">
+              <div class="miniaturaImage">
+                <img src="/images/imagenesDeProductos/<%=productos[i].image%>" alt="imagenProducto">
+              </div>
+              <div class="info">
+                <p class="estiloParrafo">
                       Nombre:
                       <strong>
                         <%= productos[i].name%>
                       </strong> 
-                      Categoria:
-                      <strong>
-                        <%= productos[i].category%> 
-                      </strong>
-                      Stock:
-                      <strong>
-                        <%= productos[i].stock %>
-                      </strong>
                       <br>
-                      Precio:
-                      <strong>
-                        <%= productos[i].price%>
-                      </strong>
-                      Descuento:
-                      <strong>
-                        <%= productos[i].discount %>
-                      </strong>
-                      <br>
-                      Porcentaje de descuento:
-                      <strong>
-                        %<%= productos[i].discountRate %> 
-                      </strong>
-                  </p>
-                </div>
-                <div class="botonera">
-                  <a type="submit" href="/productos/editarProducto/<%= productos[i].id%>" class="botonPrimario">
-                    Actualizar
-                  </a>
-                </div>
-            </div>
-          <% }else{%>
-            <div id="producto" class="colorOscuro">
-                <div class="info">
-                  <p class="estiloParrafo">
-                      Nombre:
-                      <strong>
-                        <%= productos[i].name%>
-                      </strong> 
                       Categoria:
                       <strong>
                         <%= productos[i].category%> 
@@ -100,6 +66,52 @@
                       <strong>
                         %<%= productos[i].discountRate %> 
                       </strong>
+                      <br>
+                      <a href="/productos/detalleProducto/<%= productos[i].id %> ">Ver detalles</a>
+                </p>
+              </div>
+              <div class="botonera">
+                <a type="submit" href="/productos/editarProducto/<%= productos[i].id%>" class="botonPrimario">
+                  Actualizar
+                </a>
+              </div>
+            </div>
+          <% }else{%>
+            <div id="producto" class="colorOscuro">
+                <div class="miniaturaImage">
+                  <img src="/images/imagenesDeProductos/<%=productos[i].image%>" alt="imagenProducto">
+                </div>
+                <div class="info">
+                  <p class="estiloParrafo">
+                        Nombre:
+                        <strong>
+                          <%= productos[i].name%>
+                        </strong> 
+                        <br>
+                        Categoria:
+                        <strong>
+                          <%= productos[i].category%> 
+                        </strong>
+                        stock:
+                        <strong>
+                          <%= productos[i].stock %>
+                        </strong>
+                        <br>
+                        Precio:
+                        <strong>
+                          <%= productos[i].price%>
+                        </strong>
+                        Descuento:
+                        <strong>
+                          <%= productos[i].discount %>
+                        </strong>
+                        <br>
+                        Porcentaje de descuento:
+                        <strong>
+                          %<%= productos[i].discountRate %> 
+                        </strong>
+                        <br>
+                        <a href="/productos/detalleProducto/<%= productos[i].id %> ">Ver detalles</a>
                   </p>
                 </div>
                 <div class="botonera">

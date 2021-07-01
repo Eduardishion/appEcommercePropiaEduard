@@ -1,4 +1,6 @@
 const fs = require('fs');
+//para aliminar archivos
+const fs2 = require('fs').promises;
 const path = require('path');
 
 let modeloDeProductos = {
@@ -52,7 +54,7 @@ let modeloDeProductos = {
             discount: parseInt(((req.body.price-(req.body.discountRate/100)*req.body.price))), //precio a pagar menos el descuento
             stock: parseInt(req.body.stock),
             description: req.body.description,
-            image: req.body.image,
+            image: req.files[0].filename,//obtencion de nombre desde multer
             features: req.body.features,
             //extras
             registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
@@ -76,7 +78,16 @@ let modeloDeProductos = {
         });
 
         return indice;
-    },
+     },
+    eliminarArchivoImagen: function (nombreImagen) {
+        let rutaImagen = path.join(__dirname,'../public/images/imagenesDeProductos/'+nombreImagen);
+        //console.log(rutaImagen);
+        fs2.unlink(rutaImagen).then( ()=>{
+            console.log('Se elimino archivo de imagen...');
+        }).catch( err =>{
+            console.error('No se pudo eliminar archivo',err);
+        });
+    }
  
       
 };
