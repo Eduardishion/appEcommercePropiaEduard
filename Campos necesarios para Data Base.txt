@@ -2,16 +2,15 @@ pagina para crear apis
 https://mockaroo.com/
 https://mockaroo.com/schemas
 
-identificador (ya hablaremos más sobre este 	campo):id
+--identificador (ya hablaremos más sobre este 	campo):id
+--Nombre del producto: name
+--Categoría: category
+--Precio: price
+--Descripción: description
 
-Nombre del producto: name
+--Imagen: image
 
-Descripción: description
 
-Imagen: image
-
-Categoría: category
 
 Colores (o cualquier otro campo similar como: 		talle):colors
 
-Precio: price

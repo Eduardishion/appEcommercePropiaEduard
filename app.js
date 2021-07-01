@@ -1,14 +1,14 @@
-	//librerias nativas necesarias
+	//modulos nativas necesarias
 	const express = require('express'); 
 	const path = require('path'); 
-	//rutas de operaciones CRUD de vistas
-	//const rutasVistas = require('./routes/rutasVistas');
-	//rutas de operaciones CRUD de productos
-	const rutasProductos = require('./routes/rutasProductos');
-	//rutas de operaciones CRUD de usuarios
-	// const rutasUsuarios = require('./routes/rutasUsuarios');
-	//componente para poder hacer peticiones put y delete
+	//modulos de terceros para  hacer peticiones put y delete
 	const methodOverride = require('method-override');
+
+	//rutas de operaciones CRUD para productos
+	const rutasDeProductos = require('./routes/rutasDeProductos');
+	//rutas a vistas principales
+	const rutasPrincipales = require('./routes/rutasPrincipales');
+	
 
 	//------------objeto servidor------------------
 	//objeto servidor 
@@ -34,19 +34,20 @@
 
 	//------------------midwares------------------
 	
+	
 	//------------------rutas------------------
 	// rutas de productos 
-	app.use('/', rutasProductos);
+	app.use('/productos', rutasDeProductos);
+	
+	//rutas de solo vistas
+	app.use('/',rutasPrincipales);
 	// rutas de usuarios 
 	// app.use('/usuarios', rutasUsuarios);
+	
 	//------------------rutas------------------	
 
 
 	//------------------entry point------------------	
-	// app.use((req,res,next) => {
-	// 	res.status(404).render('not-found');
-	// });
-	
 	//configuracion de puerto
 	app.set('port', process.env.PORT || 3000 );
 	
