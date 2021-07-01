@@ -3,13 +3,13 @@ const express = require('express');
 //enrutador
 const router = express.Router();
 //controlador de productos 
-const vistasController = require('../controllers/vistasController');
+const controladorRutasPrincipales = require('../controllers/controladorRutasPrincipales');
 
 
 //enrutamiento para rutas de productos
 //vista principales
-router.get('/', vistasController.vistaIndex);
+router.get('/', controladorRutasPrincipales.vistaIndex);
 //vista index
-router.get('/Index', vistasController.vistaIndex);
+router.get('/Index', controladorRutasPrincipales.vistaIndex);
 
 module.exports = router;
