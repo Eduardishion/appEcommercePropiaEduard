@@ -51,7 +51,8 @@ img{
 
 #logoSearch,
 #logoShop,
-#logoShop{
+#logoShop,
+#addProduct{
     width: 25px;
 }
 
@@ -213,7 +214,7 @@ input[type="checkbox"]:checked + #menuVertical{
     }
     
     
-    #logoSearch, #logoShop, #logoShop2{
+    #logoSearch, #logoShop, #logoShop2, #addProduct{
         width: 15px;
     }
 
