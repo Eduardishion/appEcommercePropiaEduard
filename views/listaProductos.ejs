@@ -1,10 +1,6 @@
-<!-- 
-     Perfil de 🦊 Iván
-    linkedin.com/in/iscivansanchez0 
- -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,24 +14,103 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;600&display=swap" rel="stylesheet"> 
     <!-- hojas de estilo -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/index.css">
-    <title>Index</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/modal-styles.css">
+    <link rel="stylesheet" href="/css/listaProductos.css">
+    <title>Eduardishion-shop</title>
 </head>
-<body>
-    <!-- vista parcial de header -->
-    <%- include('partials/Header.ejs') %>
-    <!-- menu desplegable  -->
-    
+  <body>
+     
     <main id="areaPrincipal">
-        <h1>lista produtos</h1>
-        <ul>
-        <% for(let i=0; i<productos.length; i++){ %>
-            <li><%= productos[i].name%> <%= productos[i].description%></li>                       
-        <%}%>
-        </ul>
+      
+      <section id="vistaListaProductos">
+        <h1>Lista de productos</h1>
+        <div id="botonCrear">
+          <a type="submit" href="/productos/registrarProducto" class="botonPrimario">
+            <i class="fas fa-pen"></i>
+          </a>
+        </div>
+          <% for(let i= 0; i< productos.length ; i++){%> 
+            <% if(i % 2 == 0 ){ %>
+            <div id="producto" class="colorTenue">
+                <div class="info">
+                  <p class="estiloParrafo">
+                      Nombre:
+                      <strong>
+                        <%= productos[i].name%>
+                      </strong> 
+                      Categoria:
+                      <strong>
+                        <%= productos[i].category%> 
+                      </strong>
+                      Stock:
+                      <strong>
+                        <%= productos[i].stock %>
+                      </strong>
+                      <br>
+                      Precio:
+                      <strong>
+                        <%= productos[i].price%>
+                      </strong>
+                      Descuento:
+                      <strong>
+                        <%= productos[i].discount %>
+                      </strong>
+                      <br>
+                      Porcentaje de descuento:
+                      <strong>
+                        %<%= productos[i].discountRate %> 
+                      </strong>
+                  </p>
+                </div>
+                <div class="botonera">
+                  <a type="submit" href="/productos/editarProducto/<%= productos[i].id%>" class="botonPrimario">
+                    Actualizar
+                  </a>
+                </div>
+            </div>
+          <% }else{%>
+            <div id="producto" class="colorOscuro">
+                <div class="info">
+                  <p class="estiloParrafo">
+                      Nombre:
+                      <strong>
+                        <%= productos[i].name%>
+                      </strong> 
+                      Categoria:
+                      <strong>
+                        <%= productos[i].category%> 
+                      </strong>
+                      stock:
+                      <strong>
+                        <%= productos[i].stock %>
+                      </strong>
+                      <br>
+                      Precio:
+                      <strong>
+                        <%= productos[i].price%>
+                      </strong>
+                      Descuento:
+                      <strong>
+                        <%= productos[i].discount %>
+                      </strong>
+                      <br>
+                      Porcentaje de descuento:
+                      <strong>
+                        %<%= productos[i].discountRate %> 
+                      </strong>
+                  </p>
+                </div>
+                <div class="botonera">
+                  <a type="submit" href="/productos/editarProducto/<%= productos[i].id%>" class="botonPrimario">
+                    Actualizar
+                  </a>
+                </div>
+            </div>
+        <%}%> <% } %>
+      </section>
     </main>
-    <!-- vista parcial de Footer -->
-    <%- include('partials/Footer.ejs') %>
-</body>
+    <%- include('partials/footer') %>
+  </body>
 </html>

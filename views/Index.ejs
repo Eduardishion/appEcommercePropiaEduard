@@ -18,14 +18,33 @@ linkedin.com/in/iscivansanchez0
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;600&display=swap" rel="stylesheet"> 
     <!-- hojas de estilo -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/modal-styles.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/modal-styles.css">
     <title>Eduardishion-shop</title>
 </head>
 <body>
     <!-- vista parcial de header -->
-    <%- include('partials/Header.ejs') %>
+    <header id="encabesado">
+            <img id="logo" src="/images/imagenesIndex/logo_16_x_16.svg"/> 
+            <nav id="barraNavegacion">
+                <ul>
+                    <li><a href="Index">Catálogo</a></li><!-- esta vista  para productos y cetegorias-->
+                    <li><a href="#">Enlace</a></li>
+                </ul>
+            </nav>
+            <div id="menuAmbuergesa">
+                <label for="desplegar">
+                    <i class="fas fa-bars"></i>
+                </label>
+            </div>
+            <div id="logos">
+                <a href="/productos/listaProductos"><img  id="addProduct" src="/images/imagenesIndex/add_white_24dp.svg"/></a>
+                <a href=""><img  id="logoSearch" src="/images/imagenesIndex/search_white_24dp.svg"/></a>
+                <a href=""><img  id="logoShop" src="/images/imagenesIndex/shopping_cart_white_24dp.svg"/></a>
+                <a href="Registro"> <img  id="logoShop" src="/images/imagenesIndex/perm_identity_white_24dp.svg"/></a>
+            </div>
+    </header>
     <!-- menu desplegable  -->
     <input type="checkbox" name="desplegar" id="desplegar" hidden>
     <ul id="menuVertical" >
@@ -102,76 +121,7 @@ linkedin.com/in/iscivansanchez0
              <!-- banner publicitario -->
         </section>
         <section>
-            <h2>Ofertas</h2>
-            <ul>
-            <% for(let i=0; i<productos.length; i++){ %>
-                <li>
-                    <img src="<%= productos[i].image%>" >
-                    <br>
-                    <%= productos[i].price%>
-                    <br>
-                    % <%= productos[i].discountRate%>
-                    <br>
-                    <a href="/<%= productos[i].id%> ">
-                        <%= productos[i].name%>  
-                    </a>                        
-                </li>                       
-            <%}%>
-            </ul>
-        </section>
-        <section>
-            <h2>Ofertas</h2>
-            <ul>
-            <% for(let i=0; i<productos.length; i++){ %>
-                <li>
-                    <img src="<%= productos[i].image%>" >
-                    <br>
-                    <%= productos[i].price%>
-                    <br>
-                    % <%= productos[i].discountRate%>
-                    <br>
-                    <a href="/<%= productos[i].id%> ">
-                        <%= productos[i].name%>  
-                    </a>                        
-                </li>                       
-            <%}%>
-            </ul>
-        </section>
-        <section>
-            <h2>Ofertas</h2>
-            <ul>
-            <% for(let i=0; i<productos.length; i++){ %>
-                <li>
-                    <img src="<%= productos[i].image%>" >
-                    <br>
-                    <%= productos[i].price%>
-                    <br>
-                    % <%= productos[i].discountRate%>
-                    <br>
-                    <a href="/<%= productos[i].id%> ">
-                        <%= productos[i].name%>  
-                    </a>                        
-                </li>                       
-            <%}%>
-            </ul>
-        </section>
-        <section>
-           <h2>Ofertas</h2>
-            <ul>
-            <% for(let i=0; i<productos.length; i++){ %>
-                <li>
-                    <img src="<%= productos[i].image%>" >
-                    <br>
-                    <%= productos[i].price%>
-                    <br>
-                    % <%= productos[i].discountRate%>
-                    <br>
-                    <a href="/<%= productos[i].id%> ">
-                        <%= productos[i].name%>  
-                    </a>                        
-                </li>                       
-            <%}%>
-            </ul>
+            
         </section>
     </main>
     <!-- vista parcial de Footer -->
