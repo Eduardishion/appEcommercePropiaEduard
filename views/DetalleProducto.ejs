@@ -39,7 +39,7 @@
         <!-- area imagenes -->
              <div> <!--para centrar despues en vista grande -->
                 <article id="imagenProducto">
-                    <img src="/images/imagenesDeProductos/<%=producto.image%>" alt="imagen producto">
+                    <img src="/images/imagenesDeProductos/<%= producto.image ? producto.image : 'default-image.png' %>" alt="imagen producto">
                 </article>
                 <article id="carrusel">
                     <div class="flecha">

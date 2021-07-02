@@ -43,8 +43,43 @@ let modeloDeProductos = {
         // console.log(req.body.description);
         // console.log(req.body.image);
         // console.log(req.body.userWhoRegistered);
+        
 
-       //creacion de objeto temporal que almacena los datos entrantes de la vista crear producto
+        
+        //validacion de llegada de archivo imagen o no 
+        //req.file para ver las propiedades
+
+        // let imageFile = req.file;
+        // if(imageFile !== underfined){
+
+        // }else{
+        //     console.log("no se cargo la imagen adecuadamente...");
+        //      por i no llegus la imagen podemos volver a renderiar el formulario
+        // }    
+
+        //cuando no se cargue la imagen podemos enviar un por default para que se
+        //cargue aun asi cuando no se cargo la imagen 
+
+        //let nombreImagen = req.file !== underfined ? req.files[0].filename : null ;
+
+        // let nombreImagen = '';
+        
+        // if(req.files){ // si existe 
+        //     console.log(req.files[0].filename);
+        //     console.log(req.files);
+        //     console.log("si se cargo imagen ");
+        //     nombreImagen = req.files[0].filename;
+        // }else{
+        //     console.log("no se cargo imagen ");
+        //     nombreImagen = null;
+        // }
+
+
+        //validacion de imagen si exite nombra la imagen, si no coloca el campo en null
+        // nombreImagen = req.file ? req.files[0].filename : null;
+
+
+        //creacion de objeto temporal que almacena los datos entrantes de la vista crear producto
         let productoTmp = {
             id: parseInt(req.body.id),
             name: req.body.name,
@@ -54,7 +89,7 @@ let modeloDeProductos = {
             discount: parseInt(((req.body.price-(req.body.discountRate/100)*req.body.price))), //precio a pagar menos el descuento
             stock: parseInt(req.body.stock),
             description: req.body.description,
-            image: req.files[0].filename,//obtencion de nombre desde multer
+            image: req.files[0].filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename;
             features: req.body.features,
             //extras
             registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
@@ -80,13 +115,28 @@ let modeloDeProductos = {
         return indice;
      },
     eliminarArchivoImagen: function (nombreImagen) {
+
         let rutaImagen = path.join(__dirname,'../public/images/imagenesDeProductos/'+nombreImagen);
-        //console.log(rutaImagen);
-        fs2.unlink(rutaImagen).then( ()=>{
+
+         //console.log(rutaImagen);
+         fs2.unlink(rutaImagen).then( ()=>{
             console.log('Se elimino archivo de imagen...');
-        }).catch( err =>{
-            console.error('No se pudo eliminar archivo',err);
-        });
+         }).catch( err =>{
+            console.error('No se pudo eliminar el archivo no exite',err);
+         });
+        
+        
+        
+        // //validacion para saber si existe el archivo o no 
+        // if(fs.existsSync(rutaImagen)){
+        //     //si existe lo elimina
+        //     console.log("Eliminanado...");
+
+           
+        // }else{
+        //     console.log("El archivo NO EXISTE!");
+        // }
+        
     }
  
       

@@ -5,7 +5,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require("path");
 
-// configuracion de multer
+// configuracion de multer primera version
 // let multerDiskStorage = multer.diskStorage({
 
 //     destination: (req, file, callback)=>{
@@ -41,6 +41,7 @@ let storage = multer.diskStorage({
     }
 });
 
+//constante para almacenar 
 let upload = multer({ storage: storage });
 
 

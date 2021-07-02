@@ -136,16 +136,16 @@
 							<input type="text" name="category" placeholder="Categoria" required>
 						</div>
 						<div>
-							<input type="number" name="price" placeholder="Precio" required>
+							<input type="number" name="price" placeholder="Precio"  min="1" required>
 						</div>
 						<div>
-							<input type="number" name="discountRate" placeholder="Porcentaje de descuento" class="descuento" required>
+							<input type="number" name="discountRate" placeholder="Porcentaje de descuento"   min="1" class="descuento" required>
 						</div>
 						<div>
 							<input type="number" name="stock" placeholder="Existencias" min="1" required>
 						</div>
 						<div>
-							<input type="text" name="features" placeholder="Caracteristicas" min="1" required>
+							<input type="text" name="features" placeholder="Caracteristicas" required>
 						</div>
 						<div>
 							<label for="description">Descripción</label>
@@ -156,7 +156,7 @@
 						</div>
 						<div>
 							<label for="imageProducto">Cargar Imagen</label>
-							<input type="file" name="imageProducto" required>
+							<input type="file" name="imageProducto" required> <!---al no requerir y no cargan imagen al mostrar las imgenes de producto madaremos una por defatul -->>
 						</div>
 						<div id="boton">
 							<input type="submit" value="Crear" class="botonPrimario">

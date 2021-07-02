@@ -66,6 +66,8 @@ h1, h5 {
     
 }
 
+
+
 .botonSecundario{
 
     background-color: #EF0000;
@@ -77,8 +79,13 @@ h1, h5 {
 /* --------------contenedor de formulario-------------- */
 
 
-
 @media (min-width: 790px){
+
+	#diveliminar{
+		display:flex;
+		justify-content: space-between;
+		margin-bottom: 10px;
+	}
 
 	#areaPrincipal{
 		display: flex;

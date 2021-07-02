@@ -29,6 +29,13 @@
 			<section id="vistaCrearProductos">
 				<h1>Edición de Producto</h1>
 				<div id="contenedorDeFormulario">
+					<form id="diveliminar" action="/productos/eliminaProducto/<%= producto.id%>?_method=DELETE" method="post">
+						<a  href="/productos/listaProductos" class="botonPrimario">
+							Cancelar edición
+						</a>
+						<input type="submit"  class="botonSecundario" value="Eliminar">
+					</form>
+					
 					<form action="/productos/actulizaProducto/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 						<div>
 							<!-- el valor del cambiante se agregara automaticamente -->
@@ -45,10 +52,10 @@
 							<input type="text" name="category" placeholder="Categoria" value="<%= producto.category %>"  required>
 						</div>
 						<div>
-							<input type="number" name="price" placeholder="Precio" value="<%= producto.price %>"  required>
+							<input type="number" name="price" placeholder="Precio" min="1" value="<%= producto.price %>"  required>
 						</div>
 						<div>
-							<input type="number" name="discountRate" placeholder="Porcentaje de descuento" class="descuento" value="<%= producto.discountRate %>"  required>
+							<input type="number" name="discountRate" placeholder="Porcentaje de descuento" min="1" class="descuento" value="<%= producto.discountRate %>"  required>
 						</div>
 						<div>
 							<input type="number" name="stock" placeholder="Existencias" min="1"  value="<%= producto.stock %>"  required>
@@ -72,9 +79,7 @@
 							<input type="submit" value="Actualizar" class="botonPrimario">
 						</div>
 					</form>
-					<form action="/productos/eliminaProducto/<%= producto.id%>?_method=DELETE" method="post">
-						<input type="submit"  class="botonSecundario" value="Eliminar">
-					</form>
+					
 				</div>
 			</section>
 	</main>
