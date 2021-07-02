@@ -16,7 +16,8 @@
 	//------------objeto servidor------------------
 	
 	//------------------midwares------------------
-
+ 
+ 
 	//carpeta publica de archivos estaticos 
 	app.use(express.static('./public'));
 	

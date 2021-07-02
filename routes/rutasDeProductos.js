@@ -45,6 +45,7 @@ let storage = multer.diskStorage({
 let upload = multer({ storage: storage });
 
 
+
 //controlador de productos
 const controladorDeProductos = require('../controllers/controladorDeProductos');
 

@@ -6,7 +6,7 @@ const controladorDeProductos = {
       res.render("registrarProducto");
     },
     vistaDetalleProducto: (req, res) => {
-
+ 
       //apertura de archivo
       let listaProductos = modeloDeProductos.aperturaDeArchivo();
       
@@ -25,6 +25,44 @@ const controladorDeProductos = {
       res.render("shoppingCart");
     },
     guardarProducto: (req, res) => {
+
+
+      // ---------validacion de imagen---------------
+
+      //validacion de llegada de archivo imagen o no 
+        //req.file para ver las propiedades
+
+        // let imageFile = req.file;
+        // if(imageFile !== underfined){
+
+        // }else{
+        //     console.log("no se cargo la imagen adecuadamente...");
+        //      por i no llegus la imagen podemos volver a renderiar el formulario
+        // }    
+
+        //cuando no se cargue la imagen podemos enviar un por default para que se
+        //cargue aun asi cuando no se cargo la imagen 
+
+        //let nombreImagen = req.file !== underfined ? req.files[0].filename : null ;
+
+        // let nombreImagen = '';
+        
+        // if(req.files){ // si existe 
+        //     console.log(req.files[0].filename);
+        //     console.log(req.files);
+        //     console.log("si se cargo imagen ");
+        //     nombreImagen = req.files[0].filename;
+        // }else{
+        //     console.log("no se cargo imagen ");
+        //     nombreImagen = null;
+        // }
+
+
+        //validacion de imagen si exite nombra la imagen, si no coloca el campo en null
+        // nombreImagen = req.file ? req.files[0].filename : null;
+
+       // ---------validacion de imagen---------------
+
 
       //apertura de archivo
       let listaProductos = modeloDeProductos.aperturaDeArchivo();
