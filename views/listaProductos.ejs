@@ -29,12 +29,12 @@
             <i class="fas fa-pen"></i>
           </a>
         </div>
-          <% for(let i= 0; i< productos.length ; i++){%> 
+          <% for(let i= 0; i< productos.length ; i++){ %> 
             <% if(i % 2 == 0 ){ %>
             <div id="producto" class="colorTenue">
               <div class="miniaturaImage">
-                <!-- <img src="/images/imagenesDeProductos/<%= productos[i].image ? productos[i].image : 'default-image.png' %>" alt="imagenProducto"> -->
-                <img src="/images/imagenesDeProductos/<%= productos[i].image %>" alt="imagenProducto">
+                <img src="/images/imagenesDeProductos/<%= productos[i].image ? productos[i].image : 'default-image.png' %>" alt="imagenProducto">
+                <!-- <img src="/images/imagenesDeProductos/<%= productos[i].image %>" alt="imagenProducto"> -->
               </div>
               <div class="info">
                 <p class="estiloParrafo">
