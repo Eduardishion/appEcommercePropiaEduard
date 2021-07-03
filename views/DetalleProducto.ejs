@@ -62,11 +62,11 @@
             <article id="descripcionProducto">
                 <strong>
                     <h2>
-                        <%=  producto.name%> 
+                        <%= producto.name %> 
                     </h2>
                 </strong>
                 <h4>
-                    ID referencia: <%=  producto.id%> 
+                    ID referencia: <%=  producto.id %> 
                 </h4>
                 <div id="grados">
                     <div id="puntaje">
@@ -84,7 +84,7 @@
                     </p>
                     <ul>
                         <li>    
-                            <%=  producto.description%> 
+                            <%=  producto.description %> 
                         </li>
                     <ul>
                     <p>
@@ -102,11 +102,11 @@
             </article>
             <article id="CostoApagar">
                 <div id="precios">
-                    <h4><%=  producto.price%></h4>
-                    <h5><%=  producto.discount%></h5>
-                    <h6><%=  producto.discountRate%>%</h6>
+                    <h4><%= producto.price %>$</h4>
+                    <h5><%= producto.discount %>$</h5>
+                    <h6><%= producto.discountRate %>%</h6>
                 </div>
-                <p>Stock: <%= producto.stock%></p>
+                <p>Stock: <%= producto.stock %></p>
                 <p>Cantidad:</p>
                 <div id="cantidad">
                     <div>-</div>
