@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": 100,
+    "name": "Playera conmemorativa America",
+    "category": "Ropa",
+    "price": 3500,
+    "discountRate": 20,
+    "discount": 2800,
+    "stock": 1000,
+    "description": "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tPlayera conmemorativa de equipo america, por su centenario de equipo y por su aniversario numero 1o años.\r\n\r\ntambien viene de regalo un menbrecia gratis del equipo por 6 meses en descuento en compra de accesorios\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t",
+    "image": "imageProducto-1625256428285.png",
+    "features": "Amarilla ",
+    "registrationDate": "2/07/21",
+    "checkInTime": "15:7 PM",
+    "userWhoRegistered": "Admin Root"
+  }
+]

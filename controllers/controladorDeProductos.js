@@ -3,6 +3,7 @@ const modeloDeProductos = require('../models/modeloDeProductos');
 
 const controladorDeProductos = {
     vistaRegistrarProducto: (req, res) => {
+      res.status(200);
       res.render("registrarProducto");
     },
     vistaDetalleProducto: (req, res) => {
@@ -17,12 +18,12 @@ const controladorDeProductos = {
       if(productoEncontrado != null){
         res.render("DetalleProducto", { producto : productoEncontrado });
       }else{
-        res.send("producto no encontrado...");
+        res.render("not-found");
       }
 
     },
     viewShoppingCart: (req, res) => {
-      res.render("shoppingCart");
+      res.render("CarritoCompra");
     },
     guardarProducto: (req, res) => {
 
@@ -77,6 +78,7 @@ const controladorDeProductos = {
       modeloDeProductos.escrituraDeArchivo(listaProductos);
 
       //retorno a crear otro producto
+      res.status(200);
       res.redirect('registrarProducto');
     },
     listaDeProductos: (req, res) => {
@@ -97,7 +99,7 @@ const controladorDeProductos = {
       if(productoEncontrado != null){
         res.render('editarProducto', { producto: productoEncontrado });
       }else{
-        res.send("producto no encontrado...");
+        res.render("not-found");
       }
 
     },
@@ -135,7 +137,7 @@ const controladorDeProductos = {
         res.render('listaProductos', {productos : listaProductos} );
 
       }else{
-        res.send("producto no encontrado...");
+        res.render("not-found");
       }
 
     }
@@ -162,7 +164,7 @@ const controladorDeProductos = {
           res.render('listaProductos', {  productos : listaProductos} );          
           
         }else{
-          res.send("producto no encontrado...");
+          res.render("not-found");
         } 
     },
 }
