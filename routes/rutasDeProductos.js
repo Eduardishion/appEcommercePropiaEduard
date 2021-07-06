@@ -1,8 +1,12 @@
 //modulos nativos
+//https://herramientas-online.com/leer-codigo-qr-online.html para abrir codigos QR
+//https://github.com/codelando  profesor de digital house
 const express = require("express");
 const router = express.Router();
 //modulo multer
 const multer = require('multer');
+const validacionesFormProducto = require('../middlewares/validacionesFormProducto');
+
 const path = require("path");
 
 // configuracion de multer primera version
@@ -46,6 +50,7 @@ let upload = multer({ storage: storage });
 
 
 
+
 //controlador de productos
 const controladorDeProductos = require('../controllers/controladorDeProductos');
 
@@ -60,13 +65,20 @@ router.get('/registrarProducto', controladorDeProductos.vistaRegistrarProducto);
 
 //Accion de guardar producto en base de datos y carga de imagen mediante multer
 //router.post('/guardarProducto', fileUpload.single('imageProducto'), controladorDeProductos.guardarProducto);
-router.post('/guardarProducto', upload.any(), controladorDeProductos.guardarProducto);
+
+//emviaremos las validaciones tambien a esta ruta que procesa el guardado de los datos
+
+router.post('/guardarProducto', upload.single('imageProducto'), controladorDeProductos.guardarProducto);
+//para validacion
+//router.post('/guardarProducto',validacionesFormProducto, upload.any(), controladorDeProductos.guardarProducto);
 
 //Acccion de entrara a la vistar de edicion de producto
 router.get('/editarProducto/:id',  controladorDeProductos.vistaEdicionProducto);
 
 //Accion de editar producto 
-router.put('/actulizaProducto/:id', upload.any(), controladorDeProductos.actulizaProducto);
+//tambien validamos este formulario
+// router.put('/actulizaProducto/:id',validacionesFormProducto, upload.any(), controladorDeProductos.actulizaProducto);
+router.put('/actulizaProducto/:id', upload.single('imageProducto'), controladorDeProductos.actulizaProducto);
 
 //Accion de eliminar producto 
 router.delete('/eliminaProducto/:id', controladorDeProductos.eliminaProducto);
