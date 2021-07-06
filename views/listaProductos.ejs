@@ -27,7 +27,7 @@
         <div id="botonCrear">
           <a type="submit" href="/productos/registrarProducto" class="botonPrimario">
             <i class="fas fa-pen"></i>
-          </a>
+          </a>	
         </div>
           <% for(let i= 0; i< productos.length ; i++){ %> 
             <% if(i % 2 == 0 ){ %>
@@ -65,14 +65,17 @@
                       <strong>
                         %<%= productos[i].discountRate %> 
                       </strong>
-                      <br>
-                      <a href="/productos/detalleProducto/<%= productos[i].id %> ">Ver detalles</a>
-                </p>
+                      <br>  
+                      <a href="/productos/detalleProducto/<%= productos[i].id %> ">Ver detalles</a>  
+                </p> 
               </div>
               <div class="botonera">
                 <a type="submit" href="/productos/editarProducto/<%= productos[i].id%>" class="botonPrimario">
                   Actualizar
                 </a>
+                <form id="diveliminar" action="/productos/eliminaProducto/<%= productos[i].id%>?_method=DELETE" method="post">
+                  <input type="submit"  class="botonSecundario" value="Eliminar">
+                </form>
               </div>
             </div>
           <% }else{%>
@@ -117,6 +120,9 @@
                   <a type="submit" href="/productos/editarProducto/<%= productos[i].id%>" class="botonPrimario">
                     Actualizar
                   </a>
+                  <form id="diveliminar" action="/productos/eliminaProducto/<%= productos[i].id%>?_method=DELETE" method="post">
+                    <input type="submit"  class="botonSecundario" value="Eliminar">
+                  </form>
                 </div>
             </div>
         <%}%> <% } %>

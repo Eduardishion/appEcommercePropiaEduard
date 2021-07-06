@@ -29,14 +29,13 @@
 			<section id="vistaCrearProductos">
 				<h1>Edición de Producto</h1>
 				<div id="contenedorDeFormulario">
-					<form id="diveliminar" action="/productos/eliminaProducto/<%= producto.id%>?_method=DELETE" method="post">
+					<div id="botonera">
 						<a  href="/productos/listaProductos" class="botonPrimario">
 							Cancelar
 						</a>
-						<input type="submit"  class="botonSecundario" value="Eliminar">
-					</form>
-					
+					</div>
 					<form action="/productos/actulizaProducto/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+						
 						<div>
 							<!-- el valor del cambiante se agregara automaticamente -->
 							<label id="personal" for="userWhoRegistered">Personal que registra:</label>
@@ -73,7 +72,7 @@
 						</div>
 						<div>
 							<label for="imageProducto">Cargar Imagen</label>
-							<input type="file" name="imageProducto" required>
+							<input type="file" name="imageProducto" >
 						</div>
 						<div id="boton">
 							<input type="submit" value="Actualizar" class="botonPrimario">
