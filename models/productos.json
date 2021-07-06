@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 123,
+    "name": "sapato",
+    "category": "ert",
+    "price": 1200,
+    "discountRate": 12,
+    "discount": 1056,
+    "stock": 1,
+    "description": "esta es una playera conmemorativa ",
+    "image": "imageProducto-1625606571875.png",
+    "imagesSec": null,
+    "features": "playera roja con estampado, detallee en amarillo, cueyo V",
+    "registrationDate": "6/07/21",
+    "checkInTime": "16:22 PM",
+    "userWhoRegistered": "Admin Root"
+  }
+]
