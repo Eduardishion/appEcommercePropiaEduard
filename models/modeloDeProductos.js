@@ -115,6 +115,7 @@ let modeloDeProductos = {
             //image: req.files[0].filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con  any(); 
             //image: req.file.filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
             image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
+            imagesSec: null,
             features: req.body.features,
             //extras
             registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),

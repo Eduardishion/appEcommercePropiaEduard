@@ -1,17 +1,1 @@
-[
-  {
-    "id": 100,
-    "name": "playera hollister modelo conmemorativo",
-    "category": "Accesorios",
-    "price": 1500,
-    "discountRate": 12,
-    "discount": 1320,
-    "stock": 1500,
-    "description": "\t\t\t\t\t\t\t\tdfgdfgfd\t\t\t\r\n\t\t\t\t\t\t\t",
-    "image": "imageProducto-1625601694992.png",
-    "features": "amarilla y asul",
-    "registrationDate": "6/07/21",
-    "checkInTime": "15:3 PM",
-    "userWhoRegistered": "Admin Root"
-  }
-]
+[]
