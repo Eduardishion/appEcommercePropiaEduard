@@ -1,5 +1,7 @@
 //modelo de productos
 const modeloDeProductos = require('../models/modeloDeProductos');
+//destructuracion para usar objeto validator 
+const {validationResult} = require('express-validator');
 
 const controladorDeProductos = {
     vistaRegistrarProducto: (req, res) => {
@@ -27,59 +29,44 @@ const controladorDeProductos = {
     },
     guardarProducto: (req, res) => {
 
+      //----------validacion de datos de entrada---------------------
+      let errores = validationResult(req);
 
-      // ---------validacion de imagen---------------
+      console.log("------------>"+typeof errores)
 
-      //validacion de llegada de archivo imagen o no 
-        //req.file para ver las propiedades
-
-        // let imageFile = req.file;
-        // if(imageFile !== underfined){
-
-        // }else{
-        //     console.log("no se cargo la imagen adecuadamente...");
-        //      por i no llegus la imagen podemos volver a renderiar el formulario
-        // }    
-
-        //cuando no se cargue la imagen podemos enviar un por default para que se
-        //cargue aun asi cuando no se cargo la imagen 
-
-        //let nombreImagen = req.file !== underfined ? req.files[0].filename : null ;
-
-        // let nombreImagen = '';
-        
-        // if(req.files){ // si existe 
-        //     console.log(req.files[0].filename);
-        //     console.log(req.files);
-        //     console.log("si se cargo imagen ");
-        //     nombreImagen = req.files[0].filename;
-        // }else{
-        //     console.log("no se cargo imagen ");
-        //     nombreImagen = null;
-        // }
+      //para verificar si no exiten errores
+      if(errores.isEmpty()){
+          
 
 
-        //validacion de imagen si exite nombra la imagen, si no coloca el campo en null
-        // nombreImagen = req.file ? req.files[0].filename : null;
+          //apertura de archivo
+          let listaProductos = modeloDeProductos.aperturaDeArchivo();
 
-       // ---------validacion de imagen---------------
+          //creacion de objeto temporal 
+          let productoTmp = modeloDeProductos.estructurarObjetoPOST(req);
 
+          //objeto a insertar en archivo o base de datos 
+          listaProductos.push(productoTmp);
+          
+          //escritura de archivo
+          modeloDeProductos.escrituraDeArchivo(listaProductos);
 
-      //apertura de archivo
-      let listaProductos = modeloDeProductos.aperturaDeArchivo();
+          //retorno a crear otro producto
+          res.status(200);
+          res.redirect('listaProductos');
 
-      //creacion de objeto temporal 
-      let productoTmp = modeloDeProductos.estructurarObjeto(req);
+      }else{
+        //res.status(200);
+        //https://www.samanthaming.com/tidbits/76-converting-object-to-array/
+        //Object.keys(errores) es para convertir de un los valores de objeto en arreglo
+        //res.send('registrarProducto', { msgsErrors : Object.entries(errores) } );
+        console.log(errores.array())
+        res.render('registrarProducto', { msgsErrors : errores.array() } );
+        //res.render('registrarProducto', { msgsErrors : Object.entries(errores) } );
+      }
 
-      //objeto a insertar en archivo o base de datos 
-      listaProductos.push(productoTmp);
-      
-      //escritura de archivo
-      modeloDeProductos.escrituraDeArchivo(listaProductos);
+      //----------validacion de datos de entrada---------------------
 
-      //retorno a crear otro producto
-      res.status(200);
-      res.redirect('registrarProducto');
     },
     listaDeProductos: (req, res) => {
       //apertura de archivo
@@ -97,7 +84,8 @@ const controladorDeProductos = {
 
       //verificacion de no estar vacio 
       if(productoEncontrado != null){
-        res.render('editarProducto', { producto: productoEncontrado });
+        //si exiten errores de validacion se envian 
+        res.render('editarProducto', { producto: productoEncontrado  });
       }else{
         res.render("not-found");
       }
@@ -114,7 +102,7 @@ const controladorDeProductos = {
       if(productoEncontrado != null){
 
         //crear objeto temporal
-        let productTmp = modeloDeProductos.estructurarObjeto(req);
+        let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image);
 
         let productoModificado={};
         productoModificado = Object.assign(productoModificado, productoEncontrado, productTmp);
@@ -130,8 +118,6 @@ const controladorDeProductos = {
         //apertura de archivo
         listaProductos = modeloDeProductos.aperturaDeArchivo();
         
-        //eliminacion de imagen previamente cargada y no exista despus de ser actualisada con nueva imagen
-        modeloDeProductos.eliminarArchivoImagen(productoEncontrado.image);
 
         //redireccion a editar productos
         res.render('listaProductos', {productos : listaProductos} );
