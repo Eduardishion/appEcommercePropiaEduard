@@ -79,23 +79,28 @@
                     </div>
                 </div>
                 <div id="descripcion">
+                    <h3>
+                        Disponible. 
+                    </h3>
                     <p>
                         Disponible. 
                     </p>
-                    <ul>
-                        <li>    
-                            <%=  producto.description %> 
-                        </li>
-                    <ul>
                     <p>
-                           
+                        <%=  producto.description %> 
                     </p>
+                    <h3>
+                        Caracteristicas. 
+                    </h3>
                     <ul>
-                        <li>3400 JUEGOS INCLUIDOS Con el Tablero arcadeodrás disfrutar de los juegos clásicos de todo tipo de género: Plataformas, Peleas, Carreras, Beat em Up, puzzles, etc.</li>
-                        <li>PERFECTA PARA 1 O 2 JUGADORES El tablero aracde está diseñado para 1 o 2 personas, comparte la experiencia de revivir tus juegos favoritos.</li>
-                        <li>ALTA DEFINICIÓN Este tablero arcade incluye salidas VGA, USB y tipo Jack, por lo que se puede conectar a una gran variedad de televisores o monitores.</li>
-                        <li>DIVERSIÓN A DONDE QUIERA QUE VAYAS Este tablero arcade es un modelo portátil,la consola mide 63 cm de largo y 22 cm de ancho, dimensiones perfectas para transportar de manera sencilla.</li>
-                        <li>INCREÍBLE DISEÑO RETRO El tablero arcade cuenta con 2 palancas y 12 botones para realizar distintos movimientos.</li>
+
+                    </ul>
+                        <% 
+                        let caracteristicas = producto.features.split(",");
+                        console.log(caracteristicas);
+                        console.log(caracteristicas.length);
+                        for(let i=0 ; i < caracteristicas.length ;i++){%>
+                            <li><%= caracteristicas[i]%>.</li>
+                        <% } %>
                     </ul>
                     <br>
                 </div>
