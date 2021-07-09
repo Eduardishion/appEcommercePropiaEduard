@@ -1,24 +1,57 @@
 
 //modulo express validator 
 const {body} = require('express-validator');
-
+const path = require('path');
 
 //express validator
 const validacionesFormProducto = [
 
     //mas a detalle la validacion de una imagen 
+    //https://express-validator.github.io/docs/
     //https://github.com/validatorjs/validator.js#validators
     //https://stackoverflow.com/questions/39703624/express-how-to-validate-file-input-with-express-validator
+    //.bail() se usa para hacer mas de una validacion para el mismo campo 
+    body('id').notEmpty().withMessage('El campo id no debe estar vacio').bail()
+              .isInt({min : 1}).withMessage('Debe ser un numero entero positivo')  
+    ,
+    body('name').notEmpty().withMessage('El campo nombre no debe estar vacio')
+    ,
+    body('category').notEmpty().withMessage('El campo categoria  no debe estar vacio')
+    ,
+    body('price').notEmpty().withMessage('El campo precio  no debe estar vacio').bail()
+                 .isFloat({min : 0.01}).withMessage('Debe ser un numero decimal o entero')
+    ,
+    body('discountRate').notEmpty().withMessage('El campo % de descuento no debe estar vacio').bail()
+                        .isInt({min : 0}).withMessage('Debe ser un numero entero positivo ó 0')  
+    ,
+    body('stock').notEmpty().withMessage('El campo existencias no debe estar vacio').bail()
+                            .isInt({min : 1}).withMessage('Debe ser un numero entero positivo') 
+    ,
+    body('features').notEmpty().withMessage('El campo caracteristicas no debe estar vacio')
+    
+    ,
+    body('description').notEmpty().withMessage('El campo descripción no debe estar vacio')
+    
+    ,
+    body('image').custom((value , {req}) =>{
+        let file = req.file;
+        let acceptedExtensions = ['.jpg', '.png', '.gif'];
+    
+        if(!file){
+            throw new Error('Debes cargar una imagen');
+        }else{
+            let fileExtension = path.extname(file.originalname);
+            if(!acceptedExtensions.includes(fileExtension)){
+                throw new Error(`Las extenciones de archivo permitidas son: ${acceptedExtensions.join(',')}`);
+            }
+        }
 
-    body('id').isInt({min:1}).isNumeric().notEmpty().withMessage('El campo id no debe estar vacio y debe ser un numero entero positivo'),
-    body('name').isString().notEmpty().withMessage('el campo nombre es una cadena de texto y no debe estar vacio'),
-    body('category').isString().notEmpty().withMessage('El campo categoria  es una cadena de texto y no debe estar vacio'),
-    body('price').isFloat({min:0.001}).isNumeric().notEmpty().withMessage('El campo precio es flotante pero posivito y no debe estar vacio'),
-    body('discountRate').isFloat({min:0.000}).isNumeric().notEmpty().withMessage('El campo % de descuento es flotante pero posivito y no debe estar vacio'),
-    body('stock').isInt({min:1}).isNumeric().notEmpty().withMessage('El campo stock no debe estar vacio y debe ser un numero entero positivo'),
-    body('description').isString().notEmpty().isLength({max:500}).withMessage('El campo descripción es una cadena de texto y no debe estar vacio'),
-    body('image').notEmpty().withMessage('El campo de imagen pero no debe estar vacia'),
-    body('features').isString().notEmpty().withMessage('el campo caracteristicas es una cadena de texto y no debe estar vacio'),
+
+        return true;
+    })
+    
+    // .notEmpty().withMessage('El campo de imagen  no debe estar vacio'),
+    
 ];
 
 module.exports = validacionesFormProducto;
