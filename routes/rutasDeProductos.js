@@ -9,6 +9,7 @@ const validacionesFormProducto = require('../middlewares/validacionesFormProduct
 
 const path = require("path");
 
+
 // configuracion de multer primera version
 // let multerDiskStorage = multer.diskStorage({
 
@@ -48,8 +49,7 @@ let storage = multer.diskStorage({
 //constante para almacenar 
 let upload = multer({ storage: storage });
 
-
-
+//let uploadMultiple = upload.fields([{name: "imageProducto"}, {name: "imageSecundariasProducto"}]);
 
 //controlador de productos
 const controladorDeProductos = require('../controllers/controladorDeProductos');
@@ -68,7 +68,9 @@ router.get('/registrarProducto', controladorDeProductos.vistaRegistrarProducto);
 
 //emviaremos las validaciones tambien a esta ruta que procesa el guardado de los datos
 
-router.post('/guardarProducto', upload.single('imageProducto'), controladorDeProductos.guardarProducto);
+//router.post('/guardarProducto', uploadMultiple, controladorDeProductos.guardarProducto);
+router.post('/guardarProducto',upload.single('imageProducto'), validacionesFormProducto , controladorDeProductos.guardarProducto);
+//router.post('/guardarProducto', upload.single('imageProducto'), controladorDeProductos.guardarProducto);
 //para validacion
 //router.post('/guardarProducto',validacionesFormProducto, upload.any(), controladorDeProductos.guardarProducto);
 
@@ -78,6 +80,7 @@ router.get('/editarProducto/:id',  controladorDeProductos.vistaEdicionProducto);
 //Accion de editar producto 
 //tambien validamos este formulario
 // router.put('/actulizaProducto/:id',validacionesFormProducto, upload.any(), controladorDeProductos.actulizaProducto);
+//router.put('/actulizaProducto/:id', uploadMultiple , controladorDeProductos.actulizaProducto);
 router.put('/actulizaProducto/:id', upload.single('imageProducto'), controladorDeProductos.actulizaProducto);
 
 //Accion de eliminar producto 
