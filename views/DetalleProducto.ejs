@@ -45,10 +45,9 @@
                     <div class="flecha">
                         <img src="/images/imagenesIndex/chevron_left_black_24dp.svg" alt="" srcset="">
                     </div>
-                    <img src="/images/imagenesDetalleProducto/1.webp" alt="">
-                    <img src="/images/imagenesDetalleProducto/2.webp" alt="">
-                    <img src="/images/imagenesDetalleProducto/3.webp" alt="">
-                    <img src="/images/imagenesDetalleProducto/4.webp" alt="">
+                <% for(let i=0 ; i< producto.imagesSec.length ; i++){  %>
+                    <img src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="imagen secundaria">
+                <% } %>
                     <div class="flecha">
                         <img src="/images/imagenesIndex/chevron_right_black_24dp.svg" alt="" srcset="">
                     </div>
@@ -96,8 +95,6 @@
                     </ul>
                         <% 
                         let caracteristicas = producto.features.split(",");
-                        console.log(caracteristicas);
-                        console.log(caracteristicas.length);
                         for(let i=0 ; i < caracteristicas.length ;i++){%>
                             <li><%= caracteristicas[i]%>.</li>
                         <% } %>
