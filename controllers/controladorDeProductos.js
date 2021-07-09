@@ -30,15 +30,17 @@ const controladorDeProductos = {
     guardarProducto: (req, res) => {
 
       //----------validacion de datos de entrada---------------------
+      console.log(req.body);
+      console.log(req.file);
       let errores = validationResult(req);
+      console.log(errores);
+      //console.log(errores.array());
 
-      console.log("------------>"+typeof errores)
 
       //para verificar si no exiten errores
+      //if(errores.length > 0){  //otra forma de hacerlo 
       if(errores.isEmpty()){
           
-
-
           //apertura de archivo
           let listaProductos = modeloDeProductos.aperturaDeArchivo();
 
@@ -56,13 +58,22 @@ const controladorDeProductos = {
           res.redirect('listaProductos');
 
       }else{
+
+    
+
         //res.status(200);
         //https://www.samanthaming.com/tidbits/76-converting-object-to-array/
         //Object.keys(errores) es para convertir de un los valores de objeto en arreglo
         //res.send('registrarProducto', { msgsErrors : Object.entries(errores) } );
-        console.log(errores.array())
-        res.render('registrarProducto', { msgsErrors : errores.array() } );
+        
+        //res.render('registrarProducto', { msgsErrors : errores.array() } , { old : req.body } );
         //res.render('registrarProducto', { msgsErrors : Object.entries(errores) } );
+
+        // res.render('registrarProducto', { msgsErrors : errores.array(), DataOld : req.body } );
+        //mapped() convierte el array en un objeto literal 
+        res.render('registrarProducto', { msgsErrors : errores.mapped(), DataOld  : req.body } );// otra forma de hacerlo 
+
+        //res.render('registrarProducto', { msgsErrors : errores.array(), DataOld  : req.body } );// otra forma de hacerlo 
       }
 
       //----------validacion de datos de entrada---------------------
@@ -103,6 +114,7 @@ const controladorDeProductos = {
 
         //crear objeto temporal
         let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image);
+        //let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image, productoEncontrado.imagesSec);
 
         let productoModificado={};
         productoModificado = Object.assign(productoModificado, productoEncontrado, productTmp);
