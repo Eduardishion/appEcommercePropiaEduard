@@ -1,18 +1,17 @@
 [
   {
-    "id": 123,
-    "name": "sapato",
-    "category": "ert",
-    "price": 1200,
+    "id": 1,
+    "name": "playera hollister",
+    "category": " Accesorios ",
+    "price": 2345,
     "discountRate": 12,
-    "discount": 1056,
-    "stock": 1,
-    "description": "esta es una playera conmemorativa ",
-    "image": "imageProducto-1625606571875.png",
-    "imagesSec": null,
-    "features": "playera roja con estampado, detallee en amarillo, cueyo V",
-    "registrationDate": "6/07/21",
-    "checkInTime": "16:22 PM",
+    "discount": 2063,
+    "stock": 32,
+    "description": "dsds",
+    "image": "imageProducto-1625835154656.jpg",
+    "features": "playera roja con estampado",
+    "registrationDate": "9/07/21",
+    "checkInTime": "7:52 AM",
     "userWhoRegistered": "Admin Root"
   }
 ]

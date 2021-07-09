@@ -65,13 +65,15 @@ let modeloDeProductos = {
             // let nombreImagen = '';
             
             // if(req.files){ // si existe 
-            //     console.log(req.files[0].filename);
-            //     console.log(req.files);
-            //     console.log("si se cargo imagen ");
+            //     // console.log(req.files[0].filename);
+            //     // console.log(req.files);
+
             //     nombreImagen = req.files[0].filename;
+            //     console.log("si se cargo imagen ");
             // }else{
-            //     console.log("no se cargo imagen ");
+                
             //     nombreImagen = null;
+            //     console.log("no se cargo imagen ");
             // }
 
 
@@ -86,6 +88,8 @@ let modeloDeProductos = {
             //como cargar imagen y actuliarla
             //https://www.it-swarm-es.com/es/node.js/cargue-la-imagen-y-luego-actualice-con-multer-y-express.js/805521310/
             //para validar que exite una imagen desde el formulario
+            
+            /*---------------- para un solo archivo ------------ */
             let nombreImagen = '';
             //if(req.file !== underfined){
             //si exite el archivo 
@@ -97,6 +101,36 @@ let modeloDeProductos = {
                 nombreImagen = null;
                 // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
             }    
+            /*---------------- para un solo archivo ------------ */
+
+            /*---------------- para un multiples archivos ------------ */
+
+            // let nombreImagen = null; 
+            // let nombresImagenesSecundarias = [];
+            // if(req.files){
+            // //si existen archivos 
+            // //https://codingshiksha.com/javascript/how-to-upload-multiple-files-in-multiple-form-fields-in-node-js-and-express-using-multer-library-full-example-for-beginners/
+                
+
+            //     //imagen principal 
+            //     nombreImagen = req.files.imageProducto[0].filename;
+            //     //imagenes secundarias
+            //     req.files.imageSecundariasProducto.forEach(nombreImagen => {
+            //         nombresImagenesSecundarias.push(nombreImagen.filename);
+            //     });
+
+            //     console.log("files uploaded");
+                
+            // }else{
+            // //si no existen archivos 
+            //     nombreImagen = null;
+            //     nombresImagenesSecundarias= [];
+
+            //     console.log("no files uploaded");
+            // }    
+            
+            /*---------------- para un multiples archivos ------------ */
+
 
           
           // ---------validacion de imagen---------------
@@ -115,7 +149,7 @@ let modeloDeProductos = {
             //image: req.files[0].filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con  any(); 
             //image: req.file.filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
             image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
-            imagesSec: null,
+            // imagesSec: nombresImagenesSecundarias,
             features: req.body.features,
             //extras
             registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
@@ -126,7 +160,7 @@ let modeloDeProductos = {
 
         return productoTmp;
     },
-    estructurarObjetoPUT: function (req, nombreDeimagenNoModificada) {
+    estructurarObjetoPUT: function (req, nombreDeimagenNoModificada, vectorImagenesNoModificada) {
         
         let fecha = new Date();
  
@@ -210,9 +244,43 @@ let modeloDeProductos = {
                 nombreImagen = nombreDeimagenNoModificada;
                 // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
              }    
- 
+             
+
+            //multi imagen 
+        //     let nombreImagen = null; 
+        //     let nombresImagenesSecundarias = [];
+        //     if(req.files){
+        //     //si existen archivos 
+        //     //https://codingshiksha.com/javascript/how-to-upload-multiple-files-in-multiple-form-fields-in-node-js-and-express-using-multer-library-full-example-for-beginners/
+                
+        //         //imagen principal 
+        //         nombreImagen = req.files.imageProducto[0].filename;
+
+        //         //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
+        //         this.eliminarArchivoImagen(nombreDeimagenNoModificada);
+
+
+        //         //imagenes secundarias entrantes de formulario 
+
+        //         req.files.imageSecundariasProducto.forEach(nombreImagen => {
+        //             nombresImagenesSecundarias.push(nombreImagen.filename);
+        //         });
+                
+        //         //aliminacion de imagenes secundarias creadas por primera ves
+        //         vectorImagenesNoModificada.forEach(nombreImagenSec => {
+        //             this.eliminarArchivoImagen(nombreImagenSec);
+        //         });
+
+        //         console.log("files uploaded");
+        //     }else{
+        //     //si no existen archivos 
+        //         nombreImagen = null;
+        //         nombresImagenesSecundarias= [];
+
+        //         console.log("no files uploaded");
+        //     }  
            
-           // ---------validacion de imagen---------------
+        //    // ---------validacion de imagen---------------
  
          
          //creacion de objeto temporal que almacena los datos entrantes de la vista crear producto
@@ -228,6 +296,7 @@ let modeloDeProductos = {
              //image: req.files[0].filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con  any(); 
              //image: req.file.filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
              image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
+            //  imagesSec: nombresImagenesSecundarias,
              features: req.body.features,
              //extras
              registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
