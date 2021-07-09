@@ -121,13 +121,10 @@
 					</a>
 				</div>
 				<div id="contenedorDeFormulario">
-					<!-- <% if( locals.msgsErrors ){ %>
-						<% msgsErrors.forEach( error => { %>
-							<p class="errorDatosE"> <%= error.msg %> </p>
-						<% }); %>
-						
-					<% } else { %>
-
+					<!-- <% if( locals.msgsErrors ){ %>		
+						<% for (error in msgsErrors) {%>
+							<p class="errorDatosE" ><%= msgsErrors[error].msg %></p>
+						<% } %>
 					<% } %> -->
 						<form action="/productos/guardarProducto" method="POST" enctype="multipart/form-data">
 							<div>
@@ -136,36 +133,125 @@
 								<input type="text" name="userWhoRegistered" readonly value="Admin Root" class="inputWidth styleInput">
 							</div>
 							<div>
-								<input type="number" name="id" placeholder="ID" >
+								<label for="id">
+									<strong>ID:</strong> 
+									<input type="text" name="id" value="<%= locals.DataOld ? DataOld.id : null %>" placeholder="ID">
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.id){ %>
+										<p class="errorDatosE" ><%= msgsErrors.id.msg %></p>
+									<% } %>
+								</div>
 							</div>
 							<div>
-								<input type="text" name="name" placeholder="Nombre" >
+								<label for="name">
+									<strong>Nombre:</strong> 
+									<input type="text" name="name" value="<%= locals.DataOld ? DataOld.name : null %>" placeholder="Nombre">
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.name){ %>
+										<p class="errorDatosE" ><%= msgsErrors.name.msg %></p>
+									<% } %>
+								</div>
 							</div>
 							<div>
-								<input type="text" name="category" placeholder="Categoria" >
+								<label for="category">
+									<strong>Categoria:</strong> 
+									<br>
+									<select 
+										name="category" 
+										id="SelectOp"
+									>
+										<option  value="" > Elige una categoria </option>
+										
+										<%
+											let categorias = ['Tableros','Futbolitos','Maquinitas','Accesorios'];
+										%>
+
+										<% for (const categoria of categorias) { %>
+											
+											<option  value=" <%= categoria %> " 
+												
+												<%= locals.DataOld && (categoria === DataOld.category.trim()) ? "selected" : null %>	> 
+												
+												<%= categoria %> </option>
+
+										<% } %>
+
+									</select>
+									<div class="errorDatosE">
+										<% if( locals.msgsErrors && msgsErrors.category){ %>
+											<p class="errorDatosE" ><%= msgsErrors.category.msg %></p>
+										<% } %>
+									</div>
+									<!-- <input type="text" name="category"   value="<%=  locals.DataOld && DataOld.category  ? DataOld.category  : '' %> " > -->
+								</label>
 							</div>
 							<div>
-								<input type="number" name="price" placeholder="Precio"  min="1" >
+								<label for="price">
+									<strong>Precio:</strong>
+									<input type="text" name="price" value="<%= locals.DataOld ? DataOld.price : null %>" placeholder="Precio">
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.price){ %>
+										<p class="errorDatosE" ><%= msgsErrors.price.msg %></p>
+									<% } %>
+								</div>
 							</div>
 							<div>
-								<input type="number" name="discountRate" placeholder="Porcentaje de descuento"   min="1" class="descuento" >
+								<label for="discountRate">
+									<strong>% de descuento:</strong>
+									<input type="text" name="discountRate" value="<%= locals.DataOld ? DataOld.discountRate : null %>" placeholder="Descuento">
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.discountRate){ %>
+										<p class="errorDatosE" ><%= msgsErrors.discountRate.msg %></p>
+									<% } %>
+								</div>
 							</div>
 							<div>
-								<input type="number" name="stock" placeholder="Existencias" min="1" >
+								<label for="stock">
+									<strong>Existencias:</strong>
+									<input type="text" name="stock" value="<%= locals.DataOld ? DataOld.stock : null %>" placeholder="Existencia">
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.stock){ %>
+										<p class="errorDatosE" ><%= msgsErrors.stock.msg %></p>
+									<% } %>
+								</div>
 							</div>
 							<div>
-								<input type="text" name="features" placeholder="Caracteristicas" >
+								<label for="features">
+									<strong>Caracteristicas:</strong>
+									<input type="text" name="features" value="<%= locals.DataOld ? DataOld.features : null %>" placeholder="Caracteristicas">
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.features){ %>
+										<p class="errorDatosE" ><%= msgsErrors.features.msg %></p>
+									<% } %>
+								</div>
 							</div>
 							<div>
-								<label for="description">Descripción</label>
+								<label for="description">
+									<strong>Descripción:</strong>
+									<textarea  type="text" name="description"><%= locals.DataOld ? DataOld.description : null %></textarea>
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.description){ %>
+										<p class="errorDatosE" ><%= msgsErrors.description.msg %></p>
+									<% } %>
+								</div>
 							</div>
 							<div>
-								<textarea  name="description" class="desplamiento" >
-								</textarea>
-							</div>
-							<div>
-								<label for="imageProducto">Imagen principal</label>
-								<input type="file" name="imageProducto" > <!---al no requerir y no cargan imagen al mostrar las imgenes de producto madaremos una por defatul -->
+								<label for="imageProducto">
+									<strong>Imagen principal:</strong>
+									<input type="file" name="imageProducto" > <!---al no requerir y no cargan imagen al mostrar las imgenes de producto madaremos una por defatul -->
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.image){ %>
+										<p class="errorDatosE" ><%= msgsErrors.image.msg %></p>
+									<% } %>
+								</div>
 							</div>
 							<!-- <div>
 								<label for="imageSecundariasProducto">Imagenes Secundarias</label>
@@ -174,6 +260,12 @@
 							<div id="boton">
 								<input type="submit" value="Crear" class="botonPrimario">
 							</div>
+							<!-- se recomienda en passwords no persistir los datos no retornes los valores del body 
+								pagina oficial de profesor digital house:
+								Javi Herrera
+								https://www.javier-herrera.com/
+								https://www.linkedin.com/in/japsolo/
+							-->
 						</form>
 				</div>
 			</section>
