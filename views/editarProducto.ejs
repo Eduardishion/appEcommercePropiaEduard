@@ -34,6 +34,7 @@
 							Cancelar
 						</a>
 					</div>
+					
 					<form action="/productos/actulizaProducto/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 						
 						<div>
@@ -42,44 +43,86 @@
 							<input type="text" name="userWhoRegistered" readonly value="Admin Root" class="inputWidth styleInput">
 						</div>
 						<div>
-							<input type="number" name="id" placeholder="ID"  value="<%= producto.id %>" required>
+							<label for="id">
+								<strong>ID:</strong> 
+								<input type="number" name="id" placeholder="ID"  value="<%= producto.id %>" required>
+							</label>
 						</div>
 						<div>
-							<input type="text" name="name" placeholder="Nombre"  value="<%= producto.name %>" required>
+							<label for="name">
+								<strong>Nombre:</strong> 
+								<input type="text" name="name" placeholder="Nombre"  value="<%= producto.name %>" required>
+							</label>
 						</div>
 						<div>
-							<input type="text" name="category" placeholder="Categoria" value="<%= producto.category %>"  required>
+							<label for="category">
+								<strong>Categoria:</strong> 
+								<br>
+								<select 
+										name="category" 
+										id="SelectOp"
+									>
+										<option  value="" > Elige una categoria </option>
+										
+										<%
+											let categorias = ['Tableros','Futbolitos','Maquinitas','Accesorios'];
+										%>
+
+										<% for (const categoria of categorias) { %>
+											
+											<option  value=" <%= categoria %> " 
+												
+												<%= (categoria === producto.category.trim()) ? "selected" : null %>	> 
+												
+												<%= categoria %> </option>
+
+										<% } %>
+
+								</select>
+							</label>
 						</div>
 						<div>
-							<input type="number" name="price" placeholder="Precio" min="1" value="<%= producto.price %>"  required>
+							<label for="price">
+								<strong>Precio:</strong>
+								<input type="number" name="price" placeholder="Precio" min="1" value="<%= producto.price %>"  required>
+							</label>
 						</div>
 						<div>
-							<input type="number" name="discountRate" placeholder="Porcentaje de descuento" min="1" class="descuento" value="<%= producto.discountRate %>"  required>
+							<label for="discountRate">
+								<strong>% de descuento:</strong>
+								<input type="number" name="discountRate" placeholder="Porcentaje de descuento" min="1" class="descuento" value="<%= producto.discountRate %>"  required>
+							</label>
 						</div>
 						<div>
-							<input type="number" name="stock" placeholder="Existencias" min="1"  value="<%= producto.stock %>"  required>
+							<label for="stock">
+								<strong>Existencias:</strong>
+								<input type="number" name="stock" placeholder="Existencias" min="1"  value="<%= producto.stock %>"  required>
+							</label>
 						</div>
 						<div>
-							<input type="text" name="features" placeholder="Caracteristicas"   value="<%= producto.features %>" required>
+							<label for="features">
+								<strong>Caracteristicas:</strong>
+								<input type="text" name="features" placeholder="Caracteristicas"   value="<%= producto.features %>" required>
+							</label>
 						</div>
 						<div>
-							<label for="description">Descripción</label>
+							<label for="description">
+								<strong>Descripción:</strong>
+								<textarea name="description"><%= producto.description %></textarea>
+							</label>
 						</div>
 						<div>
-							<textarea  name="description" class="desplamiento"  required>
-								<%= producto.description %>
-							</textarea>
+							<label for="imageProducto">
+								<strong>Imagen principal:</strong>
+								<input type="file" name="imageProducto" required>
+							</label>
 						</div>
 						<div>
-							<label for="imageProducto">Cargar Imagen</label>
-							<input type="file" name="imageProducto" >
-						</div>
-						<!-- <div>
 							<label for="imageSecundariasProducto">Imagenes Secundarias</label>
-							<input type="file" name="imageSecundariasProducto" multiple> 
-						</div> -->
+							<input type="file" name="imageSecundariasProducto" multiple required> 
+						</div>
 						<div id="boton">
-							<input type="submit" value="Actualizar" class="botonPrimario">
+							<input type="submit" value="Actualizar" class="botonPrimario" >
 						</div>
 					</form>
 					
