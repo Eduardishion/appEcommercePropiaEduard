@@ -90,20 +90,47 @@ let modeloDeProductos = {
             //para validar que exite una imagen desde el formulario
             
             /*---------------- para un solo archivo ------------ */
+          
+            // let nombreImagen = '';
+            // //if(req.file !== underfined){
+            // //si exite el archivo 
+            // if(req.files){
+            //     console.log("--------->"+req.files.imageProducto[0].filename); //para usar con single
+            //     nombreImagen = req.files.imageProducto[0].filename;
+            // }else{
+            // //si no exite el archivo 
+            //     nombreImagen = null;
+            //     // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
+            // }    
+            /*---------------- para un solo archivo ------------ */
+
+            
+
+            //------------------------------------para un solo archivo------------------------------------
             let nombreImagen = '';
             //if(req.file !== underfined){
             //si exite el archivo 
-            if(req.file){
-                console.log("--------->"+req.file.filename); //para usar con single
-                nombreImagen = req.file.filename;
+            if(req.files){
+                console.log("--------->"+req.files.imageProducto[0].filename); //para usar con single
+                nombreImagen = req.files.imageProducto[0].filename;
             }else{
             //si no exite el archivo 
                 nombreImagen = null;
                 // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
             }    
-            /*---------------- para un solo archivo ------------ */
 
-            /*---------------- para un multiples archivos ------------ */
+
+            let nombresImagenesSecundarias = [];
+            if(req.files){
+                //imagenes secundarias
+                req.files.imageSecundariasProducto.forEach(nombreImagen => {
+                    nombresImagenesSecundarias.push(nombreImagen.filename);
+                });
+
+            }else{
+                nombresImagenesSecundarias = [];
+            }
+            //------------------------------------para un solo archivo------------------------------------
 
             // let nombreImagen = null; 
             // let nombresImagenesSecundarias = [];
@@ -129,7 +156,7 @@ let modeloDeProductos = {
             //     console.log("no files uploaded");
             // }    
             
-            /*---------------- para un multiples archivos ------------ */
+           
 
 
           
@@ -149,7 +176,7 @@ let modeloDeProductos = {
             //image: req.files[0].filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con  any(); 
             //image: req.file.filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
             image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
-            // imagesSec: nombresImagenesSecundarias,
+            imagesSec: nombresImagenesSecundarias,
             features: req.body.features,
             //extras
             registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
@@ -227,60 +254,113 @@ let modeloDeProductos = {
              //https://www.it-swarm-es.com/es/node.js/cargue-la-imagen-y-luego-actualice-con-multer-y-express.js/805521310/
              //https://www.it-swarm-es.com/es/node.js/cargue-la-imagen-y-luego-actualice-con-multer-y-express.js/805521310/
              //para validar que exite una imagen desde el formulario
-             let nombreImagen = '';
+            //  let nombreImagen = '';
              //if(req.file !== underfined){
              //si exite el archivo 
-             if(req.file){
-                //pero si viene el archivo se debe actulsar
-                nombreImagen = req.file.filename;
 
-                //si es el caso que que si se valla a cargar otra imagen 
-                //hay que eliminar anterior 
+            //------------------------------------para un solo archivo------------------------------------
+            //  if(req.file){
+            //     //pero si viene el archivo se debe actulsar
+            //     nombreImagen = req.file.filename;
+
+            //     //si es el caso que que si se valla a cargar otra imagen 
+            //     //hay que eliminar anterior 
+
+            //     //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
+            //     this.eliminarArchivoImagen(nombreDeimagenNoModificada);
+            //  }else{
+            //    //si no exite el archivo, se usa la misma que ya se tenia cargada 
+            //     nombreImagen = nombreDeimagenNoModificada;
+            //     // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
+            //  }    
+            //------------------------------------para un solo archivo------------------------------------
+
+            //multi imagen 
+            //let nombreImagen = null; 
+            //let nombresImagenesSecundarias = [];
+            // if(req.files){
+            // //si existen archivos 
+            // //https://codingshiksha.com/javascript/how-to-upload-multiple-files-in-multiple-form-fields-in-node-js-and-express-using-multer-library-full-example-for-beginners/
+                
+            //     //imagen principal 
+            //     nombreImagen = req.files.imageProducto[0].filename;
+
+            //     //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
+            //     this.eliminarArchivoImagen(nombreDeimagenNoModificada);
+
+
+            //     //imagenes secundarias entrantes de formulario 
+
+            //     req.files.imageSecundariasProducto.forEach(nombreImagen => {
+            //         nombresImagenesSecundarias.push(nombreImagen.filename);
+            //     });
+                
+            //     //aliminacion de imagenes secundarias creadas por primera ves
+            //     vectorImagenesNoModificada.forEach(nombreImagenSec => {
+            //         this.eliminarArchivoImagen(nombreImagenSec);
+            //     });
+
+            //     console.log("files uploaded");
+            // }else{
+            // //si no existen archivos 
+            //     nombreImagen = null;
+            //     nombresImagenesSecundarias= [];
+
+            //     console.log("no files uploaded");
+            // }  
+            
+          // ---------validacion de imagen---------------
+             //------------------------------------para multiimgan------------------------------------
+            let nombreImagen = '';
+            //if(req.file !== underfined){
+            //si exite el archivo 
+            if(req.files){
+                
+                nombreImagen = req.files.imageProducto[0].filename;
 
                 //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
                 this.eliminarArchivoImagen(nombreDeimagenNoModificada);
-             }else{
-               //si no exite el archivo, se usa la misma que ya se tenia cargada 
-                nombreImagen = nombreDeimagenNoModificada;
+         
+                //imagen principal 
+                // if(!req.files.imageProducto[0].filename){
+                //     console.log("--------->"+req.files.imageProducto[0].filename); //para usar con single
+                //     nombreImagen = req.files.imageProducto[0].filename;
+
+                //     //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
+                //     this.eliminarArchivoImagen(nombreDeimagenNoModificada);
+                // }else{
+                //     nombreImagen = nombreDeimagenNoModificada;
+                // }
+                
+
+            }else{
+            //si no exite el archivo 
+                nombreImagen = null;
                 // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
-             }    
-             
+            }    
+    
 
-            //multi imagen 
-        //     let nombreImagen = null; 
-        //     let nombresImagenesSecundarias = [];
-        //     if(req.files){
-        //     //si existen archivos 
-        //     //https://codingshiksha.com/javascript/how-to-upload-multiple-files-in-multiple-form-fields-in-node-js-and-express-using-multer-library-full-example-for-beginners/
+            let nombresImagenesSecundarias = [];
+            if(req.files){
                 
-        //         //imagen principal 
-        //         nombreImagen = req.files.imageProducto[0].filename;
+                //imagenes secundarias
+                req.files.imageSecundariasProducto.forEach(nombreImagen => {
+                    nombresImagenesSecundarias.push(nombreImagen.filename);
+                });
 
-        //         //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
-        //         this.eliminarArchivoImagen(nombreDeimagenNoModificada);
-
-
-        //         //imagenes secundarias entrantes de formulario 
-
-        //         req.files.imageSecundariasProducto.forEach(nombreImagen => {
-        //             nombresImagenesSecundarias.push(nombreImagen.filename);
-        //         });
                 
-        //         //aliminacion de imagenes secundarias creadas por primera ves
-        //         vectorImagenesNoModificada.forEach(nombreImagenSec => {
-        //             this.eliminarArchivoImagen(nombreImagenSec);
-        //         });
+                //aliminacion de imagenes secundarias creadas por primera ves
+                vectorImagenesNoModificada.forEach(nombreImagenSec => {
+                    this.eliminarArchivoImagen(nombreImagenSec);
+                });
 
-        //         console.log("files uploaded");
-        //     }else{
-        //     //si no existen archivos 
-        //         nombreImagen = null;
-        //         nombresImagenesSecundarias= [];
+            }else{
+                nombresImagenesSecundarias = [];
+            }
+            //------------------------------------para multiimgan------------------------------------
+ 
+          // ---------validacion de imagen---------------
 
-        //         console.log("no files uploaded");
-        //     }  
-           
-        //    // ---------validacion de imagen---------------
  
          
          //creacion de objeto temporal que almacena los datos entrantes de la vista crear producto
@@ -296,7 +376,7 @@ let modeloDeProductos = {
              //image: req.files[0].filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con  any(); 
              //image: req.file.filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
              image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
-            //  imagesSec: nombresImagenesSecundarias,
+             imagesSec: nombresImagenesSecundarias,
              features: req.body.features,
              //extras
              registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
