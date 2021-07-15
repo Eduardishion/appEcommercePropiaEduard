@@ -37,7 +37,7 @@
     <main id="areaPrincipal">
         <section id="vistaProducto">
         <!-- area imagenes -->
-             <div> <!--para centrar despues en vista grande -->
+            <div> <!--para centrar despues en vista grande -->
                 <article id="imagenProducto">
                     <img src="/images/imagenesDeProductos/<%= producto.image ? producto.image : 'default-image.png' %>" alt="imagen producto">
                 </article>
@@ -45,15 +45,17 @@
                     <div class="flecha">
                         <img src="/images/imagenesIndex/chevron_left_black_24dp.svg" alt="" srcset="">
                     </div>
-                <% for(let i=0 ; i< producto.imagesSec.length ; i++){  %>
-                    <img src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="imagen secundaria">
-                <% } %>
+                    <% for(let i=0 ; i< producto.imagesSec.length ; i++){  %>
+                            <a href="#">
+                                <img class="min" src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="">
+                            </a>
+                            <img class="max" src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="">
+                    <% } %>
                     <div class="flecha">
                         <img src="/images/imagenesIndex/chevron_right_black_24dp.svg" alt="" srcset="">
                     </div>
                 </article>
             </div>
-
             <!-- </div> -->
         </section>
         <section id="vistaDescripcion">
