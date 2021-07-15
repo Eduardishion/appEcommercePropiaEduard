@@ -46,11 +46,27 @@ const validacionesFormProducto = [
             }
         }
 
-
         return true;
     })
+    // ,
+    // body('imageSec').custom((value , {req}) =>{
+
+       
+    //     let filesSec = req.files;
+    //     let acceptedExtensions = ['.jpg', '.png', '.gif'];
     
-    // .notEmpty().withMessage('El campo de imagen  no debe estar vacio'),
+    //     if(!filesSec){
+    //         throw new Error('Debes cargar las imagenes secundarias');
+    //     }else{
+    //         let fileExtension = path.extname(file.originalname);
+    //         if(!acceptedExtensions.includes(fileExtension)){
+    //             throw new Error(`Las extenciones de archivo permitidas son: ${acceptedExtensions.join(',')}`);
+    //         }
+    //     }
+
+    //     return true;
+    // }),
+ 
     
 ];
 
