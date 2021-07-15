@@ -253,10 +253,17 @@
 									<% } %>
 								</div>
 							</div>
-							<!-- <div>
-								<label for="imageSecundariasProducto">Imagenes Secundarias</label>
-								<input type="file" name="imageSecundariasProducto" multiple> 
-							</div> -->
+							<div>
+								<label for="imageSecundariasProducto">
+									<strong>Imagenes Secundarias:</strong>
+									<input type="file" name="imageSecundariasProducto" multiple> 
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.imageSec){ %>
+										<p class="errorDatosE" ><%= msgsErrors.imageSec.msg %></p>
+									<% } %>
+								</div>
+							</div>
 							<div id="boton">
 								<input type="submit" value="Crear" class="botonPrimario">
 							</div>
