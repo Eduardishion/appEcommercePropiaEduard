@@ -1,0 +1,64 @@
+#carrusel{
+    border: solid 1px black;
+    margin: 10px 0;
+    padding: 20px 0;
+}
+
+#carrusel > .min{
+    width: 15%;
+    border: solid 1px black;
+    /* padding: 6px 20px 20px 7px; */
+}
+
+li{
+    list-style-type: none;
+}
+li .min {
+	/* no importantes solo son medidadas en el tamaño de ma imagen  */
+	width: 75px;  
+	height: 64px;
+	padding: 6px 20px 20px 7px;
+
+}
+
+li .max{
+
+    visibility: hidden;
+
+	/*posicionamiento de imagen grande */
+	position: absolute;
+	top: 260px; /* Provoca la separacion del borde superior */
+	left: 506px; /* Separa la imagen grande de la pequeña */
+}
+
+a:hover .max {
+	visibility: visible;
+}
+
+/*#contendedorVista{*/
+    /*tamaño de la caja contenedora de la galeria*/
+    /*width: 405px;*/
+    /*height: 305px; */
+
+
+
+    /*posicionamiento de imagen grande */
+     /*position: absolute; */
+     /*top: 500px; */
+     /*left: 500%; */
+    /*background: url(/img/21.webp); */
+/*}*/
+
+@media (min-width: 790px){
+
+    #carrusel{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    ul{
+        display: flex; 
+    }
+
+}
