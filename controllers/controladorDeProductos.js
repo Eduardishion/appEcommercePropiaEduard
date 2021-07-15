@@ -113,8 +113,8 @@ const controladorDeProductos = {
       if(productoEncontrado != null){
 
         //crear objeto temporal
-        let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image);
-        //let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image, productoEncontrado.imagesSec);
+        //let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image);
+        let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image, productoEncontrado.imagesSec);
 
         let productoModificado={};
         productoModificado = Object.assign(productoModificado, productoEncontrado, productTmp);
@@ -150,7 +150,13 @@ const controladorDeProductos = {
         if(indice != -1){
 
           //eliminacion de imagen previamente cargada y no exista despues de ser eliminada
+          //una imagen 
           modeloDeProductos.eliminarArchivoImagen(listaProductos[indice].image);
+
+          //multi imagen 
+          for(let i= 0 ; i< listaProductos[indice].imagesSec.length ;i++){
+            modeloDeProductos.eliminarArchivoImagen(listaProductos[indice].imagesSec[i]);
+          }
 
           //eliminacion del producto de la lista 
           listaProductos.splice(indice, 1);
