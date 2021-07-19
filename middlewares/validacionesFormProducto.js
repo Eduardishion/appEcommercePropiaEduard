@@ -5,68 +5,69 @@ const path = require('path');
 
 //express validator
 const validacionesFormProducto = [
-
-    //mas a detalle la validacion de una imagen 
-    //https://express-validator.github.io/docs/
-    //https://github.com/validatorjs/validator.js#validators
-    //https://stackoverflow.com/questions/39703624/express-how-to-validate-file-input-with-express-validator
-    //.bail() se usa para hacer mas de una validacion para el mismo campo 
-    body('id').notEmpty().withMessage('El campo id no debe estar vacio').bail()
-              .isInt({min : 1}).withMessage('Debe ser un numero entero positivo')  
+    body('id').notEmpty().withMessage('El campo nombre no debe estar vacio')
     ,
     body('name').notEmpty().withMessage('El campo nombre no debe estar vacio')
     ,
     body('category').notEmpty().withMessage('El campo categoria  no debe estar vacio')
     ,
     body('price').notEmpty().withMessage('El campo precio  no debe estar vacio').bail()
-                 .isFloat({min : 0.01}).withMessage('Debe ser un numero decimal o entero')
+                 // .isFloat({min : 0.01}).withMessage('Debe ser un numero decimal o entero')
     ,
     body('discountRate').notEmpty().withMessage('El campo % de descuento no debe estar vacio').bail()
-                        .isInt({min : 0}).withMessage('Debe ser un numero entero positivo ó 0')  
+                        // .isInt({min : 0}).withMessage('Debe ser un numero entero positivo ó 0')  
     ,
     body('stock').notEmpty().withMessage('El campo existencias no debe estar vacio').bail()
-                            .isInt({min : 1}).withMessage('Debe ser un numero entero positivo') 
+                            // .isInt({min : 1}).withMessage('Debe ser un numero entero positivo') 
     ,
     body('features').notEmpty().withMessage('El campo caracteristicas no debe estar vacio')
     
     ,
     body('description').notEmpty().withMessage('El campo descripción no debe estar vacio')
-    
+
     ,
-    body('image').custom((value , {req}) =>{
-        let file = req.file;
-        let acceptedExtensions = ['.jpg', '.png', '.gif'];
-    
-        if(!file){
-            throw new Error('Debes cargar una imagen');
+    body('imagesProducto').custom((value , {req}) => {
+        
+
+ 
+    //validacion de imagenes cargadas
+        if(req.files.length == 0){
+            throw new Error('No debes dejar vacio el campo de imagenes...');
+            return false;
+        }else if( req.files.length < 3 ){
+            throw new Error('Recuerda debes almenos cargar 3 imagenes...');
+            return false;
+        }else if(req.files.length > 5){
+            throw new Error('Solo puedes cargar maximo 5 imagenes...');
+            return false;
         }else{
-            let fileExtension = path.extname(file.originalname);
-            if(!acceptedExtensions.includes(fileExtension)){
-                throw new Error(`Las extenciones de archivo permitidas son: ${acceptedExtensions.join(',')}`);
+            let bandera = false;
+            let extencionesAceptadas = ['.jpg', '.png', '.webp'];
+
+            for (let i = 0; i < req.files.length; i++) {
+                let fileExtension = path.extname(req.files[i].originalname);
+
+                // console.log(fileExtension);
+                if(!extencionesAceptadas.includes(fileExtension)){
+                    bandera = false;
+                }else{
+                    bandera = true;
+                }
+            };
+
+            // console.log(bandera);
+
+            if(bandera == false){
+                throw new Error('Alguno de los archivos cargados no cumple con las extenciones permitidas que son: .jpg, .png , .webp ');
+                return false;
+            }else{
+                return true;
             }
+            
         }
 
-        return true;
+        
     })
-    // ,
-    // body('imageSec').custom((value , {req}) =>{
-
-       
-    //     let filesSec = req.files;
-    //     let acceptedExtensions = ['.jpg', '.png', '.gif'];
-    
-    //     if(!filesSec){
-    //         throw new Error('Debes cargar las imagenes secundarias');
-    //     }else{
-    //         let fileExtension = path.extname(file.originalname);
-    //         if(!acceptedExtensions.includes(fileExtension)){
-    //             throw new Error(`Las extenciones de archivo permitidas son: ${acceptedExtensions.join(',')}`);
-    //         }
-    //     }
-
-    //     return true;
-    // }),
- 
     
 ];
 
