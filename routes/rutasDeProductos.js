@@ -51,7 +51,8 @@ let storage = multer.diskStorage({
 //constante para almacenar 
 let upload = multer({ storage: storage });
 
-let uploadMultiple = upload.fields([{name: "imageProducto"}, {name: "imageSecundariasProducto"}]);
+//para inputs separados 
+//let uploadMultiple = upload.fields([{name: "imageProducto"}, {name: "imageSecundariasProducto"}]);
 
 //controlador de productos
 const controladorDeProductos = require('../controllers/controladorDeProductos');
@@ -70,7 +71,12 @@ router.get('/registrarProducto', controladorDeProductos.vistaRegistrarProducto);
 
 //emviaremos las validaciones tambien a esta ruta que procesa el guardado de los datos
 
-router.post('/guardarProducto', uploadMultiple ,controladorDeProductos.guardarProducto);
+
+//version final 
+router.post('/guardarProducto',upload.any('imagesProducto'), validacionesFormProducto , controladorDeProductos.guardarProducto);
+
+//otras versiones 
+//router.post('/guardarProducto', uploadMultiple ,controladorDeProductos.guardarProducto);
 //router.post('/guardarProducto', uploadMultiple, validacionesFormProducto ,controladorDeProductos.guardarProducto);
 //router.post('/guardarProducto',upload.single('imageProducto'), validacionesFormProducto , controladorDeProductos.guardarProducto);
 //router.post('/guardarProducto',upload.any(), validacionesFormProducto , controladorDeProductos.guardarProducto);
@@ -82,9 +88,12 @@ router.post('/guardarProducto', uploadMultiple ,controladorDeProductos.guardarPr
 router.get('/editarProducto/:id',  controladorDeProductos.vistaEdicionProducto);
 
 //Accion de editar producto 
+//version final 
+router.put('/actulizaProducto/:id', upload.any('imagesProducto'), validacionesFormProducto , controladorDeProductos.actulizaProducto);
+//otras versiones 
 //tambien validamos este formulario
 // router.put('/actulizaProducto/:id',validacionesFormProducto, upload.any(), controladorDeProductos.actulizaProducto);
-router.put('/actulizaProducto/:id', uploadMultiple , controladorDeProductos.actulizaProducto);
+//router.put('/actulizaProducto/:id', uploadMultiple , controladorDeProductos.actulizaProducto);
 //router.put('/actulizaProducto/:id', upload.single('imageProducto') , controladorDeProductos.actulizaProducto);
 
 //Accion de eliminar producto 
