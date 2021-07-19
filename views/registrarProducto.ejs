@@ -242,10 +242,12 @@
 									<% } %>
 								</div>
 							</div>
-							<div>
+							<!-- primera version con dos inputs separados -->
+							<!---al no requerir y no cargan imagen al mostrar las imgenes de producto madaremos una por defatul -->
+							<!-- <div>
 								<label for="imageProducto">
 									<strong>Imagen principal:</strong>
-									<input type="file" name="imageProducto" > <!---al no requerir y no cargan imagen al mostrar las imgenes de producto madaremos una por defatul -->
+									<input type="file" name="imageProducto" > 
 								</label>
 								<div class="errorDatosE">
 									<% if( locals.msgsErrors && msgsErrors.image){ %>
@@ -263,6 +265,15 @@
 										<p class="errorDatosE" ><%= msgsErrors.imageSec.msg %></p>
 									<% } %>
 								</div>
+							</div> -->
+							<div>
+								<label for="imagesProducto">Imagenes del producto</label>
+								<input type="file" name="imagesProducto" multiple>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.imagesProducto){ %>
+										<p class="errorDatosE" ><%= msgsErrors.imagesProducto.msg %></p>
+									<% } %>
+								</div> 
 							</div>
 							<div id="boton">
 								<input type="submit" value="Crear" class="botonPrimario">
