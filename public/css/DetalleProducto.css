@@ -63,11 +63,16 @@ img{
     visibility: hidden;  
 }
 
-#carrusel > a:hover +  .max{
+#carrusel > a:hover + .max{
      
     visibility: visible;
 }
 
+/*#carrusel > a:hover ~ img .min{
+     
+    visibility: hidden;
+}
+*/
 
 
 /* ----carrusel--- */
