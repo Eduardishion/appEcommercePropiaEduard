@@ -7,7 +7,7 @@ let modeloDeProductos = {
     
     aperturaDeArchivo: function () {
         //apertura de archivo
-        let cadenaJsonA = fs.readFileSync(path.resolve(__dirname,'productos.json'),'utf-8');
+        let cadenaJsonA = fs.readFileSync(path.resolve(__dirname,'../data/productos.json'),'utf-8');
         //conversion de objeto a cadena json
         let listaProductos = JSON.parse(cadenaJsonA);
 
@@ -17,7 +17,7 @@ let modeloDeProductos = {
         //conversion de objeto a cadena json
         let cadenaJsonE = JSON.stringify(listaProducts,null, 2);
         //escritura de archivo
-        fs.writeFileSync(path.resolve(__dirname,'productos.json'),cadenaJsonE); 
+        fs.writeFileSync(path.resolve(__dirname,'../data/productos.json'),cadenaJsonE); 
         
     },
     estructurarObjetoPOST: function (req) {
@@ -107,29 +107,29 @@ let modeloDeProductos = {
             
 
             //------------------------------------para un solo archivo------------------------------------
-            let nombreImagen = '';
-            //if(req.file !== underfined){
-            //si exite el archivo 
-            if(req.files){
-                console.log("--------->"+req.files.imageProducto[0].filename); //para usar con single
-                nombreImagen = req.files.imageProducto[0].filename;
-            }else{
-            //si no exite el archivo 
-                nombreImagen = null;
-                // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
-            }    
+            // let nombreImagen = '';
+            // //if(req.file !== underfined){
+            // //si exite el archivo 
+            // if(req.files){
+            //     console.log("--------->"+req.files.imageProducto[0].filename); //para usar con single
+            //     nombreImagen = req.files.imageProducto[0].filename;
+            // }else{
+            // //si no exite el archivo 
+            //     nombreImagen = null;
+            //     // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
+            // }    
 
 
-            let nombresImagenesSecundarias = [];
-            if(req.files){
-                //imagenes secundarias
-                req.files.imageSecundariasProducto.forEach(nombreImagen => {
-                    nombresImagenesSecundarias.push(nombreImagen.filename);
-                });
+            // let nombresImagenesSecundarias = [];
+            // if(req.files){
+            //     //imagenes secundarias
+            //     req.files.imageSecundariasProducto.forEach(nombreImagen => {
+            //         nombresImagenesSecundarias.push(nombreImagen.filename);
+            //     });
 
-            }else{
-                nombresImagenesSecundarias = [];
-            }
+            // }else{
+            //     nombresImagenesSecundarias = [];
+            // }
             //------------------------------------para un solo archivo------------------------------------
 
             // let nombreImagen = null; 
@@ -157,8 +157,25 @@ let modeloDeProductos = {
             // }    
             
            
+            //----------------version final de carga de imagenes---------------------- 
+                //para validar se han cargado imagenes desde el formulario
+                let imagenes = [];
+                // req.files.imageProducto[0].filename
+                if(req.files){
+                    //imagenes 
+                    // console.log(req.files);
+                    
+                    req.files.forEach( imagen => {
+                        // console.log(imagen);
+                        imagenes.push(imagen.filename);
+                    });
 
+                }else{
+                    imagenes = [];
+                }
 
+                //console.log(imagenes);
+            //----------------version final de carga de imagenes---------------------- 
           
           // ---------validacion de imagen---------------
 
@@ -175,8 +192,10 @@ let modeloDeProductos = {
             description: req.body.description,
             //image: req.files[0].filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con  any(); 
             //image: req.file.filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
-            image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
-            imagesSec: nombresImagenesSecundarias,
+            //image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
+            //imagesSec: nombresImagenesSecundarias,
+            image: imagenes[0],     //para imagen principal 
+            imagesSec: imagenes,    //para imagenes secundarias
             features: req.body.features,
             //extras
             registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
@@ -311,54 +330,77 @@ let modeloDeProductos = {
             
           // ---------validacion de imagen---------------
              //------------------------------------para multiimgan------------------------------------
-            let nombreImagen = '';
-            //if(req.file !== underfined){
-            //si exite el archivo 
-            if(req.files){
+            // let nombreImagen = '';
+            // //if(req.file !== underfined){
+            // //si exite el archivo 
+            // if(req.files){
                 
-                nombreImagen = req.files.imageProducto[0].filename;
+            //     nombreImagen = req.files.imageProducto[0].filename;
 
-                //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
-                this.eliminarArchivoImagen(nombreDeimagenNoModificada);
+            //     //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
+            //     this.eliminarArchivoImagen(nombreDeimagenNoModificada);
          
-                //imagen principal 
-                // if(!req.files.imageProducto[0].filename){
-                //     console.log("--------->"+req.files.imageProducto[0].filename); //para usar con single
-                //     nombreImagen = req.files.imageProducto[0].filename;
+            //     //imagen principal 
+            //     // if(!req.files.imageProducto[0].filename){
+            //     //     console.log("--------->"+req.files.imageProducto[0].filename); //para usar con single
+            //     //     nombreImagen = req.files.imageProducto[0].filename;
 
-                //     //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
-                //     this.eliminarArchivoImagen(nombreDeimagenNoModificada);
-                // }else{
-                //     nombreImagen = nombreDeimagenNoModificada;
-                // }
+            //     //     //eliminacion de imagen previamente cargada por otro y no exista despus de ser actualisada con nueva imagen
+            //     //     this.eliminarArchivoImagen(nombreDeimagenNoModificada);
+            //     // }else{
+            //     //     nombreImagen = nombreDeimagenNoModificada;
+            //     // }
                 
 
-            }else{
-            //si no exite el archivo 
-                nombreImagen = null;
-                // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
-            }    
+            // }else{
+            // //si no exite el archivo 
+            //     nombreImagen = null;
+            //     // console.log("no se cargo la imagen adecuadamente... se pondra una por default");
+            // }    
     
 
-            let nombresImagenesSecundarias = [];
-            if(req.files){
+            // let nombresImagenesSecundarias = [];
+            // if(req.files){
                 
-                //imagenes secundarias
-                req.files.imageSecundariasProducto.forEach(nombreImagen => {
-                    nombresImagenesSecundarias.push(nombreImagen.filename);
-                });
+            //     //imagenes secundarias
+            //     req.files.imageSecundariasProducto.forEach(nombreImagen => {
+            //         nombresImagenesSecundarias.push(nombreImagen.filename);
+            //     });
 
                 
-                //aliminacion de imagenes secundarias creadas por primera ves
-                vectorImagenesNoModificada.forEach(nombreImagenSec => {
-                    this.eliminarArchivoImagen(nombreImagenSec);
-                });
+            //     //aliminacion de imagenes secundarias creadas por primera ves
+            //     vectorImagenesNoModificada.forEach(nombreImagenSec => {
+            //         this.eliminarArchivoImagen(nombreImagenSec);
+            //     });
 
-            }else{
-                nombresImagenesSecundarias = [];
-            }
-            //------------------------------------para multiimgan------------------------------------
- 
+            // }else{
+            //     nombresImagenesSecundarias = [];
+            // }
+            // //------------------------------------para multiimgan------------------------------------
+            
+
+            //----------------version final de carga de imagenes---------------------- 
+                //para validar se han cargado imagenes desde el formulario
+                let imagenes = [];
+                // req.files.imageProducto[0].filename
+                if(req.files){
+                    //imagenes 
+                    // console.log(req.files);
+                    
+                    req.files.forEach( imagen => {
+                        // console.log(imagen);
+                        imagenes.push(imagen.filename);
+                    });
+
+                }else{
+                    imagenes = [];
+                }
+
+                //console.log(imagenes);
+            //----------------version final de carga de imagenes---------------------- 
+
+
+
           // ---------validacion de imagen---------------
 
  
@@ -375,8 +417,10 @@ let modeloDeProductos = {
              description: req.body.description,
              //image: req.files[0].filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con  any(); 
              //image: req.file.filename,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
-             image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
-             imagesSec: nombresImagenesSecundarias,
+             //image: nombreImagen,//obtencion de nombre con que se guardo la imagen desde multer, se puede usar tambien req.file.filename con single();
+             //imagesSec: nombresImagenesSecundarias,
+             image: imagenes[0],     //para imagen principal 
+             imagesSec: imagenes,    //para imagenes secundarias
              features: req.body.features,
              //extras
              registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
