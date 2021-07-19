@@ -4,10 +4,13 @@
 	//modulos de terceros para  hacer peticiones put y delete
 	const methodOverride = require('method-override');
 
-	//rutas de operaciones CRUD para productos
-	const rutasDeProductos = require('./routes/rutasDeProductos');
+
 	//rutas a vistas principales
 	const rutasPrincipales = require('./routes/rutasPrincipales');
+	//rutas de operaciones CRUD para productos
+	const rutasDeProductos = require('./routes/rutasDeProductos');
+	//rutas de operaciones CRUD para usuarios
+	const rutasUsuarios = require('./routes/rutasDeUsuarios');
 	
 
 	//------------objeto servidor------------------
@@ -37,13 +40,14 @@
 	
 	
 	//------------------rutas------------------
-	// rutas de productos 
-	app.use('/productos', rutasDeProductos);
+	
 	
 	//rutas de solo vistas
 	app.use('/',rutasPrincipales);
+	// rutas de productos 
+	app.use('/productos', rutasDeProductos);
 	// rutas de usuarios 
-	// app.use('/usuarios', rutasUsuarios);
+	app.use('/usuarios', rutasUsuarios);
 	
 	//------------------rutas------------------	
 
