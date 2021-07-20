@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/imagenesIndex/logo_16_x_16.svg" type="image/x-icon">
+    <!-- iconos -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" -->
+    <!-- fuentes externas -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;600&display=swap" rel="stylesheet"> 
+    <!-- hojas de estilo -->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/modal-styles.css">
+    <link rel="stylesheet" href="/css/listaUsuarios.css">
+    <title>Eduardishion-shop</title>
+</head>
+  <body>
+    <main id="areaPrincipal">
+      <section id="vistaListaUsuarios">
+        <h1>Lista de Usuarios</h1>
+        <div id="botonCrear">
+          <a type="submit" href="/usuarios/registrarUsuario" class="botonPrimario">
+            <!-- <i class="fas fa-pen"></i> -->
+            <span class="material-icons">add </span>
+            <!-- <span class="material-icons">face</span> -->
+          </a>	
+        </div>
+          <% for(let i= 0; i< usuarios.length ; i++){ %> 
+            <% if(i % 2 == 0 ){ %>
+            <div id="usuario" class="colorTenue">
+              <div class="miniaturaImage">
+                <img src="/images/imagenesUsuarios/<%= usuarios[i].image ? usuarios[i].image : 'default-image.png' %>" alt="imagenUsuario">
+                <!-- <img src="/images/imagenesDeusuarios/<%= usuarios[i].image %>" alt="imagenUsuario"> -->
+              </div>
+              <div class="info">
+                <p class="estiloParrafo">
+                      Nombre:
+                      <strong>
+                        <%= usuarios[i].firstName%>
+                        <%= usuarios[i].lastName%> 
+                      </strong> 
+                      <br>
+                      Email:
+                      <strong>
+                        <%= usuarios[i].email %>
+                      </strong>
+                      <br>
+                      Categoria:
+                      <strong>
+                        <%= usuarios[i].category%>
+                      </strong>
+                      <br>  
+                      <a href="/usuarios/detalleUsuario/<%= usuarios[i].id %> ">Ver detalles</a>  
+                </p> 
+              </div>
+              <div class="botonera">
+                <a type="submit" href="/usuarios/editarUsuario/<%= usuarios[i].id%>" class="botonPrimario">
+                  Actualizar
+                </a>
+                <form id="diveliminar" action="/usuarios/eliminaUsuario/<%= usuarios[i].id%>?_method=DELETE" method="post">
+                  <input type="submit"  class="botonSecundario" value="Eliminar">
+                </form>
+              </div>
+            </div>
+          <% }else{%>
+            <div id="usuario" class="colorTenue">
+              <div class="miniaturaImage">
+                <img src="/images/imagenesUsuarios/<%= usuarios[i].image ? usuarios[i].image : 'default-image.png' %>" alt="imagenUsuario">
+                <!-- <img src="/images/imagenesDeusuarios/<%= usuarios[i].image %>" alt="imagenUsuario"> -->
+              </div>
+              <div class="info">
+                <p class="estiloParrafo">
+                      Nombre:
+                      <strong>
+                        <%= usuarios[i].firstName%>
+                        <%= usuarios[i].lastName%> 
+                      </strong> 
+                      <br>
+                      Email:
+                      <strong>
+                        <%= usuarios[i].email %>
+                      </strong>
+                      <br>
+                      Categoria:
+                      <strong>
+                        <%= usuarios[i].category%>
+                      </strong>
+                      <br>  
+                      <a href="/usuarios/detalleUsuario/<%= usuarios[i].id %> ">Ver detalles</a>  
+                </p> 
+              </div>
+              <div class="botonera">
+                <a type="submit" href="/usuarios/editarUsuario/<%= usuarios[i].id%>" class="botonPrimario">
+                  Actualizar
+                </a>
+                <form id="diveliminar" action="/usuarios/eliminaUsuario/<%= usuarios[i].id%>?_method=DELETE" method="post">
+                  <input type="submit"  class="botonSecundario" value="Eliminar">
+                </form>
+              </div>
+            </div>
+        <%}%> <% } %>
+      </section>
+    </main>
+    <%- include('partials/Footer.ejs') %>
+  </body>
+</html>
