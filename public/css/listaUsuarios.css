@@ -1,0 +1,112 @@
+body{
+    font-family: 'KoHo', sans-serif;
+}
+
+#vistaListaUsuarios{
+    overflow-x: scroll;
+    width: 95%;
+    margin: 5px;
+}
+
+#usuario{
+    padding: 0 6px;
+    margin-bottom: 8px;
+}
+
+.campo{
+    color: black;
+    /* margin: 0 5px; */
+    padding: 0 5px;
+    /* border: solid 1px red; */
+}
+
+.miniaturaImage{
+    width: 50px;
+    margin: 0 10px;
+    
+}
+
+.miniaturaImage img{
+    border-radius: 50px;
+    border: solid 3px black;
+}
+
+.colorTenue{
+    background-color:#F2F2F2;
+}
+
+.colorOscuro{
+    background-color:#909091;
+}
+
+.botonPrimario{
+    background-color: #0071E3;;
+    color:#FFFFFF;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+.info{
+    width: 75%;
+}
+.botonera{
+    width: 10%;
+}
+
+.estiloParrafo{
+    font-size: 3vw;
+}
+
+#botonCrear{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+
+.botonSecundario{
+
+    background-color: #EF0000;
+    color:#FFFFFF;
+    border-radius: 5px;
+    padding: 12px;
+    text-align: center;
+}
+
+.botonera > a{
+    text-decoration: none;
+}
+
+
+@media (min-width:200px){
+    
+    #usuario{
+        display: flex;
+        align-items: center;
+    }
+    .botonera{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        /* border: solid red 1px; */
+        height: 100px;
+    
+    }
+}
+
+@media (min-width: 790px){
+
+    #diveliminar{
+		display:flex;
+		justify-content: space-between;
+		margin-bottom: 10px;
+	}
+    
+    .estiloParrafo{
+        font-size: 2vw;
+    }
+}
