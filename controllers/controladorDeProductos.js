@@ -55,7 +55,7 @@ const controladorDeProductos = {
 
           //retorno a crear otro producto
           res.status(200);
-          res.redirect('listaProductos');
+          res.render('listaProductos',{ productos : listaProductos });
 
       }else{
 
@@ -104,39 +104,48 @@ const controladorDeProductos = {
     },
     actulizaProducto:(req, res)=>{
 
-      //apertura de archivo
-      let listaProductos = modeloDeProductos.aperturaDeArchivo();
 
-      //busqueda de producto
-      let productoEncontrado = modeloDeProductos.buscarProducto(listaProductos, req);
+      let errores = validationResult(req);
 
-      if(productoEncontrado != null){
+      if(errores.isEmpty()){
+          //apertura de archivo
+          let listaProductos = modeloDeProductos.aperturaDeArchivo();
 
-        //crear objeto temporal
-        //let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image);
-        let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image, productoEncontrado.imagesSec);
+          //busqueda de producto
+          let productoEncontrado = modeloDeProductos.buscarProducto(listaProductos, req);
 
-        let productoModificado={};
-        productoModificado = Object.assign(productoModificado, productoEncontrado, productTmp);
+          if(productoEncontrado != null){
 
-        //buscar indice
-        let indice = modeloDeProductos.buscarIndice(listaProductos, req);
+            //crear objeto temporal
+            //let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image);
+            let productTmp = modeloDeProductos.estructurarObjetoPUT(req, productoEncontrado.image, productoEncontrado.imagesSec);
 
-        listaProductos[indice] = productoModificado;
+            let productoModificado={};
+            productoModificado = Object.assign(productoModificado, productoEncontrado, productTmp);
 
-        //escritura de archivo
-        modeloDeProductos.escrituraDeArchivo(listaProductos);
+            //buscar indice
+            let indice = modeloDeProductos.buscarIndice(listaProductos, req);
 
-        //apertura de archivo
-        listaProductos = modeloDeProductos.aperturaDeArchivo();
-        
+            listaProductos[indice] = productoModificado;
 
-        //redireccion a editar productos
-        res.render('listaProductos', {productos : listaProductos} );
+            //escritura de archivo
+            modeloDeProductos.escrituraDeArchivo(listaProductos);
+
+            //apertura de archivo
+            listaProductos = modeloDeProductos.aperturaDeArchivo();
+            
+
+            //redireccion a editar productos
+            res.render('listaProductos', {productos : listaProductos} );
+
+          }else{
+            res.render("not-found");
+          }
 
       }else{
-        res.render("not-found");
+        res.render('editarProducto', { msgsErrors : errores.mapped(), DataOld  : req.body } );// otra forma de hacerlo 
       }
+      
 
     }
     ,eliminaProducto(req, res){
