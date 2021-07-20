@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="images/imagenesIndex/logo_16_x_16.svg" type="image/x-icon">
+		<!-- iconos -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+		<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" -->
+		<!-- fuentes externas -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;600&display=swap" rel="stylesheet"> 
+		<!-- hojas de estilo -->
+		<link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/index.css">
+		<link rel="stylesheet" href="/css/modal-styles.css">
+		<link rel="stylesheet" href="/css/loginUsuario.css">
+		<title>Eduardishion-shop</title>
+	</head>
+<body>
+    <!-- vista parcial de header -->
+    <header id="encabesado">
+			<img id="logo" src="/images/imagenesIndex/logo_16_x_16.svg"/> 
+			<nav id="barraNavegacion">
+				<ul>
+					<li><a href="Index">Catálogo</a></li><!-- esta vista  para productos y cetegorias-->
+					<li><a href="#">Enlace</a></li>
+				</ul>
+			</nav>
+			<div id="menuAmbuergesa">
+				<label for="desplegar">
+					<i class="fas fa-bars"></i>
+				</label>
+			</div>
+			<div id="logos">
+				<img  id="logoSearch" src="/images/imagenesIndex/search_white_24dp.svg"/>
+				<img  id="logoShop" src="/images/imagenesIndex/shopping_cart_white_24dp.svg"/>
+				<a href="Registro"> <img  id="logoShop" src="/images/imagenesIndex/perm_identity_white_24dp.svg"/></a>
+			</div>
+	</header>
+	<!-- menu desplegable  -->
+	<input type="checkbox" name="desplegar" id="desplegar" hidden>
+	<ul id="menuVertical" >
+		<li><a href="Index">Index</a></li>
+		<li><a href="DetalleProducto">Producto</a></li>
+		<li><a href="CarritoCompra">Carrito</a></li>
+		<li><a href="#">Enlace</a></li>
+		<li><a href="#">Enlace</a></li>
+	</ul>
+	<!-- menu desplegable  -->
+
+	<!-- menu de lista productos  -->
+	<input type="checkbox" name="desplegar2" id="desplegar2" hidden>
+	<div class="model-overlay active" ><!--caja transparente-->
+		<div class="modal"><!--caja blanca-->
+			<div id="form">
+				<h2>Lista de productos</h2>
+				<form action="/CarritoCompra" method="get" id="formulario">
+					<a href="/DetalleProducto">
+						<div class="productoLista">
+							<div class="eliminar">
+								<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
+							</div>
+							<div>
+								<img src="/images/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
+							</div>
+							<div>
+								<p class="nombreLista">
+									Pro System Audiotek Tablero Arcade Videojuegos
+								</p>
+							</div>   
+						</div>
+					</a>
+					<a href="/DetalleProducto">
+						<div class="productoLista">
+							<div class="eliminar">
+								<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
+							</div>
+							<div>
+								<img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
+							</div>
+							<div>
+								<p class="nombreLista">
+									Pro System Audiotek Tablero Arcade Videojuegos
+								</p>
+							</div>   
+						</div>
+					</a>
+					<a href="/DetalleProducto">
+						<div class="productoLista">
+							<div class="eliminar">
+								<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
+							</div>
+							<div>
+								<img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
+							</div>
+							<div>
+								<p class="nombreLista">
+									Pro System Audiotek Tablero Arcade Videojuegos
+								</p>
+							</div>   
+						</div>
+					</a>
+					<div class="input-group actions">
+						<a href="/CarritoCompra" type="submit" class="botonPrimario">Ver carrito</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    <main id="areaPrincipal">
+			<section id="vistaCrearProductos">
+				<h1>Iniciar Sesión</h1>
+				<p id="redireccion">
+					<strong>
+						¿No tienes una cuenta? <a href="/usuarios/registrarUsuario">Entra aqui.</a>
+					</strong>
+				</p>
+				<div id="contenedorDeFormulario">
+					<!-- <% if( locals.msgsErrors ){ %>		
+						<% for (error in msgsErrors) {%>
+							<p class="errorDatosE" ><%= msgsErrors[error].msg %></p>
+						<% } %>
+					<% } %> -->
+						<form action="/usuarios/guardarUsuario" method="POST" enctype="multipart/form-data">
+							
+                            
+                            <div>
+								<label for="email">
+									<!-- <strong>Nombre:</strong>  -->
+									<input type="email" name="email" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Email">
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.email){ %>
+										<p class="errorDatosE" ><%= msgsErrors.email.msg %></p>
+									<% } %>
+								</div>
+							</div>
+                            <div>
+								<label for="password">
+									<!-- <strong>Nombre:</strong>  -->
+									<input type="password" name="password" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Contraseña">
+								</label>
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.password){ %>
+										<p class="errorDatosE" ><%= msgsErrors.password.msg %></p>
+									<% } %>
+								</div>
+							</div>
+							
+							<!-- <div>
+								<label for="imagenUsuario">Imagen de usuario</label>
+								<input type="file" name="imagenUsuario">
+								<div class="errorDatosE">
+									<% if( locals.msgsErrors && msgsErrors.imagenUsuario){ %>
+										<p class="errorDatosE" ><%= msgsErrors.imagenUsuario.msg %></p>
+									<% } %>
+								</div>
+							</div> -->
+							<div id="boton">
+								<input type="submit" value="Crear" class="botonPrimario">
+								
+								<p id="redirecciontienda">
+									<strong>
+										<a href="/">Volver a tienda.</a>
+									</strong>
+								</p>		
+							</div>
+						
+					    </form>
+				</div>
+			</section>
+	</main>
+    <%- include('partials/Footer.ejs') %>
+</body>
+</html>
