@@ -1,0 +1,24 @@
+[
+  {
+    "id": 24856,
+    "firstName": "Eduardo",
+    "lastName": "Izquierdo Rojas",
+    "email": "ferani_ed@hotmail.com",
+    "password": "edu123",
+    "category": " Administrador ",
+    "image": "imagenUsuario-1626802448952.png",
+    "registrationDate": "20/07/21",
+    "checkInTime": "12:34 PM"
+  },
+  {
+    "id": 74426,
+    "firstName": "Eduardo",
+    "lastName": "Flores torres",
+    "email": "ferani_ed@hotmail.com",
+    "password": "3214",
+    "category": " Cliente ",
+    "image": "imagenUsuario-1626802467192.png",
+    "registrationDate": "20/07/21",
+    "checkInTime": "12:34 PM"
+  }
+]
