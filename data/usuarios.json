@@ -1,13 +1,24 @@
 [
   {
-    "id": 64005,
+    "id": 28589,
     "firstName": "Eduardo",
-    "lastName": "Izquierdo Rojas",
+    "lastName": "Isquierdo Rojas",
     "email": "ferani_ed@hotmail.com",
-    "password": "12345",
+    "password": {},
     "category": " Administrador ",
-    "image": "imagenUsuario-1626807994009.png",
+    "image": "imagenUsuario-1626816585859.png",
     "registrationDate": "20/07/21",
-    "checkInTime": "14:6 PM"
+    "checkInTime": "16:29 PM"
+  },
+  {
+    "id": 67321,
+    "firstName": "Eduardo",
+    "lastName": "Isquierdo Rojas",
+    "email": "ferani_ed@hotmail.com",
+    "password": {},
+    "category": " Administrador ",
+    "image": "imagenUsuario-1626816610472.png",
+    "registrationDate": "20/07/21",
+    "checkInTime": "16:30 PM"
   }
 ]
