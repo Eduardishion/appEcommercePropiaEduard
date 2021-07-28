@@ -2,6 +2,7 @@ const modeloDeUsuarios = require('../models/modeloDeUsuarios');
 //destructuracion para usar objeto validator 
 const {validationResult} = require('express-validator');
 
+
 const usuariosController ={
       loginUsuario:(req, res) => {
         res.status(200);
@@ -38,21 +39,43 @@ const usuariosController ={
         //if(errores.length > 0){  //otra forma de hacerlo 
         if(errores.isEmpty()){
             
+            
+
+
             //apertura de archivo
             let listaUsuarios = modeloDeUsuarios.aperturaDeArchivo();
+
+            let usuarioEncontradoByMail = modeloDeUsuarios.buscarUsuarioByMail(listaUsuarios, req);
+
+
+            if(!usuarioEncontradoByMail){
+                //en caso de que  no exite ese email en la base de datos hacemos los pasos 
+                //normales de insertar el usuario en la base de datos 
+               
+      
+                //creacion de objeto temporal 
+                let usuarioTmp = modeloDeUsuarios.estructurarObjeto(req);
+        
+                //objeto a insertar en archivo o base de datos 
+                listaUsuarios.push(usuarioTmp);
+                
+                //escritura de archivo
+                modeloDeUsuarios.escrituraDeArchivo(listaUsuarios);
+      
+                //retorno a lista de usuarios
+                res.status(200);
+                res.render('listaUsuarios',{ usuarios : listaUsuarios } );
+              
+            }else{
+
+                //caso de que si exista ese email volvemos al formulario de registro 
+              //indicando que no podemos guardar ese usuario ya el email ya a sido usado 
+              //y regresamos a la lista de usuarios 
+              res.render('registrarUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body } );
+               
+            }
   
-            //creacion de objeto temporal 
-            let usuarioTmp = modeloDeUsuarios.estructurarObjeto(req);
-  
-            //objeto a insertar en archivo o base de datos 
-            listaUsuarios.push(usuarioTmp);
             
-            //escritura de archivo
-            modeloDeUsuarios.escrituraDeArchivo(listaUsuarios);
-  
-            //retorno a lista de usuarios
-            res.status(200);
-            res.render('listaUsuarios',{ usuarios : listaUsuarios } );
   
         }else{
 
