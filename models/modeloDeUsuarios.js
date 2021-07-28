@@ -2,6 +2,8 @@ const fs = require('fs');
 //para aliminar archivos
 const fs2 = require('fs').promises;
 const path = require('path');
+//para encriptacion de contrasña 
+const bcryptjs = require('bcryptjs');
 
 
 let modeloDeUsuarios = {
@@ -43,12 +45,17 @@ let modeloDeUsuarios = {
         }    
         /*---------------- para un solo archivo ------------ */
 
+        /*---------------- enriptacion de password ------------ */
+        passEncriptada = bcryptjs.hash(req.body.password,12);
+        /*---------------- enriptacion de password ------------ */
+
+
         let userTmp = {
             id: parseInt(Math.random() * (100000 - 1) + 1),
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            password: req.body.password,
+            password: passEncriptada,//hashsear contraseña
             category: req.body.category,
             image: nombreImagen,
             registrationDate: 'dd/mm/yy'.replace(/dd|mm|yy|yyy/gi, matched => map[matched]),
@@ -60,6 +67,14 @@ let modeloDeUsuarios = {
     buscarUsuario: function (listaUsuarios, req) {
         let usuarioEncontrado = listaUsuarios.find( (usuario) => {
             return usuario.id == parseInt(req.params.id);
+        });
+
+        return usuarioEncontrado;
+    },
+    //aun hcer metodo para burcar por email bien por que no funciona 
+    buscarUsuarioByMail: function (listaUsuarios, req) {
+        let usuarioEncontrado = listaUsuarios.find( (usuario) => {
+            return usuario.email == req.params.email;
         });
 
         return usuarioEncontrado;
