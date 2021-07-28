@@ -1,203 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="images/imagenesIndex/logo_16_x_16.svg" type="image/x-icon">
-		<!-- iconos -->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-		<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" -->
-		<!-- fuentes externas -->
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
-		<link href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;600&display=swap" rel="stylesheet"> 
-		<!-- hojas de estilo -->
-		<link rel="stylesheet" href="/css/normalize.css">
-		<link rel="stylesheet" href="/css/index.css">
-		<link rel="stylesheet" href="/css/modal-styles.css">
-		<link rel="stylesheet" href="/css/registrarUsuario.css">
-		<!-- <link rel="stylesheet" href="/css/listaProductos.css"> -->
-		
-        
-		<title>Eduardishion-shop</title>
-	</head>
-<body>
-  
-    <main id="areaPrincipal">
-			<section id="vistaCrearProductos">
-				<h1>Edición de Usuario</h1>
-				<div id="contenedorDeFormulario">
-					<div id="botonera">
-						<a  href="/usuarios/listaUsuarios" class="botonPrimario">
-							Cancelar
-						</a>
-					</div>
-					<% if( locals.msgsErrors ){ %>
-						<form action="/usuarios/actulizaUsuario/<%= DataOld.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-							<div>
-								<label id="id" for="id">ID Usuario:</label>
-								<input type="number" name="id"  readonly  value="<%= DataOld.id  %>" class="inputWidth styleInput">
-							</div>
-							<div>
-								<label for="firstName">
-									<!-- <strong>Nombre:</strong>  -->
-									<input type="text" name="firstName" value="<%= locals.DataOld ? DataOld.firstName : null %>" placeholder="Nombre">
-								</label>
-								<div class="errorDatosE">
-									<% if( locals.msgsErrors && msgsErrors.firstName){ %>
-										<p class="errorDatosE" ><%= msgsErrors.firstName.msg %></p>
-									<% } %>
+	<%- include('partials/Head.ejs') %>
+	<body>
+		<%- include('partials/Header.ejs') %>
+		<main id="areaPrincipal">
+				<section id="vistaCrearProductos">
+					<h1>Edición de Usuario</h1>
+					<div id="contenedorDeFormulario">
+						<div id="botonera">
+							<a  href="/usuarios/listaUsuarios" class="botonPrimario">
+								Cancelar
+							</a>
+						</div>
+						<% if( locals.msgsErrors ){ %>
+							<form action="/usuarios/actulizaUsuario/<%= DataOld.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+								<div>
+									<label id="id" for="id">ID Usuario:</label>
+									<input type="number" name="id"  readonly  value="<%= DataOld.id  %>" class="inputWidth styleInput">
 								</div>
-							</div>
-                            <div>
-								<label for="lastName">
-									<!-- <strong>Nombre:</strong>  -->
-									<input type="text" name="lastName" value="<%= locals.DataOld ? DataOld.lastName : null %>" placeholder="Apellidos">
-								</label>
-								<div class="errorDatosE">
-									<% if( locals.msgsErrors && msgsErrors.lastName){ %>
-										<p class="errorDatosE" ><%= msgsErrors.lastName.msg %></p>
-									<% } %>
-								</div>
-							</div>
-                            <div>
-								<label for="email">
-									<!-- <strong>Nombre:</strong>  -->
-									<input type="email" name="email" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Email">
-								</label>
-								<div class="errorDatosE">
-									<% if( locals.msgsErrors && msgsErrors.email){ %>
-										<p class="errorDatosE" ><%= msgsErrors.email.msg %></p>
-									<% } %>
-								</div>
-							</div>
-                            <div>
-								<label for="password">
-									<!-- <strong>Nombre:</strong>  -->
-									<input type="password" name="password" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Contraseña">
-								</label>
-								<div class="errorDatosE">
-									<% if( locals.msgsErrors && msgsErrors.password){ %>
-										<p class="errorDatosE" ><%= msgsErrors.password.msg %></p>
-									<% } %>
-								</div>
-							</div>
-							<div>
-								<label for="category">
-									<!-- <strong>Categoria:</strong>  -->
-									<!-- <br> -->
-									<select 
-										name="category" 
-										id="SelectOp"
-									>
-										<option  value="" > Elige una categoria </option>
-										
-										<%
-											let categorias = ['Administrador','Cliente'];
-										%>
-
-										<% for (const categoria of categorias) { %>
-											
-											<option  value=" <%= categoria %> " 
-												
-												<%= locals.DataOld && (categoria === DataOld.category.trim()) ? "selected" : null %>	> 
-												
-												<%= categoria %> </option>
-
-										<% } %>
-
-									</select>
+								<div>
+									<label for="firstName">
+										<!-- <strong>Nombre:</strong>  -->
+										<input type="text" name="firstName" value="<%= locals.DataOld ? DataOld.firstName : null %>" placeholder="Nombre">
+									</label>
 									<div class="errorDatosE">
-										<% if( locals.msgsErrors && msgsErrors.category){ %>
-											<p class="errorDatosE" ><%= msgsErrors.category.msg %></p>
+										<% if( locals.msgsErrors && msgsErrors.firstName){ %>
+											<p class="errorDatosE" ><%= msgsErrors.firstName.msg %></p>
 										<% } %>
 									</div>
-								</label>
-							</div>
-							<div>
-								<label for="imagenUsuario">Imagen de usuario</label>
-								<input type="file" name="imagenUsuario">
-								<div class="errorDatosE">
-									<% if( locals.msgsErrors && msgsErrors.imagenUsuario){ %>
-										<p class="errorDatosE" ><%= msgsErrors.imagenUsuario.msg %></p>
-									<% } %>
 								</div>
-							</div>
-							<div id="boton">
-								<input type="submit" value="Crear" class="botonPrimario">
-							</div>
-						</form>
-					<% } else { %>
-						<form action="/usuarios/actulizaUsuario/<%= usuario.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-							<div>
-								<label id="id" for="id">ID Usuario:</label>
-								<input type="number" name="id"  readonly  value="<%= usuario.id %>" class="inputWidth styleInput">
-							</div>
-							<div>
-								<label for="firstName">
-									<!-- <strong>Nombre:</strong>  -->
-									<input type="text" name="firstName" value="<%= usuario.firstName %>" placeholder="Nombre" >
-								</label>
-							</div>
-                            <div>
-								<label for="lastName">
-									<!-- <strong>Nombre:</strong>  -->
-									<input type="text" name="lastName" value="<%= usuario.lastName %>" placeholder="Apellidos">
-								</label>
-							</div>
-                            <div>
-								<label for="email">
-									<!-- <strong>Nombre:</strong>  -->
-									<input type="email" name="email" value="<%= usuario.email %>" placeholder="Email" >
-								</label>
-							</div>
-                            <div>
-								<label for="password">
-									<!-- <strong>Nombre:</strong>  -->
-									<input type="password" name="password" value="<%= usuario.password %>" placeholder="Contraseña" >
-								</label>
-							</div>
-							<div>
-								<label for="category">
-									<!-- <strong>Categoria:</strong>  -->
-									<!-- <br> -->
-									<select 
-										name="category" 
-										id="SelectOp"
-									>
-										<option  value="" > Elige una categoria </option>
-										
-										<%
-											let categorias = ['Administrador','Cliente'];
-										%>
-
-										<% for (const categoria of categorias) { %>
-											
-											<option  value=" <%= categoria %> " 
-												
-												<%= categoria === usuario.category.trim() ? "selected" : null %>	> 
-												
-												<%= categoria %> </option>
-
+								<div>
+									<label for="lastName">
+										<!-- <strong>Nombre:</strong>  -->
+										<input type="text" name="lastName" value="<%= locals.DataOld ? DataOld.lastName : null %>" placeholder="Apellidos">
+									</label>
+									<div class="errorDatosE">
+										<% if( locals.msgsErrors && msgsErrors.lastName){ %>
+											<p class="errorDatosE" ><%= msgsErrors.lastName.msg %></p>
 										<% } %>
+									</div>
+								</div>
+								<div>
+									<label for="email">
+										<!-- <strong>Nombre:</strong>  -->
+										<input type="email" name="email" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Email">
+									</label>
+									<div class="errorDatosE">
+										<% if( locals.msgsErrors && msgsErrors.email){ %>
+											<p class="errorDatosE" ><%= msgsErrors.email.msg %></p>
+										<% } %>
+									</div>
+								</div>
+								<div>
+									<label for="password">
+										<!-- <strong>Nombre:</strong>  -->
+										<input type="password" name="password" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Contraseña">
+									</label>
+									<div class="errorDatosE">
+										<% if( locals.msgsErrors && msgsErrors.password){ %>
+											<p class="errorDatosE" ><%= msgsErrors.password.msg %></p>
+										<% } %>
+									</div>
+								</div>
+								<div>
+									<label for="category">
+										<!-- <strong>Categoria:</strong>  -->
+										<!-- <br> -->
+										<select 
+											name="category" 
+											id="SelectOp"
+										>
+											<option  value="" > Elige una categoria </option>
+											
+											<%
+												let categorias = ['Administrador','Cliente'];
+											%>
 
-									</select>
-								</label>
-							</div>
-							<div>
-								<label for="imagenUsuario">Imagen de usuario</label>
-								<input type="file" name="imagenUsuario" >
-							</div>
-							<div id="boton">
-								<input type="submit" value="Actualisar" class="botonPrimario">
-							</div>
-						</form>
-					<% } %>
-				</div>
-			</section>
-	</main>
-    <%- include('partials/Footer.ejs') %>
-</body>
+											<% for (const categoria of categorias) { %>
+												
+												<option  value=" <%= categoria %> " 
+													
+													<%= locals.DataOld && (categoria === DataOld.category.trim()) ? "selected" : null %>	> 
+													
+													<%= categoria %> </option>
+
+											<% } %>
+
+										</select>
+										<div class="errorDatosE">
+											<% if( locals.msgsErrors && msgsErrors.category){ %>
+												<p class="errorDatosE" ><%= msgsErrors.category.msg %></p>
+											<% } %>
+										</div>
+									</label>
+								</div>
+								<div>
+									<label for="imagenUsuario">Imagen de usuario</label>
+									<input type="file" name="imagenUsuario">
+									<div class="errorDatosE">
+										<% if( locals.msgsErrors && msgsErrors.imagenUsuario){ %>
+											<p class="errorDatosE" ><%= msgsErrors.imagenUsuario.msg %></p>
+										<% } %>
+									</div>
+								</div>
+								<div id="boton">
+									<input type="submit" value="Crear" class="botonPrimario">
+								</div>
+							</form>
+						<% } else { %>
+							<form action="/usuarios/actulizaUsuario/<%= usuario.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+								<div>
+									<label id="id" for="id">ID Usuario:</label>
+									<input type="number" name="id"  readonly  value="<%= usuario.id %>" class="inputWidth styleInput">
+								</div>
+								<div>
+									<label for="firstName">
+										<!-- <strong>Nombre:</strong>  -->
+										<input type="text" name="firstName" value="<%= usuario.firstName %>" placeholder="Nombre" >
+									</label>
+								</div>
+								<div>
+									<label for="lastName">
+										<!-- <strong>Nombre:</strong>  -->
+										<input type="text" name="lastName" value="<%= usuario.lastName %>" placeholder="Apellidos">
+									</label>
+								</div>
+								<div>
+									<label for="email">
+										<!-- <strong>Nombre:</strong>  -->
+										<input type="email" name="email" value="<%= usuario.email %>" placeholder="Email" >
+									</label>
+								</div>
+								<div>
+									<label for="password">
+										<!-- <strong>Nombre:</strong>  -->
+										<input type="password" name="password" value="<%= usuario.password %>" placeholder="Contraseña" >
+									</label>
+								</div>
+								<div>
+									<label for="category">
+										<!-- <strong>Categoria:</strong>  -->
+										<!-- <br> -->
+										<select 
+											name="category" 
+											id="SelectOp"
+										>
+											<option  value="" > Elige una categoria </option>
+											
+											<%
+												let categorias = ['Administrador','Cliente'];
+											%>
+
+											<% for (const categoria of categorias) { %>
+												
+												<option  value=" <%= categoria %> " 
+													
+													<%= categoria === usuario.category.trim() ? "selected" : null %>	> 
+													
+													<%= categoria %> </option>
+
+											<% } %>
+
+										</select>
+									</label>
+								</div>
+								<div>
+									<label for="imagenUsuario">Imagen de usuario</label>
+									<input type="file" name="imagenUsuario" >
+								</div>
+								<div id="boton">
+									<input type="submit" value="Actualisar" class="botonPrimario">
+								</div>
+							</form>
+						<% } %>
+					</div>
+				</section>
+		</main>
+		<%- include('partials/Footer.ejs') %>
+	</body>
 </html>

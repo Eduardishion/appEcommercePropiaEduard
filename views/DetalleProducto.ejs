@@ -1,133 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="images/imagenesIndex/logo_16_x_16.svg" type="image/x-icon">
-    <!-- iconos -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    rel="stylesheet" />
-    <!-- fuentes externas -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=KoHo:wght@300;600&display=swap" rel="stylesheet"> 
-    <!-- hojas de estilo -->
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/index.css">
-    <link rel="stylesheet" href="/css/DetalleProducto.css">
-    <!-- <link rel="stylesheet" href="/css/estiloGaleria.css"> -->
-    <title>Index</title>
-</head>
-<body>
-     <!-- vista parcial de header -->
-     <%- include('partials/Header.ejs') %>
-    <input type="checkbox" name="desplegar" id="desplegar" hidden>
-    <ul id="menuVertical" >
-        <li><a href="Index">Index</a></li>
-        <li><a href="DetalleProducto">Producto</a></li>
-        <li><a href="CarritoCompra">Carrito</a></li>
-        <li><a href="#">Enlace</a></li>
-        <li><a href="#">Enlace</a></li>
-    </ul>
-    <div id="locacionPagina">
-        <p>Home > Producto</p>
-    </div>
-    <main id="areaPrincipal">
-        <section id="vistaProducto">
-        <!-- area imagenes -->
-            <div> <!--para centrar despues en vista grande -->
-                <article id="imagenProducto">
-                    <img src="/images/imagenesDeProductos/<%= producto.image ? producto.image : 'default-image.png' %>" alt="imagen producto">
-                </article>
-                <article id="carrusel">
-                    <div class="flecha">
-                        <img src="/images/imagenesIndex/chevron_left_black_24dp.svg" alt="" srcset="">
-                    </div>
-                    <% for(let i=0 ; i< producto.imagesSec.length ; i++){  %>
+<%- include('partials/Head.ejs') %>
+    <body>
+        <!-- vista parcial de header -->
+        <%- include('partials/Header.ejs') %>
+        <input type="checkbox" name="desplegar" id="desplegar" hidden>
+        <ul id="menuVertical" >
+            <li><a href="Index">Index</a></li>
+            <li><a href="DetalleProducto">Producto</a></li>
+            <li><a href="CarritoCompra">Carrito</a></li>
+            <li><a href="#">Enlace</a></li>
+            <li><a href="#">Enlace</a></li>
+        </ul>
+        <div id="locacionPagina">
+            <p>Home > Producto</p>
+        </div>
+        <main id="areaPrincipal">
+            <section id="vistaProducto">
+            <!-- area imagenes -->
+                <div> <!--para centrar despues en vista grande -->
+                    <article id="imagenProducto">
+                        <img src="/images/imagenesDeProductos/<%= producto.image ? producto.image : 'default-image.png' %>" alt="imagen producto">
+                    </article>
+                    <article id="carrusel">
+                        <div class="flecha">
+                            <img src="/images/imagenesIndex/chevron_left_black_24dp.svg" alt="" srcset="">
+                        </div>
+                        <% for(let i=0 ; i< producto.imagesSec.length ; i++){  %>
 
-                            <a href="#">
-                                <img class="min" src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="">
-                            </a>
-                            <img class="max" src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="">
-                            
-                    <% } %>
-                    <div class="flecha">
-                        <img src="/images/imagenesIndex/chevron_right_black_24dp.svg" alt="" srcset="">
-                    </div>
-                </article>
-            </div>
-            <!-- </div> -->
-        </section>
-        <section id="vistaDescripcion">
-        <!-- area descripcion -->
-            <article id="descripcionProducto">
-                <strong>
-                    <h2>
-                        <%= producto.name %> 
-                    </h2>
-                </strong>
-                <h4>
-                    ID referencia: <%=  producto.id %> 
-                </h4>
-                <div id="grados">
-                    <div id="puntaje">
-                        <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
-                        <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
-                        <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
-                        <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
-                        <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
-                        <p>(55)</p>
-                    </div>
-                </div>
-                <div id="descripcion">
-                    <p>
-                        Disponible. 
-                    </p>
-                    <h3>
-                        Descripción. 
-                    </h3>
-                    <p>
-                        <%=  producto.description %> 
-                    </p>
-                    <h3>
-                        Caracteristicas. 
-                    </h3>
-                    <ul>
-
-                    </ul>
-                        <% 
-                        let caracteristicas = producto.features.split(",");
-                        for(let i=0 ; i < caracteristicas.length ;i++){%>
-                            <li><%= caracteristicas[i]%>.</li>
+                                <a href="#">
+                                    <img class="min" src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="">
+                                </a>
+                                <img class="max" src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="">
+                                
                         <% } %>
-                    </ul>
+                        <div class="flecha">
+                            <img src="/images/imagenesIndex/chevron_right_black_24dp.svg" alt="" srcset="">
+                        </div>
+                    </article>
+                </div>
+                <!-- </div> -->
+            </section>
+            <section id="vistaDescripcion">
+            <!-- area descripcion -->
+                <article id="descripcionProducto">
+                    <strong>
+                        <h2>
+                            <%= producto.name %> 
+                        </h2>
+                    </strong>
+                    <h4>
+                        ID referencia: <%=  producto.id %> 
+                    </h4>
+                    <div id="grados">
+                        <div id="puntaje">
+                            <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
+                            <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
+                            <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
+                            <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
+                            <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
+                            <p>(55)</p>
+                        </div>
+                    </div>
+                    <div id="descripcion">
+                        <p>
+                            Disponible. 
+                        </p>
+                        <h3>
+                            Descripción. 
+                        </h3>
+                        <p>
+                            <%=  producto.description %> 
+                        </p>
+                        <h3>
+                            Caracteristicas. 
+                        </h3>
+                        <ul>
+
+                        </ul>
+                            <% 
+                            let caracteristicas = producto.features.split(",");
+                            for(let i=0 ; i < caracteristicas.length ;i++){%>
+                                <li><%= caracteristicas[i]%>.</li>
+                            <% } %>
+                        </ul>
+                        <br>
+                    </div>
+                </article>
+                <article id="CostoApagar">
+                    <div id="precios">
+                        <h4><%= producto.price %>$</h4>
+                        <h5><%= producto.discount %>$</h5>
+                        <h6><%= producto.discountRate %>%</h6>
+                    </div>
+                    <p>Stock: <%= producto.stock %></p>
+                    <p>Cantidad:</p>
+                    <div id="cantidad">
+                        <div>-</div>
+                        <div>10</div>
+                        <div>+</div>
+                    </div>
                     <br>
-                </div>
-            </article>
-            <article id="CostoApagar">
-                <div id="precios">
-                    <h4><%= producto.price %>$</h4>
-                    <h5><%= producto.discount %>$</h5>
-                    <h6><%= producto.discountRate %>%</h6>
-                </div>
-                <p>Stock: <%= producto.stock %></p>
-                <p>Cantidad:</p>
-                <div id="cantidad">
-                    <div>-</div>
-                    <div>10</div>
-                    <div>+</div>
-                </div>
-                <br>
-                <button class="botonPrimario">Agregar a carrito</button>
-            </article>
-        <!-- area descripcion -->
-        </section>
+                    <button class="botonPrimario">Agregar a carrito</button>
+                </article>
+            <!-- area descripcion -->
+            </section>
 
-    </main>
+        </main>
 
-    <!-- vista parcial de Footer -->
-    <%- include('partials/Footer.ejs') %>
-</body>
+        <!-- vista parcial de Footer -->
+        <%- include('partials/Footer.ejs') %>
+    </body>
 </html>
