@@ -4,76 +4,6 @@
 	<body>
 		<!-- vista parcial de header -->
 		<%- include('partials/Header.ejs') %>
-		<!-- menu desplegable  -->
-		<input type="checkbox" name="desplegar" id="desplegar" hidden>
-		<ul id="menuVertical" >
-			<li><a href="Index">Index</a></li>
-			<li><a href="DetalleProducto">Producto</a></li>
-			<li><a href="CarritoCompra">Carrito</a></li>
-			<li><a href="#">Enlace</a></li>
-			<li><a href="#">Enlace</a></li>
-		</ul>
-		<!-- menu desplegable  -->
-
-		<!-- menu de lista productos  -->
-		<input type="checkbox" name="desplegar2" id="desplegar2" hidden>
-		<div class="model-overlay active" ><!--caja transparente-->
-			<div class="modal"><!--caja blanca-->
-				<div id="form">
-					<h2>Lista de productos</h2>
-					<form action="/CarritoCompra" method="get" id="formulario">
-						<a href="/DetalleProducto">
-							<div class="productoLista">
-								<div class="eliminar">
-									<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-								</div>
-								<div>
-									<img src="/images/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
-								</div>
-								<div>
-									<p class="nombreLista">
-										Pro System Audiotek Tablero Arcade Videojuegos
-									</p>
-								</div>   
-							</div>
-						</a>
-						<a href="/DetalleProducto">
-							<div class="productoLista">
-								<div class="eliminar">
-									<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-								</div>
-								<div>
-									<img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
-								</div>
-								<div>
-									<p class="nombreLista">
-										Pro System Audiotek Tablero Arcade Videojuegos
-									</p>
-								</div>   
-							</div>
-						</a>
-						<a href="/DetalleProducto">
-							<div class="productoLista">
-								<div class="eliminar">
-									<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-								</div>
-								<div>
-									<img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
-								</div>
-								<div>
-									<p class="nombreLista">
-										Pro System Audiotek Tablero Arcade Videojuegos
-									</p>
-								</div>   
-							</div>
-						</a>
-						<div class="input-group actions">
-							<a href="/CarritoCompra" type="submit" class="botonPrimario">Ver carrito</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
 		<main id="areaPrincipal">
 				<section id="vistaCrearProductos">
 					<h1>Crear Cuenta</h1>
@@ -120,7 +50,7 @@
 								<div>
 									<label for="email">
 										<!-- <strong>Nombre:</strong>  -->
-										<input type="email" name="email" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Email">
+										<input type="email" name="email" value="<%= locals.DataOld ? DataOld.email : null %>" placeholder="Email">
 									</label>
 									<div class="errorDatosE">
 										<% if( locals.msgsErrors && msgsErrors.email){ %>
