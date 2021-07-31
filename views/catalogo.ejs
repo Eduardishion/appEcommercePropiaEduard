@@ -1,0 +1,32 @@
+<!-- 
+     Perfil de 🦊 Iván
+linkedin.com/in/iscivansanchez0 
+ -->
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/Head.ejs') %>
+    <body>
+        <!-- vista parcial de header -->
+        <%- include('partials/Header.ejs') %>
+        <main id="areaPrincipal">
+
+            <section>
+                <!-- banner publicitario -->
+            </section>
+            <section>
+                <div>
+                    <%= console.log(session);%>
+                    <strong>
+                        <p>Hola bienvenido <%= session.usuarioLogeado.firstName %></p>
+                    </strong>
+                </div>
+                <strong>
+                    <p>Catalogo de productos</p>
+                </strong>
+
+            </section>
+        </main>
+        <!-- vista parcial de Footer -->
+        <%- include('partials/Footer.ejs') %>
+    </body>
+</html>
