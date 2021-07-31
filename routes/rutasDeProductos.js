@@ -9,6 +9,9 @@ const validacionesFormProducto = require('../middlewares/validacionesFormProduct
 
 const path = require("path");
 
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
+
 
 // configuracion de multer primera version
 // let multerDiskStorage = multer.diskStorage({
@@ -58,13 +61,13 @@ let upload = multer({ storage: storage });
 const controladorDeProductos = require('../controllers/controladorDeProductos');
 
 //Accion de mostrar todos los productos desde ruta rais
-router.get("/listaProductos", controladorDeProductos.listaDeProductos);
+router.get("/listaProductos", authMiddleware , controladorDeProductos.listaDeProductos);
 
 //Accion de solo mostrar un solo producto por detalle
 router.get('/detalleProducto/:id', controladorDeProductos.vistaDetalleProducto);
 
 //Accion de entrar al formulario de registrar un nuevo producto
-router.get('/registrarProducto', controladorDeProductos.vistaRegistrarProducto);
+router.get('/registrarProducto', authMiddleware , controladorDeProductos.vistaRegistrarProducto);
 
 //Accion de guardar producto en base de datos y carga de imagen mediante multer
 //router.post('/guardarProducto', fileUpload.single('imageProducto'), controladorDeProductos.guardarProducto);
@@ -85,7 +88,7 @@ router.post('/guardarProducto',upload.any('imagesProducto'), validacionesFormPro
 //router.post('/guardarProducto',validacionesFormProducto, upload.any(), controladorDeProductos.guardarProducto);
 
 //Acccion de entrara a la vistar de edicion de producto
-router.get('/editarProducto/:id',  controladorDeProductos.vistaEdicionProducto);
+router.get('/editarProducto/:id', authMiddleware , controladorDeProductos.vistaEdicionProducto);
 
 //Accion de editar producto 
 //version final 
