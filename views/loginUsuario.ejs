@@ -2,78 +2,7 @@
 <html lang="en">
 	<%- include('partials/Head.ejs') %>
 	<body>
-		<!-- vista parcial de header -->
 		<%- include('partials/Header.ejs') %>
-		<!-- menu desplegable  -->
-		<input type="checkbox" name="desplegar" id="desplegar" hidden>
-		<ul id="menuVertical" >
-			<li><a href="Index">Index</a></li>
-			<li><a href="DetalleProducto">Producto</a></li>
-			<li><a href="CarritoCompra">Carrito</a></li>
-			<li><a href="#">Enlace</a></li>
-			<li><a href="#">Enlace</a></li>
-		</ul>
-		<!-- menu desplegable  -->
-
-		<!-- menu de lista productos  -->
-		<input type="checkbox" name="desplegar2" id="desplegar2" hidden>
-		<div class="model-overlay active" ><!--caja transparente-->
-			<div class="modal"><!--caja blanca-->
-				<div id="form">
-					<h2>Lista de productos</h2>
-					<form action="/CarritoCompra" method="get" id="formulario">
-						<a href="/DetalleProducto">
-							<div class="productoLista">
-								<div class="eliminar">
-									<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-								</div>
-								<div>
-									<img src="/images/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
-								</div>
-								<div>
-									<p class="nombreLista">
-										Pro System Audiotek Tablero Arcade Videojuegos
-									</p>
-								</div>   
-							</div>
-						</a>
-						<a href="/DetalleProducto">
-							<div class="productoLista">
-								<div class="eliminar">
-									<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-								</div>
-								<div>
-									<img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
-								</div>
-								<div>
-									<p class="nombreLista">
-										Pro System Audiotek Tablero Arcade Videojuegos
-									</p>
-								</div>   
-							</div>
-						</a>
-						<a href="/DetalleProducto">
-							<div class="productoLista">
-								<div class="eliminar">
-									<img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-								</div>
-								<div>
-									<img src="/img/maquinita-izquierda.png" alt="imagen de producto" class="imagenLista">
-								</div>
-								<div>
-									<p class="nombreLista">
-										Pro System Audiotek Tablero Arcade Videojuegos
-									</p>
-								</div>   
-							</div>
-						</a>
-						<div class="input-group actions">
-							<a href="/CarritoCompra" type="submit" class="botonPrimario">Ver carrito</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
 		<main id="areaPrincipal">
 				<section id="vistaCrearProductos">
 					<h1>Iniciar Sesión</h1>
@@ -83,18 +12,11 @@
 						</strong>
 					</p>
 					<div id="contenedorDeFormulario">
-						<!-- <% if( locals.msgsErrors ){ %>		
-							<% for (error in msgsErrors) {%>
-								<p class="errorDatosE" ><%= msgsErrors[error].msg %></p>
-							<% } %>
-						<% } %> -->
-							<form action="/usuarios/guardarUsuario" method="POST" enctype="multipart/form-data">
-								
-								
+							<form action="/usuarios/verificaSesion" method="POST" >
 								<div>
 									<label for="email">
 										<!-- <strong>Nombre:</strong>  -->
-										<input type="email" name="email" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Email">
+										<input type="email" name="email" value="<%= locals.DataOld ? DataOld.email : null %>" placeholder="Email">
 									</label>
 									<div class="errorDatosE">
 										<% if( locals.msgsErrors && msgsErrors.email){ %>
@@ -105,7 +27,7 @@
 								<div>
 									<label for="password">
 										<!-- <strong>Nombre:</strong>  -->
-										<input type="password" name="password" value="<%= locals.DataOld ? DataOld.Email : null %>" placeholder="Contraseña">
+										<input type="password" name="password" value="<%= locals.DataOld ? DataOld.password : null %>" placeholder="Contraseña">
 									</label>
 									<div class="errorDatosE">
 										<% if( locals.msgsErrors && msgsErrors.password){ %>
@@ -113,18 +35,12 @@
 										<% } %>
 									</div>
 								</div>
-								
-								<!-- <div>
-									<label for="imagenUsuario">Imagen de usuario</label>
-									<input type="file" name="imagenUsuario">
-									<div class="errorDatosE">
-										<% if( locals.msgsErrors && msgsErrors.imagenUsuario){ %>
-											<p class="errorDatosE" ><%= msgsErrors.imagenUsuario.msg %></p>
-										<% } %>
-									</div>
-								</div> -->
+								<!-- partado de checkbox de recordarme mi session no importando se se cierra el navegador -->
+								<label for="recordarme">			
+									Recordar mi usuario <input type="checkbox" name="recordarme" >
+								</label>
 								<div id="boton">
-									<input type="submit" value="Crear" class="botonPrimario">
+									<input type="submit" value="Iniciar Sesion" class="botonPrimario">
 									
 									<p id="redirecciontienda">
 										<strong>
@@ -132,8 +48,10 @@
 										</strong>
 									</p>		
 								</div>
-							
 							</form>
+							<% if( locals.errorValidacion ){ %>
+								<p class="errorDatosE" ><%= errorValidacion %></p>
+							<% } %>
 					</div>
 				</section>
 		</main>
