@@ -6,11 +6,16 @@ const router = express.Router();
 const multer = require('multer');
 //modulo path
 const path = require("path");
+//verificaicon de session activa 
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 //controlador de productos 
 const controladorDeUsuarios = require('../controllers/controladorDeUsuarios');
-//validador 
+//validador de formulario de creacion y edicion de usuario 
 const validacionesFormUsuario = require('../middlewares/validacionesFormUsuario');
+//validador de formulario de inicio sesion 
+const validacionesFormUsuarioLogin = require('../middlewares/validacionesFormUsuarioLogin');
 
 let storage = multer.diskStorage({
     //carpeta donde almacenaremos 
@@ -27,17 +32,26 @@ let storage = multer.diskStorage({
 
 let upload = multer({ storage: storage });
 
-//Accion de mostrar todos los usuarios
-router.get("/loginUsuario", controladorDeUsuarios.loginUsuario);
+// si yo ya estoy logeado no debo por que volver a entrar a formulario de registro y el login 
+//con el middleware debemos bloquear eso y mandarlos al profile  con guestMiddleware 
+
+// si no estoy loguedo no puedo entrar al profile o al registro 
+
+//aun debemos crear middleware para verificar el cargo del usuario si es administrador o solo cliente
+
+//y hacer middleware para bloquear rutas de procesos 
 
 //Accion de mostrar todos los usuarios
-router.get("/listaUsuarios", controladorDeUsuarios.listaDeUsuarios);
+router.get("/loginUsuario" , guestMiddleware ,controladorDeUsuarios.loginUsuario);
+
+//Accion de mostrar todos los usuarios
+router.get("/listaUsuarios",authMiddleware ,controladorDeUsuarios.listaDeUsuarios);
 
 //Accion de solo mostrar un solo usuario por detalle
 //router.get('/detalleUsuario/:id', controladorDeUsuarios.vistaDetalleUsuario);
 
 //Accion de entrar al formulario de registrar un nuevo usuario
-router.get('/registrarUsuario', controladorDeUsuarios.vistaRegistrarUsuario);
+router.get('/registrarUsuario', guestMiddleware , controladorDeUsuarios.vistaRegistrarUsuario);
 
 //Accion de guardar usuario en base de datos 
 router.post('/guardarUsuario',upload.single('imagenUsuario'), validacionesFormUsuario , controladorDeUsuarios.guardarUsuario);
@@ -50,6 +64,16 @@ router.put('/actulizaUsuario/:id', upload.single('imagenUsuario'), validacionesF
 
 //Accion de eliminar usuario
 router.delete('/eliminaUsuario/:id', controladorDeUsuarios.eliminaUsuario);
+
+//Accion de iniciar sesion usuario
+router.post('/verificaSesion/', validacionesFormUsuarioLogin, controladorDeUsuarios.verificaSesion);
+
+//Accion de entrar a perfil de usuario despues de logearse o al catalogo de productos 
+router.get('/perfilDeUsuario/',authMiddleware ,controladorDeUsuarios.vistaPerfilDeUsuario);
+
+//Accion de cerrar session
+router.get('/cierreSession/', controladorDeUsuarios.cierreSession);
+
 
 
 module.exports = router;
