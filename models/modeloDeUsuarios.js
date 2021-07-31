@@ -46,7 +46,9 @@ let modeloDeUsuarios = {
         /*---------------- para un solo archivo ------------ */
 
         /*---------------- enriptacion de password ------------ */
-        passEncriptada = bcryptjs.hash(req.body.password,12);
+        // console.log(">>>>"+ req.body.password)
+        passEncriptada = bcryptjs.hashSync(req.body.password,10);
+        // console.log(passEncriptada);
         /*---------------- enriptacion de password ------------ */
 
 
@@ -73,10 +75,12 @@ let modeloDeUsuarios = {
     },
     //aun hcer metodo para burcar por email bien por que no funciona 
     buscarUsuarioByMail: function (listaUsuarios, req) {
+        // console.log(">>>>>>"+req.body.email);
         let usuarioEncontrado = listaUsuarios.find( (usuario) => {
-            return usuario.email == req.params.email;
+            // console.log(usuario.email);
+            return usuario.email === req.body.email;
         });
-
+    
         return usuarioEncontrado;
     },
     buscarIndice: function (listaUsuarios, req) {
