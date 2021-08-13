@@ -4,6 +4,14 @@ const modeloDeProductos = require('../models/modeloDeProductos');
 const {validationResult} = require('express-validator');
 
 const controladorDeProductos = {
+    vistaCatalogo: (req, res) => {
+      //apertura de archivo
+      let listaProductos = modeloDeProductos.aperturaDeArchivo();
+      console.log(listaProductos);
+      //envio de datos a vista index
+      res.render("Index", { productos: listaProductos});
+
+    },
     vistaRegistrarProducto: (req, res) => {
       res.status(200);
       res.render("registrarProducto");
