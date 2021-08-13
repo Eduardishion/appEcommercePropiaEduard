@@ -1,8 +1,8 @@
 const controladorRutasPrincipales ={
    
-    vistaIndex: (req, res) => {
-        res.render("Index");
-    },
+    // vistaIndex: (req, res) => {
+    //     res.render("Index");
+    // },
 
 }
 
