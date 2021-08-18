@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/Head.ejs') %>
+    <%- include("./partials/head") %>
     <body>
         <!-- vista parcial de header -->
-        <%- include('partials/cabecera.ejs') %>
-        <main id="areaPrincipal">
-          <section id="contenedorDePerfilUsuario">
-              <div id="perfilUsuario" >
-                  <div class="infoUser">
-                    <div class="miniaturaImagePerfil user">
-                      <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
+        <%- include('partials/header') %>
+        <main id="areaPrincipalPerfilUsuario">
+            <section id="contenedorDePerfilUsuario">
+                <div id="perfilUsuario" >
+                    <div class="infoUsuario">
+                      <div class="miniaturaImageUser user">
+                        <img src="/img/imageUsers/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
+                        <!-- <img src="/img/default-image.png" alt="imagenUsuario"> -->
+                      </div>
+                      <div>
+                        <p class="estiloParrafo">
+                              Usuario:
+                              <strong>
+                                <%= locals.usuarioLogeado.name%>
+                                <%= locals.usuarioLogeado.lastname%> 
+                              </strong> 
+                              <br>
+                              Email:
+                              <strong>
+                                <%= locals.usuarioLogeado.email %>
+                              </strong>
+                        </p> 
+                      </div>
                     </div>
-                    <div>
-                      <p class="estiloParrafo">
-                            Usuario:
-                            <strong>
-                              <%= locals.usuarioLogeado.firstName%>
-                              <%= locals.usuarioLogeado.lastName%> 
-                            </strong> 
-                            <br>
-                            Email:
-                            <strong>
-                              <%= locals.usuarioLogeado.email %>
-                            </strong>
-                      </p> 
-                    </div>
-                  </div>
-                  
+                    
+                </div>
+            </section>
+            <section id="contenedorDelistaProductos">
+              <div>
+                <h3>Lista de productos en carrito</h3>
               </div>
-          </section>
-          <section id="contenedorDelistaProductos">
-            <div>
-              <h3>Lista de productos en carrito</h3>
-            </div>
-          </section>
-      </main>
+            </section>
+        </main>
         <!-- vista parcial de Footer -->
-        <%- include('partials/Footer.ejs') %>
+           <%- include('partials/footer') %>
     </body>
 </html>
