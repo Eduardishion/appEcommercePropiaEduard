@@ -9,13 +9,12 @@
             <section id="articulos">
                 <% for(let i= 0; i< productos.length ; i++){ %> 
                     <article class="articulo">
-                        <img src="/images/img-cafetera-moulinex.jpg" alt="" srcset="">
+                        <img src="/images/imagenesDeProductos/<%= productos[i].image %>" alt="" srcset="">
                         <div class="envio"><i class="fas fa-truck"></i></div>
                         <div class="descripcionProducto">
-                            <p class="precios">$<%= productos.name %></p>
-                            <p class="descuento"><%= productos.discount %>% off</p>
-                            <!-- <p class="descuento"><%= productos.description %>% off</p> -->
-                            <!-- <h3 class="descripcion"><%= productos.description %></h3> -->
+                            <p class="precios">$<%= productos[i].name %></p>
+                            <p class="descuento"><%= productos[i].discount %> % off</p>
+                            <h3 class="descripcion"><%= productos[i].description %></h3>
                         </div>
                         <div class="efecto"></div>
                     </article>
