@@ -31,8 +31,8 @@ body{
     border: solid 3px black;
 }
 
-.miniaturaImage.user .minheader img{
-    width: 20px;
+.miniaturaImage.user.minheader img{
+    width: 30px;
     border-radius: 50px;
     border: solid 3px black;
 }
