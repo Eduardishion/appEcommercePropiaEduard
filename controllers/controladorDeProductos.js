@@ -7,7 +7,7 @@ const controladorDeProductos = {
     vistaCatalogo: (req, res) => {
       //apertura de archivo
       let listaProductos = modeloDeProductos.aperturaDeArchivo();
-      console.log(listaProductos);
+      // console.log(listaProductos);
       //envio de datos a vista index
       res.render("Index", { productos: listaProductos});
 
