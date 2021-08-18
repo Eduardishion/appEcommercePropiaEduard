@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Products extends Model {
     /**
@@ -11,53 +9,53 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.Imagesproducts, { foreignKey: 'product_id' });
+      // this.belongsTo(models.Imagesproducts, { foreignKey: 'product_id' });
     }
   };
   Products.init({
     name: {
-      type: Sequelize.STRING(250),
+      type: DataTypes.STRING(250),
       allowNull: false
     },
     category: {
-      type: Sequelize.STRING(100),
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     price: {
-      type: Sequelize.DECIMAL,
+      type: DataTypes.DECIMAL,
       allowNull: false
     },
     discountRate: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     discount: {
-      type: Sequelize.DECIMAL,
+      type: DataTypes.DECIMAL,
       allowNull: false
     },
     stock: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     description: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     image: {
-      type: Sequelize.STRING(100),
+      type: DataTypes.STRING(100),
       allowNull: false
     },
     features: {
-      type: Sequelize.TEXT
+      type: DataTypes.TEXT
     },
     registrationDate: {
-      type: Sequelize.DATE
+      type: DataTypes.DATE
     },
     checkInTime: {
-      type: Sequelize.DATEONLY
+      type: DataTypes.DATEONLY
     },
     userWhoRegistered: {
-      type: Sequelize.STRING
+      type: DataTypes.STRING
     }
     
   }, {
