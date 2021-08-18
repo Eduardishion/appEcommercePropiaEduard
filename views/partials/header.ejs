@@ -20,27 +20,20 @@
                     <img  id="logoShop" src="/images/imagenesIndex/shopping_cart_white_24dp.svg"/></a>
                 </label>
         <a href="/usuarios/loginUsuario"> <img  id="logoShop" src="/images/imagenesIndex/perm_identity_white_24dp.svg"/></a>
-
         <strong>
             <% if(locals.estaLoguado){ %>
-                <!-- <a href="/usuarios/perfilDeUsuario/"> -->
                     <% if(locals.usuarioLogeado){ %>
                         <div class="miniaturaImage user minheader">
                             <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
-                            <!-- <p style="color: white;"><%= locals.usuarioLogeado.firstName %></p> -->
                         </div>
                     <% } %>
-                <!-- </a> -->
                 <a href="/usuarios/cierreSession"> Cerrar session </a>
             <% } else {%>
                 <a href="/usuarios/loginUsuario">Login</a>
             <% } %>
         </strong>
-
-        
     </div>
 </header>
-<!-- menu desplegable  -->
 <input type="checkbox" name="desplegar" id="desplegar" hidden>
 <ul id="menuVertical" >
     <li><a href="Index">Index</a></li>
@@ -49,64 +42,3 @@
     <li><a href="#">Enlace</a></li>
     <li><a href="#">Enlace</a></li>
 </ul>
-<!-- menu desplegable  -->
-<!-- menu de lista productos  -->
-<input type="checkbox" name="desplegar2" id="desplegar2" hidden>
-<div class="model-overlay active" ><!--caja transparente-->
-    <div class="modal"><!--caja blanca-->
-        <div id="form">
-            <h2>Lista de productos</h2>
-            <form action="/CarritoCompra" method="get" id="formulario">
-                <a href="/DetalleProducto">
-                    <div class="productoLista">
-                        <div class="eliminar">
-                            <img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-                        </div>
-                        <div>
-                            <img src="/images/imagenesModal/ima.png" alt="imagen de producto" class="imagenLista">
-                        </div>
-                        <div>
-                            <p class="nombreLista">
-                                Pro System Audiotek Tablero Arcade Videojuegos
-                            </p>
-                        </div>   
-                    </div>
-                </a>
-                <a href="/DetalleProducto">
-                    <div class="productoLista">
-                        <div class="eliminar">
-                            <img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-                        </div>
-                        <div>
-                            <img src="/images/imagenesModal/ima.png" alt="imagen de producto" class="imagenLista">
-                        </div>
-                        <div>
-                            <p class="nombreLista">
-                                Pro System Audiotek Tablero Arcade Videojuegos
-                            </p>
-                        </div>   
-                    </div>
-                </a>
-                <a href="/DetalleProducto">
-                    <div class="productoLista">
-                        <div class="eliminar">
-                            <img src="/images/imagenesModal/cancel_black_24dp.svg" alt="">
-                        </div>
-                        <div>
-                            <img src="/images/imagenesModal/ima.png" alt="imagen de producto" class="imagenLista">
-                        </div>
-                        <div>
-                            <p class="nombreLista">
-                                Pro System Audiotek Tablero Arcade Videojuegos
-                            </p>
-                        </div>   
-                    </div>
-                </a>
-                <div class="input-group actions">
-                    <a href="/CarritoCompra" type="submit" class="botonPrimario">Ver carrito</a>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- menu de lista productos  -->
