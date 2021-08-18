@@ -4,6 +4,14 @@
 	//modulos de terceros para  hacer peticiones put y delete
 	const methodOverride = require('method-override');
 
+	//modulo para sessiones y coookies 
+	const session = require('express-session');
+	const cookieParser = require('cookie-parser');
+	// middleware para recordar session 
+	const recordarmeMiddleware = require('./middlewares/recordarmeMiddleware');
+	//middleware para verificar si esta logueado y cambiar la barra de navegacion 
+	const usuarioLogueadoMiddleware = require('./middlewares/usuarioLogueadoMiddleware');
+
 
 	//rutas a vistas principales
 	const rutasPrincipales = require('./routes/rutasPrincipales');
@@ -36,6 +44,19 @@
 	// configurar los metodos delete y put con method-override 
 	app.use(methodOverride('_method'));
 
+
+	//uso de cookies
+	app.use(cookieParser());
+	//uso de session 
+	app.use(session({
+		secret : 'Session secreta',
+		resave : false,
+		saveUninitialized : false
+	}));
+	
+	//middleware de guardado de cookie
+	app.use(recordarmeMiddleware);
+	app.use(usuarioLogueadoMiddleware);
 	//------------------midwares------------------
 	
 	
@@ -43,12 +64,15 @@
 	
 	
 	//rutas de solo vistas
-	app.use('/',rutasPrincipales);
+
 	// rutas de productos 
+	app.use('/',rutasPrincipales);
+
 	app.use('/productos', rutasDeProductos);
 	// rutas de usuarios 
 	app.use('/usuarios', rutasUsuarios);
 	
+
 	//------------------rutas------------------	
 
 
