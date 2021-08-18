@@ -9,14 +9,14 @@
                 <div id="perfilUsuario" >
                     <div class="infoUsuario">
                       <div class="miniaturaImageUser user">
-                        <img src="/img/imageUsers/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
+                        <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
                         <!-- <img src="/img/default-image.png" alt="imagenUsuario"> -->
                       </div>
                       <div>
                         <p class="estiloParrafo">
                               Usuario:
                               <strong>
-                                <%= locals.usuarioLogeado.name%>
+                                <%= locals.usuarioLogeado.firstName%>
                                 <%= locals.usuarioLogeado.lastname%> 
                               </strong> 
                               <br>
