@@ -12,6 +12,8 @@ const path = require("path");
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
+//controlador de productos
+const controladorDeProductos = require('../controllers/controladorDeProductos');
 
 // configuracion de multer primera version
 // let multerDiskStorage = multer.diskStorage({
@@ -57,8 +59,11 @@ let upload = multer({ storage: storage });
 //para inputs separados 
 //let uploadMultiple = upload.fields([{name: "imageProducto"}, {name: "imageSecundariasProducto"}]);
 
-//controlador de productos
-const controladorDeProductos = require('../controllers/controladorDeProductos');
+
+
+
+//ver vista de vistaCatalogo
+//Accion de mostrar todos los productos desde ruta rais
 
 //Accion de mostrar todos los productos desde ruta rais
 router.get("/listaProductos", authMiddleware , controladorDeProductos.listaDeProductos);
