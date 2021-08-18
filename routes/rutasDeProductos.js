@@ -61,7 +61,8 @@ let upload = multer({ storage: storage });
 
 
 
-
+//api
+router.get("/api", controladorDeProductos.viewApi);
 //ver vista de vistaCatalogo
 //Accion de mostrar todos los productos desde ruta rais
 
@@ -106,6 +107,8 @@ router.put('/actulizaProducto/:id', upload.any('imagesProducto'), validacionesFo
 
 //Accion de eliminar producto 
 router.delete('/eliminaProducto/:id', controladorDeProductos.eliminaProducto);
+
+
 
 
 module.exports = router;
