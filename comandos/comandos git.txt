@@ -1,0 +1,52 @@
+https://desarrolloweb.com/articulos/trabajar-ramas-git.html
+
+git stash para actulisar datos hechos en merge
+
+git config --list --global	ver configuracion de usuario 
+git config user.name		ver nombre de usuario
+git config user.email 		ver email de usuario 
+
+
+git config --list		ver configuracion del credenciales 
+
+
+git config user.name "your_name"  	establecer  nombre de usuario 
+git config user.email "your@email.com"  establecer  email de usuario 
+
+git init 			inciar repositorio
+git pull 			actulisacion 
+git push -u origin 		subir contenido a rama 
+git checkout  			cambiar de rama 
+
+
+git merge 			meclar ramas
+git branch			crear rama
+git checkout -b 		crear y cambiar al mismo tiempo de rama
+
+
+git branch -d 			borrar rama local
+git push origin --delete 	borral rama remota
+git fetch			Descargar una rama de remoto
+
+git branch sin paramentros 	se pueden ver en que rama nos ubicamos 
+
+
+heroku logs --tail		para ver logs en heroku cli
+
+hacer un select option dinamico:
+
+https://www.w3schools.com/tags/att_option_selected.asp
+<%= productToEdit === 'in-sale' ? selected = "" :  " "%>
+
+curso de cursera
+Clasificación de imágenes: ¿cómo reconocer el contenido de una imagen?
+por Universitat Autònoma de Barcelona
+
+https://www.coursera.org/learn/clasificacion-imagenes/home/welcome
+
+me quede en partado de curso de metodologia design thinking apartado 
+10/20
+
+
+
+

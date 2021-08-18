@@ -1,0 +1,9 @@
+
+sequelize init
+
+
+despues de hacer init 
+
+sequelize model:create --name User -attributes first_name:string,last_name:string,bio:text
+
+sequelize model:create --name Products -attributes name:string,category:string,price:decimal,discountRate:integer,discount:decimal,stock:integer,description:text,image:string,features:text,registrationDate:date,checkInTime:time,userWhoRegistered:string
