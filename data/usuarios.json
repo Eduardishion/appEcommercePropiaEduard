@@ -11,14 +11,47 @@
     "checkInTime": "15:7 PM"
   },
   {
-    "id": 22661,
-    "firstName": "lalo",
-    "lastName": "isq",
+    "id": 53292,
+    "firstName": "Luis",
+    "lastName": "Isquierdo Rojas",
+    "email": "alexmaxvedder1111@hotmail.com",
+    "password": "$2a$10$PTdbSteuVfOfUaWGoPrVAOgnwtFuweMeJrA6fe6nDBjXIRmIw6wT.",
+    "category": " Cliente ",
+    "image": "imagenUsuario-1627750169318.png",
+    "registrationDate": "31/07/21",
+    "checkInTime": "11:49 AM"
+  },
+  {
+    "id": 31191,
+    "firstName": "EDU",
+    "lastName": "Isquierdo Rojas",
     "email": "edi@gmail.com",
-    "password": "$2a$10$.2/t4S28rfbr9pKZCnbpz.TZ91bG3tMon0ng3EPwonHazza3go9UK",
+    "password": "$2a$10$vv6AXjcRocCu7juOsLfC3ePAjr7X3psr1z97bD4kMTSaK.6PO9g0C",
+    "category": " Cliente ",
+    "image": "imagenUsuario-1627750393691.png",
+    "registrationDate": "31/07/21",
+    "checkInTime": "11:53 AM"
+  },
+  {
+    "id": 54090,
+    "firstName": "lalo",
+    "lastName": "Isquierdo Rojas",
+    "email": "sandi@gmail.com",
+    "password": "$2a$10$Lo6pJ6cpl/54w2ULVPq/t.dZZvciQ0t5Hc6Cr0qwnki7.881h9gIS",
+    "category": " Cliente ",
+    "image": "imagenUsuario-1627750656117.png",
+    "registrationDate": "31/07/21",
+    "checkInTime": "11:57 AM"
+  },
+  {
+    "id": 11385,
+    "firstName": "Eduardo",
+    "lastName": "Izquierdo Rojas",
+    "email": "ed@hotmail.com",
+    "password": "$2a$10$/mQeERWa/eSSfQxTS7kKu.s8gw/T3EAle8HkxfAYHQzvRDGYaApg.",
     "category": " Administrador ",
-    "image": "imagenUsuario-1627674236090.png",
-    "registrationDate": "30/07/21",
-    "checkInTime": "14:43 PM"
+    "image": "imagenUsuario-1628616171809.png",
+    "registrationDate": "10/08/21",
+    "checkInTime": "12:22 PM"
   }
 ]
