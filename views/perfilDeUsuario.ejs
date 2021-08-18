@@ -3,19 +3,17 @@
     <%- include('partials/Head.ejs') %>
     <body>
         <!-- vista parcial de header -->
-        <%- include('partials/Header.ejs') %>
+        <%- include('partials/cabecera.ejs') %>
         <main id="areaPrincipal">
-            <section>
-                <!-- banner publicitario -->
-            </section>
-            <section>
-                <div id="usuario" class="colorTenue">
-                    <div class="miniaturaImage user">
+          <section id="contenedorDePerfilUsuario">
+              <div id="perfilUsuario" >
+                  <div class="infoUser">
+                    <div class="miniaturaImagePerfil user">
                       <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
                     </div>
-                    <div class="info">
+                    <div>
                       <p class="estiloParrafo">
-                            Nombre:
+                            Usuario:
                             <strong>
                               <%= locals.usuarioLogeado.firstName%>
                               <%= locals.usuarioLogeado.lastName%> 
@@ -27,9 +25,16 @@
                             </strong>
                       </p> 
                     </div>
-                </div>
-            </section>
-        </main>
+                  </div>
+                  
+              </div>
+          </section>
+          <section id="contenedorDelistaProductos">
+            <div>
+              <h3>Lista de productos en carrito</h3>
+            </div>
+          </section>
+      </main>
         <!-- vista parcial de Footer -->
         <%- include('partials/Footer.ejs') %>
     </body>
