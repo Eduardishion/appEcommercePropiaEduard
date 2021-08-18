@@ -6,16 +6,24 @@ linkedin.com/in/iscivansanchez0
 <html lang="en">
     <%- include('partials/Head.ejs') %>
     <body>
-        <!-- vista parcial de header -->
         <%- include('partials/Header.ejs') %>
         <main id="areaPrincipal">
             <section>
-                <!-- banner publicitario -->
             </section>
-            <section>
-                <strong>
-                    <p>hola mundo index</p>
-                </strong>
+            <section id="articulos">
+                <% for(let i= 0; i< productos.length ; i++){ %> 
+                    <article class="articulo">
+                        <img src="/images/img-cafetera-moulinex.jpg" alt="" srcset="">
+                        <div class="envio"><i class="fas fa-truck"></i></div>
+                        <div class="descripcionProducto">
+                            <p class="precios">$<%= productos.name %></p>
+                            <p class="descuento"><%= productos.discount %>% off</p>
+                            <!-- <p class="descuento"><%= productos.description %>% off</p> -->
+                            <!-- <h3 class="descripcion"><%= productos.description %></h3> -->
+                        </div>
+                        <div class="efecto"></div>
+                    </article>
+                <%}%>
             </section>
         </main>
         <!-- vista parcial de Footer -->
