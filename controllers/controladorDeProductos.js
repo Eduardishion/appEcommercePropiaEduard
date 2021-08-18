@@ -2,8 +2,28 @@
 const modeloDeProductos = require('../models/modeloDeProductos');
 //destructuracion para usar objeto validator 
 const {validationResult} = require('express-validator');
+//conexion a la base de datos
+const db = require('../database/models');
 
 const controladorDeProductos = {
+    viewApi: async (req, res) => {
+      // db.Products.findAll().then( Products => {
+      //     //endpoint del api para cosultar todos los datos 
+      //     // return res.json(movies);
+      //     // return res.status(200).json({
+      //     //     total : Products.length,
+      //     //     data: Products,
+      //     //     status: 200
+      //     // });
+          
+      //     res.render("Index", {productos: Products});
+      // })
+
+      const products = await db.Products.findAll();
+      res.render("Index", {products});
+
+      // res.render("Index", {productos: products});
+    },
     vistaCatalogo: (req, res) => {
       //apertura de archivo
       let listaProductos = modeloDeProductos.aperturaDeArchivo();
