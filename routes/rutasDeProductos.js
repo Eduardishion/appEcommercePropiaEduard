@@ -60,6 +60,8 @@ let upload = multer({ storage: storage });
 //let uploadMultiple = upload.fields([{name: "imageProducto"}, {name: "imageSecundariasProducto"}]);
 
 
+//prueba conexion a la base de datos 
+router.get("/test", controladorDeProductos.test);
 
 //api
 router.get("/api", controladorDeProductos.viewApi);

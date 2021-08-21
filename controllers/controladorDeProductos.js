@@ -5,7 +5,15 @@ const {validationResult} = require('express-validator');
 //conexion a la base de datos
 const db = require('../database/models');
 
+
 const controladorDeProductos = {
+    test: (req, res) => {
+        db.Movie.findAll().then((peliculas) => {
+          // console.log(peliculas);
+          return res.json(peliculas);
+        });
+      
+    },
     viewApi: async (req, res) => {
       // db.Products.findAll().then( Products => {
       //     //endpoint del api para cosultar todos los datos 
