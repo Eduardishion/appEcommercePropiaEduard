@@ -4,7 +4,8 @@ module.exports = {
     "password": "6Sckjhq8DbcnUXHdEzOu",
     "database": "b6r1cj5fmaqjffm9qbwk",
     "host": "b6r1cj5fmaqjffm9qbwk-mysql.services.clever-cloud.com",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 3306
   },
   "test": {
     "username": "root",
