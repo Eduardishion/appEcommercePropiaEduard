@@ -11,7 +11,9 @@ const controladorDeProductos = {
         db.Movie.findAll().then((peliculas) => {
           // console.log(peliculas);
           return res.json(peliculas);
-        });
+        }).catch((error) => {
+          console.log('Error de: '+error);
+        })
       
     },
     viewApi: async (req, res) => {
