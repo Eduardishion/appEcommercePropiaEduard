@@ -119,11 +119,26 @@ sequelize db:seed:undo:all`: revertirá todos los seeders ejecutados.
 sequelize migration:generate`: generará un archivo *custom* de migració
 
 
+un buen tutorial de un profesor de digital house y el uso de sequelise
+https://github.com/japsolo/curso-sequelize-migrations-seeders
+
+
 migraciones automaticas 
 https://www.it-swarm-es.com/es/database/sequelize.js-como-usar-las-migraciones-y-la-sincronizacion/1044233816/
 
 ver paquetes instalados
 https://otroespacioblog.wordpress.com/2018/11/06/como-listar-modulos-globales-instalados-con-npm-g/
+
+
+buena referencia en lectura
+https://medium.com/@Ayra_Lux/a-guide-to-orm-sequelize-c276c7b6dd18
+https://medium.com/nowports-tech/sequelize-en-tiempos-de-sql-f4026a808f06
+
+//muy buena referencia en video 
+https://medium.com/@Ayra_Lux/a-guide-to-orm-sequelize-c276c7b6dd18
+https://www.youtube.com/watch?v=DUM1-uT51b8&list=PLn9Y084aviLmTy5TO6sw6Ky6NjEO5uCme&index=9
+
+
 
     
 
