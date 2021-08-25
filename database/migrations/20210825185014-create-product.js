@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Products', {
+    await queryInterface.createTable('products', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,36 +9,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING(250),
-        allowNull: false
-      },
-      category: {
-        type: Sequelize.STRING(100),
-        allowNull: false
+        type: Sequelize.STRING
       },
       price: {
-        type: Sequelize.DECIMAL,
-        allowNull: false
+        type: Sequelize.DECIMAL
       },
       discountRate: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
       },
       discount: {
-        type: Sequelize.DECIMAL,
-        allowNull: false
+        type: Sequelize.DECIMAL
       },
       stock: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
       },
       description: {
-        type: Sequelize.TEXT,
-        allowNull: false
-      },
-      image: {
-        type: Sequelize.STRING(100),
-        allowNull: false
+        type: Sequelize.TEXT
       },
       features: {
         type: Sequelize.TEXT
@@ -46,11 +32,17 @@ module.exports = {
       registrationDate: {
         type: Sequelize.DATE
       },
-      checkInTime: {
-        type: Sequelize.DATEONLY
-      },
       userWhoRegistered: {
         type: Sequelize.STRING
+      },
+      category_id: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        references: {
+            model: 'categories',
+            key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
@@ -63,6 +55,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Products');
+    await queryInterface.dropTable('products');
   }
 };
