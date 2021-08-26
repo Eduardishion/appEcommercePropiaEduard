@@ -63,6 +63,10 @@ let upload = multer({ storage: storage });
 //prueba conexion a la base de datos 
 router.get("/test", controladorDeProductos.test);
 
+router.get("/test2", controladorDeProductos.test2);
+
+router.get("/test3", controladorDeProductos.test3);
+
 //api
 router.get("/api", controladorDeProductos.viewApi);
 //ver vista de vistaCatalogo

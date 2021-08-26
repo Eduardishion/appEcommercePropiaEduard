@@ -5,7 +5,7 @@ module.exports = {
     "database": "DB_ecommerce_v2",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "port": "3306"
+    "port": "3307"
   },
   "test": {
     "username": "root",
@@ -15,10 +15,10 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": "uw5huxwry7phyvkv",
-    "password": "6Sckjhq8DbcnUXHdEzOu",
-    "database": "b6r1cj5fmaqjffm9qbwk",
-    "host": "b6r1cj5fmaqjffm9qbwk-mysql.services.clever-cloud.com",
+    "username": "uwpuzgeztchjiay9",
+    "password": "BHvcvUemRU55Mq46uHwk",
+    "database": "bzdlkkvkxv0yt4qcxajr",
+    "host": "bzdlkkvkxv0yt4qcxajr-mysql.services.clever-cloud.com",
     "dialect": "mysql",
     "port": "3306"
   }

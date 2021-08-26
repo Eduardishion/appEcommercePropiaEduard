@@ -8,13 +8,35 @@ const db = require('../database/models');
 
 const controladorDeProductos = {
     test: (req, res) => {
-        db.Movie.findAll().then((peliculas) => {
-          // console.log(peliculas);
-          return res.json(peliculas);
-        }).catch((error) => {
-          console.log('Error de: '+error);
-        })
-      
+      db.product.findAll().then((productos) => {
+        return res.json(productos);
+      }).catch((error) => {
+        console.log('Error de: '+error);
+      })
+    
+    },
+    test2: (req, res) => {
+
+      db.product.findAll({
+            include:[{
+                association: 'image'
+            }]
+      }).then(productos => {
+               return res.json(productos);
+      }).catch((error) => {
+        console.log('Error de: '+error);
+      })
+    
+    },
+    test3: (req, res) => {
+
+      db.category.findAll().then((categorias) => {
+        return res.json(categorias);
+      }).catch((error) => {
+        console.log('Error de: '+error);
+      })
+
+
     },
     viewApi: async (req, res) => {
       // db.Products.findAll().then( Products => {

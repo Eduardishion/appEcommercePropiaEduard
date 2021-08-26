@@ -4,8 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js ", 
-    "test": "sequelize db:create && sequelize db:migrate && sequelize db:seed:all && node app.js " 
+    "testRemoto": "node_modules/.bin/sequelize db:create && node_modules/.bin/sequelize db:migrate && node_modules/.bin/sequelize db:seed --seed 20210825195125-category.js && node_modules/.bin/sequelize db:seed --seed 20210825195121-product.js && node_modules/.bin/sequelize db:seed --seed 20210825195124-image.js ", 
+    "testLocal": "sequelize db:create && sequelize db:migrate && sequelize db:seed --seed 20210825195125-category.js && sequelize db:seed --seed 20210825195121-product.js && sequelize db:seed --seed 20210825195124-image.js ",
+    "test": "npm run testLocal && node app.js",
+    "start": "npm run testRemoto && node app.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +23,7 @@
     "multer": "^1.4.2",
     "mysql2": "^2.3.0",
     "nodemon": "^2.0.9",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
   }
 }

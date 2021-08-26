@@ -249,12 +249,30 @@ crear seeders
 
 este comando crea archivos para poder poblar la tablas en mysql 
 
+estructura de un sedder
+
+
+recordar que tablas que no tengan foregin key deben ser primero pobladas 
 
 
 
 cuando ya se hallan llenado de datos esos archivos queda ejecutar los seeders, para llenar las tablas 
     sequelize db:seed:all
 
+
+para especificar un solo archivo 
+
+
+categories   no tiene lave foranea por eso debe primero ser problada antes que productos 
+  sequelize db:seed --seed 20210825195125-category.js
+
+productos 
+
+  sequelize db:seed --seed 20210825195121-product.js
+
+imagenes 
+
+  sequelize db:seed --seed 20210825195124-image.js
 
 
 
@@ -264,6 +282,11 @@ sequelize db:seed:undo`: revertirá el último seeder que se ejecutó.
 sequelize db:seed:undo:all`: revertirá todos los seeders ejecutados.
 sequelize db:seed:undo:all`: revertirá todos los seeders ejecutados.
 sequelize migration:generate`: generará un archivo *custom* de migración
+
+
+To run a specific seed indicate --seed <seed_file_nams.js>:
+
+sequelize db:seed --seed my_seeder_file.js
 
 
 un buen tutorial de un profesor de digital house y el uso de sequelise
@@ -291,9 +314,17 @@ https://github.com/japsolo/curso-sequelize-migrations-seeders
 migraciones automaticas 
 https://www.it-swarm-es.com/es/database/sequelize.js-como-usar-las-migraciones-y-la-sincronizacion/1044233816/
 
+uso de Umzug para migraciones automaticas en servidor remoto 
+https://github.com/sequelize/umzug
+
+
+
 ver paquetes instalados
 https://otroespacioblog.wordpress.com/2018/11/06/como-listar-modulos-globales-instalados-con-npm-g/
 
+
+otro ejemplo de usar sequelise
+https://rosolutions.com.mx/blog/index.php/2018/08/06/como-usar-un-orm-en-node-js/
 
 buena referencia en lectura
 https://medium.com/@Ayra_Lux/a-guide-to-orm-sequelize-c276c7b6dd18
