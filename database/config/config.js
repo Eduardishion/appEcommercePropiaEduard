@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   "development": {
     "username": "root",
@@ -15,11 +17,11 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": "uwpuzgeztchjiay9",
-    "password": "BHvcvUemRU55Mq46uHwk",
-    "database": "bzdlkkvkxv0yt4qcxajr",
-    "host": "bzdlkkvkxv0yt4qcxajr-mysql.services.clever-cloud.com",
+    "username": process.env.USER,
+    "password": process.env.PASSWORD,
+    "database": process.env.DB,
+    "host": process.env.HOST,
     "dialect": "mysql",
-    "port": "3306"
+    "port": process.env.PORT
   }
 }
