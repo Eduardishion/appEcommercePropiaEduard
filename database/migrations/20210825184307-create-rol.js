@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      rol: {
+      name: {
         type: Sequelize.STRING
       },
       createdAt: {
