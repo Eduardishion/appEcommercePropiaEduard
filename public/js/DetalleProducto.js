@@ -13,8 +13,14 @@ window.addEventListener('load', function () {
 
 
     // console.log(enlaces.length);
+
+    const imagenes = [];
+    let contador = 0 ;
+
     for (let i = 0; i < enlaces.length; i++) {
         // console.log(enlaces[i]);   
+        imagenes .push(enlaces[i].childNodes[1].currentSrc);
+
         enlaces[i].addEventListener('mouseover', function () {
     	// body...
 	    	// console.log('has pasado por el enlace');
@@ -27,11 +33,62 @@ window.addEventListener('load', function () {
 	    	//console.log('#imaSec'+1);	
 	    	let imaPrin = document.querySelector('#imaPrin');
 	    	imaPrin.src = enlaces[i].childNodes[1].currentSrc;
+            contador = i;
 	    	// console.log(imaPrin);
+
+            console.log("a#enlace"+(i+1));
+            let enlace = document.querySelector("a#enlace"+(i+1));
+            console.log(enlace);
+            enlace.style.border = "thick solid #EF0000";
+
 	    	
 	    });
 
+        enlaces[i].addEventListener('mouseout', function () {
+            let enlace = document.querySelector("a#enlace"+(i+1));
+            console.log(enlace);
+            enlace.style.border = "solid 1px black";
+        });
+
     }
+
+   
+ 
+
+    // console.log(imagenes);
+
+    //movimiento hacia atras de imagen 
+    let max = imagenes.length;
+
+    let fechaI = document.querySelector('a#left');
+    fechaI.addEventListener('click', function () {
+        console.log("se dio clic en flecha I");
+        let imaPrin = document.querySelector('#imaPrin');
+        contador--;
+        if(contador < 0){
+            contador = max-1;
+        }
+        imaPrin.src = imagenes[contador];
+
+    
+
+    });
+
+    //movimiento hacia delante de imagenes 
+    let min = 0;
+
+    let fechaD = document.querySelector('a#rigth');
+    
+    fechaD.addEventListener('click', function () {
+        console.log("se dio clic en flecha D");
+        let imaPrin = document.querySelector('#imaPrin');
+        contador++;
+        if(contador > imagenes.length-1){
+            contador = min;
+        }
+        imaPrin.src = imagenes[contador];
+    });
+    
 
  
 
