@@ -16,7 +16,7 @@
 	//rutas a vistas principales
 	const rutasPrincipales = require('./routes/rutasPrincipales');
 	//rutas de operaciones CRUD para productos
-	const rutasDeProductos = require('./routes/rutasDeProductos');
+	const rutasDeProductosDB = require('./routes/rutasDeProductosDB');
 	//rutas de operaciones CRUD para usuarios
 	const rutasUsuarios = require('./routes/rutasDeUsuarios');
 	
@@ -68,7 +68,7 @@
 	// rutas de productos 
 	app.use('/',rutasPrincipales);
 
-	app.use('/productos', rutasDeProductos);
+	app.use('/productos', rutasDeProductosDB);
 	// rutas de usuarios 
 	app.use('/usuarios', rutasUsuarios);
 	
