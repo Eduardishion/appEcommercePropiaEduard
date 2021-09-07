@@ -26,7 +26,7 @@
 								<div>
 									<label for="id">
 										<strong>ID:</strong> 
-										<input type="text" name="id" value="<%= locals.DataOld ? DataOld.id : null %>" placeholder="ID">
+										<input type="text" name="id" readonly value="<%= locals.DataOld ? DataOld.id : null %>" placeholder="ID">
 									</label>
 									<div class="errorDatosE">
 										<% if( locals.msgsErrors && msgsErrors.id){ %>
@@ -56,16 +56,17 @@
 											<option  value="" > Elige una categoria </option>
 											
 											<%
-												let categorias = ['Tableros','Futbolitos','Maquinitas','Accesorios'];
+												<!-- let categorias = ['Tableros','Futbolitos','Maquinitas','Accesorios']; -->
+												const categorias = categoriasDB;
 											%>
 
 											<% for (const categoria of categorias) { %>
 												
-												<option  value=" <%= categoria %> " 
+												<option  value=" <%= categoria.name %> " 
 													
-													<%= locals.DataOld && (categoria === DataOld.category.trim()) ? "selected" : null %>	> 
+													<%= locals.DataOld && (categoria.name === DataOld.category.trim()) ? "selected" : null %>	> 
 													
-													<%= categoria %> </option>
+													<%= categoria.name %> </option>
 
 											<% } %>
 
@@ -148,7 +149,7 @@
 							</form>
 						<% } else { %>
 							<form action="/productos/actulizaProducto/<%= producto.id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-							
+
 								<div>
 									<!-- el valor del cambiante se agregara automaticamente -->
 									<label id="personal" for="userWhoRegistered">Personal que registra:</label>
@@ -157,7 +158,7 @@
 								<div>
 									<label for="id">
 										<!-- <strong>ID:</strong>  -->
-										<input type="number" name="id" placeholder="ID"  value="<%= producto.id %>" >
+										<input type="number" name="id" readonly placeholder="ID"  value="<%= producto.id %>" >
 									</label>
 								</div>
 								<div>
@@ -177,16 +178,17 @@
 												<option  value="" > Elige una categoria </option>
 												
 												<%
-													let categorias = ['Tableros','Futbolitos','Maquinitas','Accesorios'];
+													<!-- let categorias = ['Tableros','Futbolitos','Maquinitas','Accesorios']; -->
+													const categorias = categoriasDB;
 												%>
 		
 												<% for (const categoria of categorias) { %>
 													
-													<option  value=" <%= categoria %> " 
+													<option  value=" <%= categoria.name %> " 
 														
-														<%= (categoria === producto.category.trim()) ? "selected" : null %>	> 
+														<%= (categoria.name === producto.category.name.trim()) ? "selected" : null %>	> 
 														
-														<%= categoria %> </option>
+														<%= categoria.name %> </option>
 		
 												<% } %>
 		

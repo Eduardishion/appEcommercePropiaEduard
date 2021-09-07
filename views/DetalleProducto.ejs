@@ -20,19 +20,19 @@
             <!-- area imagenes -->
                 <div> <!--para centrar despues en vista grande -->
                     <article id="imagenProducto">
-                        <img id="imaPrin" src="/images/imagenesDeProductos/<%= producto.image ? producto.image : 'default-image.png' %>" alt="imagen producto">
+                        <img id="imaPrin" src="/images/imagenesDeProductos/<%= producto.image[0].name ? producto.image[0].name : 'default-image.png' %>" alt="imagen producto">
                     </article>
                     <article id="carrusel">
                         <div class="flecha">
                             <img  src="/images/imagenesIndex/chevron_left_black_24dp.svg" alt="" srcset="">
                         </div>
-                        <% for(let i=0 ; i< producto.imagesSec.length ; i++){  %>
+                        <% for(let i=0 ; i< producto.image.length ; i++){  %>
 
                                 <a href="#"  class="enlaceIma"  >
-                                    <img class="min" id="imaSec<%- i+1%>"  src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt="">
+                                    <img class="min" id="imaSec<%- i+1%>"  src="/images/imagenesDeProductos/<%= producto.image[i].name%>" alt="">
                                 </a>
                                 <!--  galeria en solo css -->
-                                    <!-- <img class="max" src="/images/imagenesDeProductos/<%= producto.imagesSec[i]%>" alt=""> -->
+                                    <!-- <img class="max" src="/images/imagenesDeProductos/<%= producto.image[i].name%>" alt=""> -->
                                 <!--  galeria en solo css -->
                                 
                         <% } %>

@@ -95,9 +95,8 @@
 									<label id="personal" for="userWhoRegistered">Personal que registra:</label>
 									<input type="text" name="userWhoRegistered" readonly value="Admin Root" class="inputWidth styleInput">
 								</div>
-								<div>
+								<!-- <div>
 									<label for="id">
-										<!-- <strong>ID:</strong>  -->
 										<input type="text" name="id" value="<%= locals.DataOld ? DataOld.id : null %>" placeholder="ID">
 									</label>
 									<div class="errorDatosE">
@@ -105,7 +104,7 @@
 											<p class="errorDatosE" ><%= msgsErrors.id.msg %></p>
 										<% } %>
 									</div>
-								</div>
+								</div> -->
 								<div>
 									<label for="name">
 										<!-- <strong>Nombre:</strong>  -->
@@ -128,16 +127,18 @@
 											<option  value="" > Elige una categoria </option>
 											
 											<%
-												let categorias = ['Tableros','Futbolitos','Maquinitas','Accesorios'];
+												<!-- let categorias = ['Tableros','Futbolitos','Maquinitas','Accesorios']; -->
+												const categorias = categoriasDB;
+												<!-- console.log(categorias); -->
 											%>
 
 											<% for (const categoria of categorias) { %>
 												
-												<option  value=" <%= categoria %> " 
+												<option  value=" <%= categoria.id %> " 
 													
-													<%= locals.DataOld && (categoria === DataOld.category.trim()) ? "selected" : null %>	> 
+													<%= locals.DataOld && (categoria.name === DataOld.category.trim()) ? "selected" : null %>	> 
 													
-													<%= categoria %> </option>
+													<%= categoria.name %> </option>
 
 											<% } %>
 
