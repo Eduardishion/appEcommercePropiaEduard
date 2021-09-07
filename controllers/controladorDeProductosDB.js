@@ -5,6 +5,33 @@ const {validationResult} = require('express-validator');
 //conexion a la base de datos
 const db = require('../database/models');
 
+// const firebase = require('firebase');
+// let packtRef = firebase.storage().ref();
+// let packtImages = packtRef.child('images');
+
+// const firebaseConfig = {
+
+//   apiKey: "AIzaSyCuMpla1Iz5BnIZ4KSRSwqJiunMSmpgTEk",
+
+//   authDomain: "pruebadb-b7c9c.firebaseapp.com",
+
+//   databaseURL: "https://pruebadb-b7c9c-default-rtdb.firebaseio.com",
+
+//   projectId: "pruebadb-b7c9c",
+
+//   storageBucket: "pruebadb-b7c9c.appspot.com",
+
+//   messagingSenderId: "301562266224",
+
+//   appId: "1:301562266224:web:1feeb5418c546727cbaab5",
+
+//   measurementId: "G-LLR9NC5LST"
+
+// };
+
+// firebase.initializeApp(firebaseConfig);
+
+
 
 const controladorDeProductosDB = {
     test: async(req, res) => {
@@ -111,7 +138,7 @@ const controladorDeProductosDB = {
       }
 
     },
-    viewShoppingCart: (req, res) => {
+    vistaCarritoDeCompra: (req, res) => {
       res.render("CarritoCompra");
     },
     guardarProducto: async (req, res) => {
