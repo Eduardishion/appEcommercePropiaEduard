@@ -39,6 +39,9 @@ router.get("/test3", controladorDeProductosDB.test3);
 //api
 router.get("/api", controladorDeProductosDB.viewApi);
 
+//Accion de entrar a la vista de carrito de compra 
+router.get("/carritoCompra", controladorDeProductosDB.vistaCarritoDeCompra);
+
 //Accion de mostrar todos los productos desde ruta rais
 router.get("/listaProductos", authMiddleware , controladorDeProductosDB.listaDeProductos);
 
