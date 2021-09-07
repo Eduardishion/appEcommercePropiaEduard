@@ -5,8 +5,8 @@ const path = require('path');
 
 //express validator
 const validacionesFormProducto = [
-    body('id').notEmpty().withMessage('El campo nombre no debe estar vacio')
-    ,
+    // body('id').notEmpty().withMessage('El campo nombre no debe estar vacio')
+    // ,
     body('name').notEmpty().withMessage('El campo nombre no debe estar vacio')
     ,
     body('category').notEmpty().withMessage('El campo categoria  no debe estar vacio')
