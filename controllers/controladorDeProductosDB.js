@@ -165,14 +165,14 @@ const controladorDeProductosDB = {
 
       }else{
 
-        console.log(errores);
-        
-        //retorno a base de datss si existen errores 
-        const categorias = await db.category.findAll().catch((error) => {
-          console.log('Error de: '+ error);
-        });
-  
-        res.render('registrarProducto', { msgsErrors : errores.mapped(), DataOld  : req.body,  categoriasDB : categorias  } );// otra forma de hacerlo 
+            console.log(errores);
+            
+            //retorno a base de datss si existen errores 
+            const categorias = await db.category.findAll().catch((error) => {
+              console.log('Error de: '+ error);
+            });
+      
+            res.render('registrarProducto', { msgsErrors : errores.mapped(), DataOld  : req.body,  categoriasDB : categorias  } );// otra forma de hacerlo 
 
       }
 
@@ -189,7 +189,6 @@ const controladorDeProductosDB = {
         }).catch((error) => {
           console.log('Error de: '+ error);
         });
-
 
         //envio de datos a vista index
         res.render('listaProductos', { productos: listaProductos});
