@@ -1,7 +1,7 @@
 // https://www.w3schools.com/jsref/prop_style_transform.asp
 // https://developer.mozilla.org/es/docs/Web/CSS/transform-function/scale()
 window.addEventListener('load', function () {
-    console.log("gola mundo desde index ");
+    // console.log("gola mundo desde index ");
 
     const productos = document.querySelectorAll('.articulo.item');
 
