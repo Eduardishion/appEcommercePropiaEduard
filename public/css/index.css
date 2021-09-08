@@ -150,63 +150,36 @@ body{
     background-color:  #ebebeb;
 }
 
-.principal{
-    padding: 10px;
-    width: 90vw;
-    margin: auto;
+
+section.articulosCatalogo{
+    /* border: solid 1pX red; */
+    padding: 5px 10px;
 }
 
-
-.articulo{
-    margin: 0 0 10px;
-    background-color: white;
-
-}
-.descuento{
-    color: #39b54a;
+article.item{
+    /* border: solid 1pX blue;  */
+    width: 48%; 
+    margin-bottom: 10px;
 }
 
-
-main section article i{
-    color: #39b54a;
-    display: block;
-    font-size: 15px;
-    padding: 5px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #39b54a;
-    background-color: #fff;
-    border-radius: 50%;
-    /* position: absolute;
-    right: 50px;   
-     top:-15px; */
-
+article.item a{
+    text-decoration: none;
+    color: black;
 }
+
 
 .descripcionProducto{
     background-color: white;
     border-top: solid 1px  #ebebeb;
-    padding: 20px;
-}
-.titulares{
-    font-size: 24px;
+    /* border: solid 1pX violet; */
 }
 
-.precios{
-    font-size: 18px;
-    width: 30%;
+.descripcionProducto p{
+    font-size: 12px;
+    padding: 3px 10px;
+    margin: 0;
 }
 
-.descuento{
-    font-size: 16px;
-    width: 70%;
-}
-
-.descripcion{
-    font-size: 16px;
-    width: 100%;
-    padding: 20px 0;
-}
 
 
 /* ------------------------area principal -------------------------------------- */
@@ -289,6 +262,22 @@ main section article i{
 
 
     /*-------------------barra de navegacion--------------------*/
+
+    /*-------------------area principal-------------------------*/
+
+    #areaPrincipal.principal{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    section.articulosCatalogo{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+    }
+    /*-------------------area principal-------------------------*/
+
     /* ------------------------ footer ----------------------------------------*/
    
     #piePagina{
@@ -396,7 +385,13 @@ main section article i{
         justify-content: space-around;
     }
     /* ------------------------encabeado----------------------------------- */
+    /*------------------------princplal----------------------------------*/
 
+        article.item{
+            /* border: solid 1pX blue;  */
+            width: 23%; 
+        }
+    /*------------------------princplal----------------------------------*/
     /* ------------------------ footer ----------------------------------------*/
     #piePagina ul{
         flex-direction: row;
@@ -429,7 +424,9 @@ main section article i{
     #areaPrincipal{
         max-width: 1200px;
     }
- 
+    /* section.articulosCatalogo{
+        width: 100%;
+    } */
 }
 
 
