@@ -3,25 +3,44 @@
     <%- include('partials/encabesado.ejs') %>
     <body>
         <%- include('partials/cabecera.ejs') %>
-        <main id="areaPrincipal">
+        <main id="areaPrincipal" class="principal">
             <section>
             </section>
-            <section id="articulos">
+            <h2>Ofertas</h2>
+            <section id="articulos" class="articulosCatalogo">
                 <% for(let i= 0; i< productos.length ; i++){ %> 
-                    <article class="articulo">
-                        <img src="/images/imagenesDeProductos/<%= productos[i].image %>" alt="" srcset="">
-                        <div class="envio"><i class="fas fa-truck"></i></div>
-                        <div class="descripcionProducto">
-                            <p class="precios">$<%= productos[i].name %></p>
-                            <p class="descuento"><%= productos[i].discount %> % off</p>
-                            <h3 class="descripcion"><%= productos[i].description %></h3>
-                        </div>
-                        <div class="efecto"></div>
+                    
+                        <article class="articulo item">
+                            <a href="/productos/detalleProducto/<%= productos[i].id %> ">
+                                <img src="/images/imagenesDeProductos/<%= productos[i].image[0].name %>" alt="" srcset="">
+                                <div class="descripcionProducto">
+                                    <p ><strong>$<%= productos[i].price %></strong> </p>
+                                    <p ><%= productos[i].discount %> % off</p>
+                                </div>
+                                <div class="efecto"></div>
+                            </a>
+                        </article>
+                    
+                <%}%>
+            </section>
+            <h2>Remate</h2>
+            <section id="articulos" class="articulosCatalogo">
+                <% for(let i= 0; i< productos.length ; i++){ %> 
+                    <article class="articulo item">
+                        <a href="/productos/detalleProducto/<%= productos[i].id %> ">
+                            <img src="/images/imagenesDeProductos/<%= productos[i].image[0].name %>" alt="" srcset="">
+                            <div class="descripcionProducto">
+                                <p ><strong>$<%= productos[i].price %></strong> </p>
+                                <p ><%= productos[i].discount %> % off</p>
+                            </div>
+                            <div class="efecto"></div>
+                        </a>
                     </article>
                 <%}%>
             </section>
         </main>
         <!-- vista parcial de Footer -->
         <%- include('partials/pie.ejs') %>
+        <script src="/js/index.js"></script>
     </body>
 </html>
