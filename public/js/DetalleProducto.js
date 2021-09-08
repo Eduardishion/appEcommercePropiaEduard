@@ -1,6 +1,7 @@
 window.addEventListener('load', function () {
-    console.log("hola desde script para detalle..");
+    // console.log("hola desde script para detalle..");
 
+   /*---------------------------para galeria de imagenes ----------------------------------- */
 
     let enlaces = document.querySelectorAll('a.enlaceIma');
     
@@ -36,9 +37,9 @@ window.addEventListener('load', function () {
             contador = i;
 	    	// console.log(imaPrin);
 
-            console.log("a#enlace"+(i+1));
+            // console.log("a#enlace"+(i+1));
             let enlace = document.querySelector("a#enlace"+(i+1));
-            console.log(enlace);
+            // console.log(enlace);
             enlace.style.border = "thick solid #EF0000";
 
 	    	
@@ -46,14 +47,13 @@ window.addEventListener('load', function () {
 
         enlaces[i].addEventListener('mouseout', function () {
             let enlace = document.querySelector("a#enlace"+(i+1));
-            console.log(enlace);
+            // console.log(enlace);
             enlace.style.border = "solid 1px black";
         });
 
     }
 
-   
- 
+
 
     // console.log(imagenes);
 
@@ -62,7 +62,7 @@ window.addEventListener('load', function () {
 
     let fechaI = document.querySelector('a#left');
     fechaI.addEventListener('click', function () {
-        console.log("se dio clic en flecha I");
+        // console.log("se dio clic en flecha I");
         let imaPrin = document.querySelector('#imaPrin');
         contador--;
         if(contador < 0){
@@ -80,7 +80,7 @@ window.addEventListener('load', function () {
     let fechaD = document.querySelector('a#rigth');
     
     fechaD.addEventListener('click', function () {
-        console.log("se dio clic en flecha D");
+        // console.log("se dio clic en flecha D");
         let imaPrin = document.querySelector('#imaPrin');
         contador++;
         if(contador > imagenes.length-1){
@@ -89,7 +89,42 @@ window.addEventListener('load', function () {
         imaPrin.src = imagenes[contador];
     });
     
+    /*---------------------------para galeria de imagenes ----------------------------------- */
+    
 
- 
 
+    /*---------------------------cantidad de productos----------------------------------- */
+    let numProduct = document.querySelector('input#numProduct');
+    // console.log(numProduct);
+    let mas   = document.querySelector('a#mas');
+    let menos = document.querySelector('a#menos');
+
+    // if(numProduct.value == ''){
+    //     numProduct.value = 0;
+    // }
+
+    mas.addEventListener('click', function () {
+        // console.log("se si clic a mas ");
+        // let cantidad =  numProduct.value;
+        // console.log(cantidad);
+        let operacion = parseInt(numProduct.value) + 1;
+        numProduct.value = operacion;
+    });
+
+    menos.addEventListener('click', function () {
+        // console.log("se si clic a menos");
+        let operacion = parseInt(numProduct.value) - 1;
+        numProduct.value = operacion;
+
+        if(parseInt(numProduct.value) < 0){
+            numProduct.value = 0;
+        }
+    });
+    /*---------------------------cantidad de productos----------------------------------- */
+
+
+
+
+
+                                                 
 });

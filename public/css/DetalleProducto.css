@@ -123,9 +123,13 @@ img{
 }
 
 #cantidad{
-    width: 70px;
+    width: 80px;
     padding: 3px;
     border: solid 1px black;
+}
+
+#numProduct{
+    width: 30px;
 }
 
 .botonPrimario{
@@ -190,6 +194,7 @@ img{
     #cantidad{
         display: flex;
         justify-content: space-around;
+        align-items: center;
     }
     /* ----costo a pagar--- */
 }

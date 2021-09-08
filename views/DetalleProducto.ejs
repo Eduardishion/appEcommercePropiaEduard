@@ -102,9 +102,21 @@
                     <p>Stock: <%= producto.stock %></p>
                     <p>Cantidad:</p>
                     <div id="cantidad">
-                        <div>-</div>
-                        <div>10</div>
-                        <div>+</div>
+                        <div>
+                            <a id="menos">
+                                <strong>
+                                    - 
+                                </strong>
+                            </a>
+                        </div>
+                        <div><input type="text" name="" id="numProduct" value="0"></div>
+                        <div>
+                            <a id="mas">
+                                <strong>
+                                    + 
+                                </strong>
+                            </a>
+                        </div>
                     </div>
                     <br>
                     <button class="botonPrimario">Agregar a carrito</button>
