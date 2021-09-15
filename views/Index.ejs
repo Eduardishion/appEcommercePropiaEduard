@@ -9,9 +9,8 @@
             <h2>Ofertas</h2>
             <section id="articulos" class="articulosCatalogo">
                 <% for(let i= 0; i< productos.length ; i++){ %> 
-                    
                         <article class="articulo item">
-                            <a href="/productos/detalleProducto/<%= productos[i].id %> ">
+                            <a href="/productos/detalleProducto/<%= productos[i].id %> "></a>
                                 <img src="/images/imagenesDeProductos/<%= productos[i].image[0].name %>" alt="" srcset="">
                                 <div class="descripcionProducto">
                                     <p ><strong>$<%= productos[i].price %></strong> </p>
