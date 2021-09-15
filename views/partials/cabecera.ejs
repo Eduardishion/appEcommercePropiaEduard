@@ -13,21 +13,27 @@
     </div>
     <div id="logos">
         <a href="/productos/listaProductos"><img  id="addProduct" src="/images/imagenesIndex/add_white_24dp.svg"/></a>
-        <a href="/usuarios/listaUsuarios"><img  id="logoShop" src="/images/imagenesIndex/person_add_white_24dp.svg"/></a>
-        <a href=""><img  id="logoSearch" src="/images/imagenesIndex/search_white_24dp.svg"/></a>
+        <!-- <a href="/usuarios/listaUsuarios"><img  id="logoShop" src="/images/imagenesIndex/person_add_white_24dp.svg"/></a> -->
+        <!-- <a href=""><img  id="logoSearch" src="/images/imagenesIndex/search_white_24dp.svg"/></a> -->
             <a href="">
                 <label for="desplegar2">
+
                     <img  id="logoShop" src="/images/imagenesIndex/shopping_cart_white_24dp.svg"/>
+                    
                 </label>
+                <p style="color: white" id="contadorProductos"> 0 </p>
             </a>
-        <a href="/usuarios/loginUsuario"> 
+
+        <!-- <a href="/usuarios/loginUsuario"> 
             <img  id="logoShop" src="/images/imagenesIndex/perm_identity_white_24dp.svg"/>
-        </a>
+        </a> -->
         <strong>
             <% if(locals.estaLoguado){ %>
                     <% if(locals.usuarioLogeado){ %>
                         <div class="miniaturaImage user minheader">
-                            <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
+                            <a href="/usuarios/perfilDeUsuario">
+                                <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
+                            </a>
                         </div>
                     <% } %>
                 <a href="/usuarios/cierreSession"> Cerrar session </a>
