@@ -1,130 +1,161 @@
 window.addEventListener('load', function () {
-    // console.log("hola desde script para detalle..");
 
-   /*---------------------------para galeria de imagenes ----------------------------------- */
-
+    //obtenemos todos los enlaces
     let enlaces = document.querySelectorAll('a.enlaceIma');
-    
 
-    // referencia
-    // https://www.codegrepper.com/code-examples/javascript/javascript+how+to+get+image+src
-    // https://www.codegrepper.com/code-examples/javascript/get+image+from+javascript
-    // https://www.w3schools.com/jsref/dom_obj_all.asp
-    // https://www.w3schools.com/jsref/dom_obj_all.asp
-
-
-    // console.log(enlaces.length);
-
+    //para control de flechas en galeria de imagenes 
     const imagenes = [];
     let contador = 0 ;
 
+    //recorremos todos los enlaces para aplicar un evento a cada uno 
     for (let i = 0; i < enlaces.length; i++) {
-        // console.log(enlaces[i]);   
+        
+        //guardamos las rutas de todas las imagenes de los enlaces existenes 
         imagenes .push(enlaces[i].childNodes[1].currentSrc);
-
+        
+        //aplicamos un evento para dectar el paso del mouse por el enlace 
         enlaces[i].addEventListener('mouseover', function () {
-    	// body...
-	    	// console.log('has pasado por el enlace');
-	    	// console.log(enlaces[i].children);
 
-	    	//console.log(enlaces[i].childNodes[1].currentSrc);
-	    	
-	    	//imaPrin.src="../template/save.png";
-
-	    	//console.log('#imaSec'+1);	
+            //cambiamos la ruta de la imagen que queremos mostrar en el apartado de imagen principal 
 	    	let imaPrin = document.querySelector('#imaPrin');
 	    	imaPrin.src = enlaces[i].childNodes[1].currentSrc;
-            contador = i;
-	    	// console.log(imaPrin);
 
-            // console.log("a#enlace"+(i+1));
+            //al pasar por el enlace aplicamos un estilo para identificar que imagen a sido seleccionado 
             let enlace = document.querySelector("a#enlace"+(i+1));
-            // console.log(enlace);
+            //console.log(enlace);
             enlace.style.border = "thick solid #EF0000";
-
-	    	
+	
 	    });
 
+         //aplicamos un evento para dectar cuando sale del enlace 
         enlaces[i].addEventListener('mouseout', function () {
+            //aplicamos un estilo de borde 
             let enlace = document.querySelector("a#enlace"+(i+1));
-            // console.log(enlace);
+            //console.log(enlace);
             enlace.style.border = "solid 1px black";
         });
-
     }
 
+    //deteccion de clic en flechas de derecha e iquierda 
 
+      //movimiento hacia atras de imagen 
+      let max = imagenes.length;
 
-    // console.log(imagenes);
-
-    //movimiento hacia atras de imagen 
-    let max = imagenes.length;
-
-    let fechaI = document.querySelector('a#left');
-    fechaI.addEventListener('click', function () {
-        // console.log("se dio clic en flecha I");
-        let imaPrin = document.querySelector('#imaPrin');
-        contador--;
-        if(contador < 0){
-            contador = max-1;
-        }
-        imaPrin.src = imagenes[contador];
-
-    
-
-    });
-
-    //movimiento hacia delante de imagenes 
-    let min = 0;
-
-    let fechaD = document.querySelector('a#rigth');
-    
-    fechaD.addEventListener('click', function () {
-        // console.log("se dio clic en flecha D");
-        let imaPrin = document.querySelector('#imaPrin');
-        contador++;
-        if(contador > imagenes.length-1){
-            contador = min;
-        }
-        imaPrin.src = imagenes[contador];
-    });
-    
-    /*---------------------------para galeria de imagenes ----------------------------------- */
+      let fechaI = document.querySelector('a#left');
+      fechaI.addEventListener('click', function () {
+          //console.log("se dio clic en flecha I");
+          let imaPrin = document.querySelector('#imaPrin');
+          contador--;
+          if(contador < 0){
+              contador = max-1;
+          }
+          imaPrin.src = imagenes[contador];
+  
+      
+  
+      });
+  
+      //movimiento hacia delante de imagenes 
+      let min = 0;
+  
+      let fechaD = document.querySelector('a#rigth');
+      
+      fechaD.addEventListener('click', function () {
+          //console.log("se dio clic en flecha D");
+          let imaPrin = document.querySelector('#imaPrin');
+          contador++;
+          if(contador > imagenes.length-1){
+              contador = min;
+          }
+          imaPrin.src = imagenes[contador];
+      });
+      
     
 
 
-    /*---------------------------cantidad de productos----------------------------------- */
-    let numProduct = document.querySelector('input#numProduct');
-    // console.log(numProduct);
-    let mas   = document.querySelector('a#mas');
-    let menos = document.querySelector('a#menos');
+    /**-------------------------------para cantidad de productos----------------------------------  */
+      let mas = document.querySelector('a#mas');
 
-    // if(numProduct.value == ''){
-    //     numProduct.value = 0;
-    // }
+      mas.addEventListener('click', function () {
+      	// console.log('dio en mas ');
+      	let numProductcantidad = document.querySelector('input#numProduct');
+      	// console.log(numProductcantidad.value);
+      	numProductcantidad.value = parseInt(numProductcantidad.value) + 1 ;
 
-    mas.addEventListener('click', function () {
-        // console.log("se si clic a mas ");
-        // let cantidad =  numProduct.value;
-        // console.log(cantidad);
-        let operacion = parseInt(numProduct.value) + 1;
-        numProduct.value = operacion;
+      });
+
+
+      let menos = document.querySelector('a#menos');
+
+      menos.addEventListener('click', function () {
+      	// console.log('dio en menos ');
+      	let numProductcantidad = document.querySelector('input#numProduct');
+      	numProductcantidad.value = parseInt(numProductcantidad.value) - 1 ;
+
+      	if(numProductcantidad.value < 1){
+      		numProductcantidad.value = 1;
+      	}
+      });
+    /**-------------------------------para cantidad de productos----------------------------------  */
+
+
+
+  
+    /**-------------------------------para agregar a carrito de compras----------------------------------  */
+
+
+    let listaProductosSeleccinados = [];
+
+    if(localStorage.getItem('listaProductosSeleccinados') != null){
+
+    	// console.log('si exite variable');
+    	listaProductosSeleccinados = JSON.parse(localStorage.getItem('listaProductosSeleccinados'));
+      	//console.log(listaProductosSeleccinados);
+   	}
+    // else{
+   	// 	// listaProductosSeleccinados = [];
+   	// }
+
+
+    const botonAgregarCarrito = document.querySelector('button#agregarCarrito');
+    // console.log(botonAgregarCarrito);
+
+    botonAgregarCarrito.addEventListener('click', function () {
+
+   
+
+        const idProducto = document.querySelector('strong#idProducto');
+        const nombreProducto = document.querySelector('h2#nombreProducto');
+        const precioProducto = document.querySelector('h4#precioProducto');
+        const descuentoProducto = document.querySelector('h5#descuentoProducto');
+        const numProductcantidad = document.querySelector('input#numProduct');
+        const imagenProducto = document.querySelector('img#imaPrin');
+
+        // console.log(imagenProducto.src); 
+
+
+        const productoSeleccionado = {
+        	id: parseInt(idProducto.innerText),
+        	nombre: nombreProducto.innerText,
+        	precio : parseFloat(precioProducto.innerText),
+        	descuento : parseFloat(descuentoProducto.innerText),
+        	cantidad : parseFloat(numProductcantidad.value),
+          imagen: imagenProducto.src
+        };
+        
+        // console.log(typeof listaProductosSeleccinados);
+
+        listaProductosSeleccinados.push(productoSeleccionado);
+
+       	localStorage.setItem('listaProductosSeleccinados', JSON.stringify(listaProductosSeleccinados));
+
+        location.reload();
     });
 
-    menos.addEventListener('click', function () {
-        // console.log("se si clic a menos");
-        let operacion = parseInt(numProduct.value) - 1;
-        numProduct.value = operacion;
+  
+    /**-------------------------------para agregar a carrito de compras----------------------------------  */
 
-        if(parseInt(numProduct.value) < 0){
-            numProduct.value = 0;
-        }
-    });
-    /*---------------------------cantidad de productos----------------------------------- */
+    
 
 
-
-
-
-                                                 
 });
