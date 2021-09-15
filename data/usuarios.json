@@ -53,5 +53,16 @@
     "image": "imagenUsuario-1628616171809.png",
     "registrationDate": "10/08/21",
     "checkInTime": "12:22 PM"
+  },
+  {
+    "id": 42786,
+    "firstName": "lalo",
+    "lastName": "aasas",
+    "email": "lalo@gmail.com",
+    "password": "$2a$10$jJXQHgH6JDdC1jJeoCCPGeeJU.8YCoDjo.HQ1zOq3Hw1PA.vpNd6C",
+    "category": " Administrador ",
+    "image": "imagenUsuario-1631396539914.gif",
+    "registrationDate": "11/09/21",
+    "checkInTime": "16:42 PM"
   }
 ]
