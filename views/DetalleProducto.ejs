@@ -51,13 +51,20 @@
             <!-- area descripcion -->
                 <article id="descripcionProducto">
                     <strong>
-                        <h2>
+                        <h2 id="nombreProducto">
                             <%= producto.name %> 
                         </h2>
                     </strong>
-                    <h4>
-                        ID referencia: <%=  producto.id %> 
-                    </h4>
+                    <span>
+                        <!-- <h4 >
+                            ID referencia: 
+                        </h4> -->
+                        <p> ID referencia: 
+                            <strong id="idProducto">
+                                <%=  producto.id %> 
+                            </strong>
+                        </p>
+                    </span>
                     <div id="grados">
                         <div id="puntaje">
                             <img src="/images/imagenesDetalleProducto/grade_black_24dp.svg" alt="" srcset="">
@@ -95,8 +102,8 @@
                 </article>
                 <article id="CostoApagar">
                     <div id="precios">
-                        <h4><%= producto.price %>$</h4>
-                        <h5><%= producto.discount %>$</h5>
+                        <h4 id="precioProducto"><%= producto.price %></h4>$
+                        <h5 id="descuentoProducto"><%= producto.discount %></h5>$
                         <h6><%= producto.discountRate %>%</h6>
                     </div>
                     <p>Stock: <%= producto.stock %></p>
@@ -109,7 +116,7 @@
                                 </strong>
                             </a>
                         </div>
-                        <div><input type="text" name="" id="numProduct" value="0"></div>
+                        <div><input type="text" name="" id="numProduct" value="1" readonly></div>
                         <div>
                             <a id="mas">
                                 <strong>
@@ -119,7 +126,7 @@
                         </div>
                     </div>
                     <br>
-                    <button class="botonPrimario">Agregar a carrito</button>
+                    <button class="botonPrimario" id="agregarCarrito">Agregar a carrito</button>
                 </article>
             <!-- area descripcion -->
             </section>
