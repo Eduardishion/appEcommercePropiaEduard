@@ -42,7 +42,7 @@ const validacionesFormProducto = [
             return false;
         }else{
             let bandera = false;
-            let extencionesAceptadas = ['.jpg', '.png', '.webp'];
+            let extencionesAceptadas = ['.jpg', '.png', '.webp', '.gif'];
 
             for (let i = 0; i < req.files.length; i++) {
                 let fileExtension = path.extname(req.files[i].originalname);

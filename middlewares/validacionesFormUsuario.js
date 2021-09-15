@@ -23,7 +23,7 @@ const validacionesFormUsuario = [
             throw new Error('No debes dejar vacio el campo de imagen...');
             return false;
         }else{
-            let extencionesAceptadas = ['.jpg', '.png', '.webp'];
+            let extencionesAceptadas = ['.jpg', '.png', '.webp', '.gif'];
             let fileExtension = path.extname(req.file.originalname);
 
             if(!extencionesAceptadas.includes(fileExtension)){
