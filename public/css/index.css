@@ -93,6 +93,15 @@ img{
     color: white; 
 }
 
+#contadorProductos{
+    color: white;
+    background-color: red;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 10px;
+}
+
+
 /* ---------------menu verical---------------- */
 
 
@@ -260,7 +269,16 @@ article.item a{
         width: 15px;
     }
 
+    #cart{
+        display: flex;
+        flex-direction: row;
+    }
 
+    #sesiones{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
     /*-------------------barra de navegacion--------------------*/
 
     /*-------------------area principal-------------------------*/
