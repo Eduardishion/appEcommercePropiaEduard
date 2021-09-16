@@ -572,8 +572,7 @@ let modeloDeProductos = {
  
          //console.log(imagenes);
          return imagenes;
-     }
- 
+     },
       
 };
 
