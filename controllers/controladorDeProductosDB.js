@@ -1,5 +1,7 @@
+const fs = require('fs').promises;
+const path = require('path');
 //modelo de productos
-const modeloDeProductos = require('../models/modeloDeProductos');
+// const modeloDeProductos = require('../models/modeloDeProductos');
 //destructuracion para usar objeto validator 
 const {validationResult} = require('express-validator');
 //conexion a la base de datos
@@ -73,6 +75,42 @@ const controladorDeProductosDB = {
       }).catch((error) => {
         console.log('Error de: '+error);
       })
+
+
+    },
+    objetByDB: function (req) {
+      //objeto para fechas 
+      const fecha = new Date();
+
+      //para obtener la fecha con formato 
+      const map = {
+           dd: fecha.getDate(),
+           mm:  fecha.getMonth()+1 <= 9 ? '0'+(fecha.getMonth()+1) : (fecha.getMonth()+1),     //podriamos arreglar que agregue un cero en el mes
+           yy: fecha.getFullYear().toString(),
+           yyyy: fecha.getFullYear()
+      }
+
+ 
+     
+      // console.log('yy-mm-dd'.replace(/yy|mm|dd|yyy/gi, matched => map[matched]));
+       const productoTmp = {
+               name: req.body.name,
+               category_id: req.body.category,
+               price: parseInt(req.body.price),
+               discountRate: parseInt(req.body.discountRate),
+               discount: parseInt(((req.body.price-(req.body.discountRate/100)*req.body.price))), //precio a pagar menos el descuento
+               stock: parseInt(req.body.stock),
+               description: req.body.description,
+               // image: imagenes[0],     //para imagen principal 
+               // imagesSec: imagenes,    //para imagenes secundarias
+               features: req.body.features,
+               //extras fecha de registro, hora de registro y usuario que hio el registro 
+               registrationDate: 'yy-mm-dd'.replace(/yy|mm|dd|yyy/gi, matched => map[matched]),
+               // checkInTime: fecha.getHours()+":"+fecha.getMinutes()+" "+(fecha.getHours() >= 12 ? 'PM' : 'AM'),
+               userWhoRegistered: req.body.userWhoRegistered
+       };
+
+       return productoTmp;
 
 
     },
@@ -154,7 +192,7 @@ const controladorDeProductosDB = {
       if(errores.isEmpty()){
               
               //crear objeto temporal
-              const productTmp = modeloDeProductos.objetByDB(req);
+              const productTmp = controladorDeProductosDB.objetByDB(req);
 
               // creacion de registro en base de datos
               const producto  = await db.product.create(productTmp).catch((error) => {
@@ -164,7 +202,7 @@ const controladorDeProductosDB = {
               // console.log(product.id);
               
               //arreglo de nombres de imagenes 
-              const namesimagenes = modeloDeProductos.imagesByDb(req);
+              const namesimagenes = controladorDeProductosDB.imagesByDb(req);
 
               // creacion de registro de imagenes de cada producto      
               for (const nameIma of namesimagenes) {
@@ -258,7 +296,7 @@ const controladorDeProductosDB = {
       if(errores.isEmpty()){
           
           //crear objeto temporal
-          const productTmp = await modeloDeProductos.objetByDBPut(req);
+          const productTmp = await controladorDeProductosDB.objetByDBPut(req);
           console.log(productTmp);
 
 
@@ -287,7 +325,7 @@ const controladorDeProductosDB = {
           //elimiando imagenes de producto en carpeta para guardar las nuevas y no almecenar las primera cargadas al crear el producto 
           for(let i= 0 ; i< productoEncontrado.image.length ;i++){
             console.log(productoEncontrado.image[i].name);
-            modeloDeProductos.eliminarArchivoImagen(productoEncontrado.image[i].name);
+            controladorDeProductosDB.eliminarArchivoImagen(productoEncontrado.image[i].name);
           }
 
 
@@ -304,7 +342,7 @@ const controladorDeProductosDB = {
 
           //ahora insertamos las nuevas imagenes que vienen del formulario de actulisacion 
           //arreglo de nombres de imagenes 
-          const namesimagenes = modeloDeProductos.imagesByDb(req);
+          const namesimagenes = controladorDeProductosDB.imagesByDb(req);
 
           // creacion de registro de imagenes de cada producto      
           for (const nameIma of namesimagenes) {
@@ -360,7 +398,7 @@ const controladorDeProductosDB = {
         //elimiando imagenes de producto en carpeta 
         for(let i= 0 ; i< productoEncontrado.image.length ;i++){
           console.log(productoEncontrado.image[i].name);
-          modeloDeProductos.eliminarArchivoImagen(productoEncontrado.image[i].name);
+          controladorDeProductosDB.eliminarArchivoImagen(productoEncontrado.image[i].name);
         }
 
         
@@ -401,6 +439,95 @@ const controladorDeProductosDB = {
           
         
     },
+    objetByDBPut: async function (req) {
+      //objeto para fechas 
+      const fecha = new Date();
+
+      //para obtener la fecha con formato 
+      const map = {
+           dd: fecha.getDate(),
+           mm:  fecha.getMonth()+1 <= 9 ? '0'+(fecha.getMonth()+1) : (fecha.getMonth()+1),     //podriamos arreglar que agregue un cero en el mes
+           yy: fecha.getFullYear().toString(),
+           yyyy: fecha.getFullYear()
+      }
+
+       const categoriaE = await db.category.findAll({
+           where: {
+               name: req.body.category.trim()
+           }
+       }).catch((error) => {
+         console.log('Error de: '+ error);
+       });
+
+       // console.log(categoriaE);
+       // console.log(categoriaE[0].id);
+       
+      // console.log('yy-mm-dd'.replace(/yy|mm|dd|yyy/gi, matched => map[matched]));
+       const productoTmp = {
+               name: req.body.name,
+               category_id: categoriaE[0].id,
+               price: parseInt(req.body.price),
+               discountRate: parseInt(req.body.discountRate),
+               discount: parseInt(((req.body.price-(req.body.discountRate/100)*req.body.price))), //precio a pagar menos el descuento
+               stock: parseInt(req.body.stock),
+               description: req.body.description,
+               // image: imagenes[0],     //para imagen principal 
+               // imagesSec: imagenes,    //para imagenes secundarias
+               features: req.body.features,
+               //extras fecha de registro, hora de registro y usuario que hio el registro 
+               registrationDate: 'yy-mm-dd'.replace(/yy|mm|dd|yyy/gi, matched => map[matched]),
+               // checkInTime: fecha.getHours()+":"+fecha.getMinutes()+" "+(fecha.getHours() >= 12 ? 'PM' : 'AM'),
+               userWhoRegistered: req.body.userWhoRegistered
+       };
+
+       return productoTmp;
+
+
+   },
+   imagesByDb:function (req) {
+       //para validar se han cargado imagenes desde el formulario
+       const imagenes = [];
+       // req.files.imageProducto[0].filename
+       if(req.files){
+           //imagenes 
+           // console.log(req.files);
+           
+           req.files.forEach( imagen => {
+               // console.log(imagen);
+               imagenes.push(imagen.filename);
+           });
+
+       }else{
+           imagenes = [];
+       }
+
+       //console.log(imagenes);
+       return imagenes;
+   },
+   eliminarArchivoImagen: function (nombreImagen) {
+
+    let rutaImagen = path.join(__dirname,'../public/images/imagenesDeProductos/'+nombreImagen);
+
+     //console.log(rutaImagen);
+     fs.unlink(rutaImagen).then( ()=>{
+        console.log('Se elimino archivo de imagen... al actuliar datos');
+     }).catch( err =>{
+        console.error('No se pudo eliminar el archivo no exite',err);
+     });
+    
+    
+    
+    // //validacion para saber si existe el archivo o no 
+    // if(fs.existsSync(rutaImagen)){
+    //     //si existe lo elimina
+    //     console.log("Eliminanado...");
+
+       
+    // }else{
+    //     console.log("El archivo NO EXISTE!");
+    // }
+    
+  },
 }
   
 module.exports = controladorDeProductosDB;
