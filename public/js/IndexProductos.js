@@ -29,22 +29,22 @@ window.addEventListener('load', function () {
 
     /*----------------------animacion de productos al pasar mouse------------------------*/
     //https://www.tech-wiki.online/es/add-click-event-to-dom-list.html
-    // const productos = document.querySelectorAll('.articulo.item');
+    const productos = document.querySelectorAll('.articulo.item');
 
-    // for (let i = 0; i < productos .length; i++) {
+    for (let i = 0; i < productos .length; i++) {
         
-    //     productos[i].addEventListener('mouseover', function () {
-    //         //  console.log('has pasado por encima de producto');
-    //          productos[i].style.transform = "scale(1.1)";
+        productos[i].addEventListener('mouseover', function () {
+            //  console.log('has pasado por encima de producto');
+             productos[i].style.transform = "scale(1.1)";
              
-    //     });
+        });
 
-    //     productos[i].addEventListener('mouseout', function () {
-    //         // console.log('has pasado por encima de producto');
-    //         productos[i].style.transform = "scale(1)";
+        productos[i].addEventListener('mouseout', function () {
+            // console.log('has pasado por encima de producto');
+            productos[i].style.transform = "scale(1)";
             
-    //    });
-    // }
+       });
+    }
 
     /**
      * manera optimisada sin agregar event listener a cada elemento con un solo al elemento lista 
@@ -56,40 +56,40 @@ window.addEventListener('load', function () {
      */
 
     // // const productos = document.getElementById("articulos");
-     const productos = document.querySelector('#articulos');
+    //  const productos = document.querySelector('#articulos');
 
     
     // console.log(productos);
 
-    productos.addEventListener('mouseover', function(e){
+    // productos.addEventListener('mouseover', function(e){
 
-        console.log(e.target.classList.contains('article'));
-        // if (e.target !== this)) {
-        //     console.log('si exite ');
-        // }
+    //     console.log(e.target.classList.contains('article'));
+    //     // if (e.target !== this)) {
+    //     //     console.log('si exite ');
+    //     // }
 
-        // if (e.target !== this) {
-        //     // Código que se ejecuta al hacer click.
-        //     e.target.style.transform = "scale(1.1)";
-        // }
-        // if (e.target.tagName === 'ARTICLE') {
-        if (e.target.classList.contains('.articulo.item')) {
-            // Código que se ejecuta al hacer click.
-            e.target.style.transform = "scale(1.1)";
-        }
+    //     // if (e.target !== this) {
+    //     //     // Código que se ejecuta al hacer click.
+    //     //     e.target.style.transform = "scale(1.1)";
+    //     // }
+    //     // if (e.target.tagName === 'ARTICLE') {
+    //     if (e.target.classList.contains('.articulo.item')) {
+    //         // Código que se ejecuta al hacer click.
+    //         e.target.style.transform = "scale(1.1)";
+    //     }
 
-    });
+    // });
 
-    productos.addEventListener('mouseout', function(e){
-        // if (e.target !== this) {
-        //     // Código que se ejecuta al hacer click.
-        //     e.target.style.transform = "scale(1)";
-        // }
-        if (e.target.classList.contains('.articulo.item')) {
-            // Código que se ejecuta al hacer click.
-            e.target.style.transform = "scale(1)";
-        }
-    });
+    // productos.addEventListener('mouseout', function(e){
+    //     // if (e.target !== this) {
+    //     //     // Código que se ejecuta al hacer click.
+    //     //     e.target.style.transform = "scale(1)";
+    //     // }
+    //     if (e.target.classList.contains('.articulo.item')) {
+    //         // Código que se ejecuta al hacer click.
+    //         e.target.style.transform = "scale(1)";
+    //     }
+    // });
 
 
 
