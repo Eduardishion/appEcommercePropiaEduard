@@ -107,6 +107,10 @@ img{
 #grados{
     border: solid 1px white;
 }
+
+/* a#mas > strong ,a#menos > strong{
+    color: red;
+} */
 /* ----descripcion producto--- */
 
 /* ----costo a pagar--- */
