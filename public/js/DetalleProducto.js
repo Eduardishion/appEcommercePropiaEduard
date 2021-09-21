@@ -51,8 +51,6 @@ window.addEventListener('load', function () {
           }
           imaPrin.src = imagenes[contador];
   
-      
-  
       });
   
       //movimiento hacia delante de imagenes 
@@ -120,9 +118,9 @@ window.addEventListener('load', function () {
     const botonAgregarCarrito = document.querySelector('button#agregarCarrito');
     // console.log(botonAgregarCarrito);
 
-    botonAgregarCarrito.addEventListener('click', function () {
+    botonAgregarCarrito.addEventListener('click', function (e) {
 
-   
+        // e.preventDefault();
 
         const idProducto = document.querySelector('strong#idProducto');
         const nombreProducto = document.querySelector('h2#nombreProducto');
@@ -140,22 +138,52 @@ window.addEventListener('load', function () {
         	precio : parseFloat(precioProducto.innerText),
         	descuento : parseFloat(descuentoProducto.innerText),
         	cantidad : parseFloat(numProductcantidad.value),
-          imagen: imagenProducto.src
+            imagen: imagenProducto.src
         };
         
         // console.log(typeof listaProductosSeleccinados);
+        //validacion si ya exite el producto ya no cargarlo al carrito 
 
-        listaProductosSeleccinados.push(productoSeleccionado);
+        let productoEncontrado = listaProductosSeleccinados.find( (producto) => {
+            return producto.id == parseInt(idProducto.innerText);
+        });
 
-       	localStorage.setItem('listaProductosSeleccinados', JSON.stringify(listaProductosSeleccinados));
+        console.log("----------->>>>"+productoEncontrado);
 
-        location.reload();
+        if(productoEncontrado == undefined){
+            // console.log("no existe");
+            listaProductosSeleccinados.push(productoSeleccionado);
+
+            localStorage.setItem('listaProductosSeleccinados', JSON.stringify(listaProductosSeleccinados));
+
+            location.reload();
+        }else{
+            alert("Este producto ya esta agregado a tu lista de productos");
+        }
+        
+       	
     });
 
   
     /**-------------------------------para agregar a carrito de compras----------------------------------  */
 
     
+    /**********************************expira local storage------------------------------------------------- */
 
+
+    // There's no built-in way to expire values in storage. One solution is to store a timestamp, then in each visit
+    // compare the stored time (if there is one) against the local time to determine if the value has expired. Example:
+
+    // const expirationDuration = 1000 * 60 * 60 * 12; // 12 hours
+
+    // const prevAccepted = localStorage.getItem("accepted");
+    // const currentTime = new Date().getTime();
+
+    // const notAccepted = prevAccepted == undefined;
+    // const prevAcceptedExpired = prevAccepted != undefined && currentTime - prevAccepted > expirationDuration;
+    // if (notAccepted || prevAcceptedExpired) {
+    //     alert("Disclaimer: ...");
+    //     localStorage.setItem("accepted", currentTime);
+    // }
 
 });
