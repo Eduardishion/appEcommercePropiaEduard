@@ -16,10 +16,6 @@ window.addEventListener('load', function (e) {
             botonCrear.addEventListener('click', function (event) {
 
 
-                // event.preventDefault();
-
-                
-
                 const name = document.querySelector('input#name');
                 const category = document.querySelector('select#SelectOp').selectedIndex;
                 const price = document.querySelector('input#price');
@@ -46,46 +42,57 @@ window.addEventListener('load', function (e) {
                             
                 //creamos un atributo dentro del objeto para guardar el error 
                 if(name.value.length < 1){
-                    errores.name = 'El campo nombre no debe estar vacio 1'
+                    errores.name = 'El campo nombre no debe estar vacio'
+                }else{
+                    if(name.value.length < 5){
+                        errores.name = 'El campo nombre debe al menos tener 5 caracteres'
+                    }
                 }
                 
+                
                 if(category == 0){
-                    errores.category = 'El campo categoria no debe estar vacio 1'
+                    errores.category = 'El campo categoria no debe estar vacio'
                 }
 
                 if(price.value.length < 1){
-                    errores.price = 'El campo precio no debe estar vacio 1'
+                    errores.price = 'El campo precio no debe estar vacio'
                 }
 
                 if(discountRate.value.length < 1){
-                    errores.discountRate = 'El campo de descuento no debe estar vacio 1'
+                    errores.discountRate = 'El campo de descuento no debe estar vacio'
                 }
 
                 if(stock.value.length < 1){
-                    errores.stock = 'El campo existencias no debe estar vacio 1'
+                    errores.stock = 'El campo existencias no debe estar vacio'
                 }
 
                 if(features.value.length < 1){
-                    errores.features = 'El campo de caracteristicas no debe estar vacio 1'
+                    errores.features = 'El campo de caracteristicas no debe estar vacio'
                 }
 
-                 if(description.value.length < 1){
-                    errores.description = 'El campo de descripcion no debe estar vacio 1'
+                if(description.value.length < 1){
+                    errores.description = 'El campo de descripcion no debe estar vacio'
+                }else{
+                    if(description.value.length < 20){
+                        errores.description = 'El campo nombre debe al menos tener 20 caracteres'
+                    }
                 }
+                    
+                
 
                 // console.log("---"+ imagesProducto.files.length);
 
                 if(imagesProducto.files.length == 0){
 
-                    errores.imagesProducto = 'No debes dejar vacio el campo de imagenes... 1'
+                    errores.imagesProducto = 'No debes dejar vacio el campo de imagenes...'
                   
                 }else if( imagesProducto.files.length < 3 ){
       
-                    errores.imagesProducto = 'Recuerda debes almenos cargar 3 imagenes... 1'
+                    errores.imagesProducto = 'Recuerda debes almenos cargar 3 imagenes...'
                
                 }else if(imagesProducto.files.length > 5){
                     
-                    errores.imagesProducto = 'Solo puedes cargar maximo 5 imagenes... 1'
+                    errores.imagesProducto = 'Solo puedes cargar maximo 5 imagenes...'
                 }else{
 
                     let bandera = false;
@@ -118,7 +125,20 @@ window.addEventListener('load', function (e) {
 
 
                 }
-            
+                
+                //investigar como ocultar mensajes al empesar a escribir 
+                //https://www.it-swarm-es.com/es/javascript/como-hacer-efecto-fadeout-con-javascript-puro/1052673355/
+                // name.addEventListener('change', function () {
+                //     if (this.value.length > 1) {  			
+                //         $('.error').fadeOut();
+
+                //         function fade(){
+                //             (s.opacity-=.1)<0 ? s.display="none":setTimeout(fade,40)
+                //         }
+ 
+                //     }
+                // });
+
                 console.log(errores);
 
                 if(Object.keys(errores).length >= 1){
@@ -131,6 +151,8 @@ window.addEventListener('load', function (e) {
                     errorFeatures.innerText = (errores.features) ?  errores.features : '';
                     errorDescription.innerText = (errores.description) ?  errores.description : '';
                     errorImagesProducto.innerText = (errores.imagesProducto) ? errores.imagesProducto : '';
+                    event.preventDefault();
+
                 }
                 // else{
                 //     formulario.submit();
