@@ -294,6 +294,11 @@ article.item a{
         justify-content: space-around;
 
     }
+
+    .descripcionProducto{
+        display: flex;
+        justify-content: space-between;
+    }
     /*-------------------area principal-------------------------*/
 
     /* ------------------------ footer ----------------------------------------*/
