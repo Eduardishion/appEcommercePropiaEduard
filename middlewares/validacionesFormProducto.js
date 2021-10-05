@@ -7,7 +7,8 @@ const path = require('path');
 const validacionesFormProducto = [
     // body('id').notEmpty().withMessage('El campo nombre no debe estar vacio')
     // ,
-    body('name').notEmpty().withMessage('El campo nombre no debe estar vacio')
+    body('name').notEmpty().withMessage('El campo nombre no debe estar vacio').bail()
+                .isLength({ min: 5 }).withMessage('El campo nombre debe al menos tener 5 caracteres')
     ,
     body('category').notEmpty().withMessage('El campo categoria  no debe estar vacio')
     ,
@@ -23,7 +24,8 @@ const validacionesFormProducto = [
     body('features').notEmpty().withMessage('El campo caracteristicas no debe estar vacio')
     
     ,
-    body('description').notEmpty().withMessage('El campo descripción no debe estar vacio')
+    body('description').notEmpty().withMessage('El campo descripción no debe estar vacio').bail()
+                       .isLength({ min: 20 }).withMessage('El campo descripción debe al menos tener 20 caracteres')
 
     ,
     body('imagesProducto').custom((value , {req}) => {
