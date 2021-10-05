@@ -48,20 +48,48 @@ window.addEventListener('load', function () {
             divCantidad.setAttribute("id", "cantidad");
             divCantidad.setAttribute("class", "centrado");
 
-                const menos = document.createElement("div");
-                menos.setAttribute("class", "textoTabla");
-                    menos.textContent = '-'
-                    divCantidad.appendChild(menos);
 
-                const num = document.createElement("div");
-                num.setAttribute("class", "textoTabla");
-                    num.textContent = '1'
-                    divCantidad.appendChild(num);
+                const divMenos = document.createElement("div");
+                    const aMenos = document.createElement("a");
+                    aMenos.setAttribute("id", "menos");
+                        const strong1 = document.createElement("strong");
+                        strong1.textContent = '-';
+                        aMenos.appendChild(strong1);
+                divMenos.appendChild(aMenos);
+                divCantidad.appendChild(divMenos);
 
-                const mas = document.createElement("div");
-                mas.setAttribute("class", "textoTabla");
-                    mas.textContent = '+'
-                    divCantidad.appendChild(mas);
+
+                const numProduct = document.createElement("div");
+                    const inputProduct = document.createElement("input");
+                    inputProduct.setAttribute("type", "text");
+                    inputProduct.setAttribute("id", "numProduct");
+                    inputProduct.setAttribute("value", listaProductosSeleccinados[i].cantidad);
+                    numProduct.appendChild(inputProduct);
+                divCantidad.appendChild(numProduct);
+
+                const divMas = document.createElement("div");
+                    const aMas = document.createElement("a");
+                    aMas.setAttribute("id", "menos");
+                        const strong2 = document.createElement("strong");
+                        strong2.textContent = '+';
+                        aMas.appendChild(strong2);
+                divMas.appendChild(aMas);
+                divCantidad.appendChild(divMas);
+
+                // const menos = document.createElement("div");
+                // menos.setAttribute("class", "textoTabla");
+                //     menos.textContent = '-'
+                //     divCantidad.appendChild(menos);
+
+                // const num = document.createElement("div");
+                // num.setAttribute("class", "textoTabla");
+                //     num.textContent = '1'
+                //     divCantidad.appendChild(num);
+
+                // const mas = document.createElement("div");
+                // mas.setAttribute("class", "textoTabla");
+                //     mas.textContent = '+'
+                //     divCantidad.appendChild(mas);
 
             const divTotal = document.createElement("div");
             divTotal.setAttribute("id", "total");
@@ -92,4 +120,35 @@ window.addEventListener('load', function () {
         contenedorProductos.appendChild(divProductos);
         // contenedorProductos.appendChild(imagen );
     }
+
+
+
+
+     /**-------------------------------para cantidad de productos----------------------------------  */
+    //  let mas = document.querySelector('a#mas');
+
+    //  mas.addEventListener('click', function () {
+    //      // console.log('dio en mas ');
+    //      let numProductcantidad = document.querySelector('input#numProduct');
+    //      // console.log(numProductcantidad.value);
+    //      numProductcantidad.value = parseInt(numProductcantidad.value) + 1 ;
+
+    //  });
+
+
+    //  let menos = document.querySelector('a#menos');
+
+    //  menos.addEventListener('click', function () {
+    //      // console.log('dio en menos ');
+    //      let numProductcantidad = document.querySelector('input#numProduct');
+    //      numProductcantidad.value = parseInt(numProductcantidad.value) - 1 ;
+
+    //      if(numProductcantidad.value < 1){
+    //          numProductcantidad.value = 1;
+    //      }
+    //  });
+   /**-------------------------------para cantidad de productos----------------------------------  */
+
+
+
 })
