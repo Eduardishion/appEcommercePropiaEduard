@@ -16,6 +16,9 @@ img{
     max-width: 100%;
 }
 
+p{
+    font-size: larger;
+}
 
 /* --------------estilos generales-------------- */
 #locacionPagina p{
@@ -58,10 +61,18 @@ img{
     width: 50px;
     padding: 3px;
     border: solid 1px black;
+
+   
 }
 
 .textoTabla{
     font-size: x-small;
+}
+
+.conteCant{
+    border: solid 1px red;
+    width: 35px;
+    text-align: center;
 }
 /* productos */
 
