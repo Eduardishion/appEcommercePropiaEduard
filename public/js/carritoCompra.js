@@ -14,12 +14,14 @@ window.addEventListener('load', function () {
 
     for (let i = 0; i < listaProductosSeleccinados.length; i++) {
         //creacion de etiqutas 
+        // console.log(listaProductosSeleccinados[i].id);
 
         //div principal
         const divProductos = document.createElement("div");
         divProductos.setAttribute("id", "productos");
         divProductos.setAttribute("class", "centrado");
 
+      
 
             const divImagen = document.createElement("div");
             divImagen.setAttribute("id", "imagen");
@@ -33,6 +35,12 @@ window.addEventListener('load', function () {
                 const nombre = document.createElement("p");
                 nombre.textContent = listaProductosSeleccinados[i].nombre;
                 divImagen.appendChild(nombre);
+
+                const id = document.createElement("p");
+                id.setAttribute("id", "id"+i);
+                id.textContent = listaProductosSeleccinados[i].id;
+                // id.style.visibility = "hidden";
+                divImagen.appendChild(id);
             
             
             const divPrecio = document.createElement("div");
@@ -209,7 +217,51 @@ window.addEventListener('load', function () {
             subTotal.innerText = subTotalValor; 
         })
 
+        /**--------------------------------eliminacion producto de local storage----------------------- **/
+        // console.log(listaProductos[i].childNodes[4]);
+        listaProductos[i].childNodes[4].addEventListener('click',()=>{
+            // console.log("se dio clic al icono ");
+            // console.log(listaProductos[i].childNodes[0].childNodes[2]);
+            let id = listaProductos[i].childNodes[0].childNodes[2].innerText;
+            // console.log(id);
+         
+
+            let listaProductosSeleccinados = localStorage.getItem('listaProductosSeleccinados');
+
+            if(listaProductosSeleccinados == null){
+                listaProductosSeleccinados = [];
+            }else{
+                listaProductosSeleccinados = JSON.parse(listaProductosSeleccinados);
+            }
+
+            // for (let y = 0; y < listaProductosSeleccinados.length; y++) {
+            //     console.log(listaProductosSeleccinados[y]);
+            // }
+
+            // console.log("-----------------");
+
+            let indice = listaProductosSeleccinados.findIndex( (producto) => {
+                return producto.id == parseInt(id);
+            });
+
+            listaProductosSeleccinados.splice(indice , 1);
+
+
+            // for (let y = 0; y < listaProductosSeleccinados.length; y++) {
+            //    console.log(listaProductosSeleccinados[y]);
+            // }
+
+            localStorage.setItem('listaProductosSeleccinados', JSON.stringify(listaProductosSeleccinados));
+
+            
+            location.reload();
+
+        })
         
+
+
+        /**--------------------------------eliminacion producto de local storage----------------------- **/
+
     }
 
  
@@ -218,9 +270,7 @@ window.addEventListener('load', function () {
    /**-------------------------------para cantidad de productos----------------------------------  */
 
 
-   /**--------------------------------eliminacion producto de local storage----------------------- **/
-
-   /**--------------------------------eliminacion producto de local storage----------------------- **/
+ 
 
 
 
