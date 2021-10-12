@@ -31,11 +31,12 @@ window.addEventListener('load', function () {
     //https://www.tech-wiki.online/es/add-click-event-to-dom-list.html
     const productos = document.querySelectorAll('.articulo.item');
 
-    for (let i = 0; i < productos .length; i++) {
+    for (let i = 0; i < productos.length; i++) {
         
         productos[i].addEventListener('mouseover', function () {
             //  console.log('has pasado por encima de producto');
              productos[i].style.transform = "scale(1.1)";
+
              
         });
 
@@ -44,7 +45,125 @@ window.addEventListener('load', function () {
             productos[i].style.transform = "scale(1)";
             
        });
+
+
+       /*-----------------------------captura de clic, para agregar a carrito de compra-----------------------------------*/ 
+       // console.log(productos[i].childNodes.item(2));
+       
+       /*
+       productos[i].childNodes[2].childNodes[1].childNodes[1].addEventListener('click',()=>{
+
+            console.log("se dio clic");
+
+            // const idProducto = document.querySelector('strong#idProducto');
+            // const nombreProducto = document.querySelector('h2#nombreProducto');
+            // const precioProducto = document.querySelector('h4#precioProducto');
+            // const descuentoProducto = document.querySelector('h5#descuentoProducto');
+            // const numProductcantidad = document.querySelector('input#numProduct');
+            // const imagenProducto = document.querySelector('img#imaPrin');
+
+            // // console.log(imagenProducto.src); 
+
+
+            // const productoSeleccionado = {
+            //     id: parseInt(idProducto.innerText),
+            //     nombre: nombreProducto.innerText,
+            //     precio : parseFloat(precioProducto.innerText),
+            //     descuento : parseFloat(descuentoProducto.innerText),
+            //     cantidad : parseFloat(numProductcantidad.value),
+            //     imagen: imagenProducto.src
+            // };
+            
+            // // console.log(typeof listaProductosSeleccinados);
+            // //validacion si ya exite el producto ya no cargarlo al carrito 
+
+            // let productoEncontrado = listaProductosSeleccinados.find( (producto) => {
+            //     return producto.id == parseInt(idProducto.innerText);
+            // });
+
+            // console.log("----------->>>>"+productoEncontrado);
+
+            // if(productoEncontrado == undefined){
+            //     // console.log("no existe");
+            //     listaProductosSeleccinados.push(productoSeleccionado);
+
+            //     localStorage.setItem('listaProductosSeleccinados', JSON.stringify(listaProductosSeleccinados));
+
+            //     location.reload();
+            // }else{
+            //     alert("Este producto ya esta agregado a tu lista de productos");
+            // }
+       });
+       */
+       
+
     }
+
+
+    let listaProductosSeleccinados = [];
+
+    if(localStorage.getItem('listaProductosSeleccinados') != null){
+
+        // console.log('si exite variable');
+        listaProductosSeleccinados = JSON.parse(localStorage.getItem('listaProductosSeleccinados'));
+        //console.log(listaProductosSeleccinados);
+    }
+
+
+    const buttonsAddCart = document.querySelectorAll('a.botonPrimario');
+    // console.log(buttonsAddCart);
+
+    for (let i = 0; i < buttonsAddCart.length; i++) {
+        // console.log(buttonsAddCart[i]);
+        buttonsAddCart[i].addEventListener('click', ()=>{
+            console.log("se dio clic");
+           
+            const idProducto = document.querySelector('p#idProducto'+i);//falta 
+            const nombreProducto = document.querySelector('p#nombreProducto'+i);//falta
+            const precioProducto = document.querySelector('p#precioProducto'+i);
+            const descuentoProducto = document.querySelector('p#descuentoProducto'+i);
+            const numProductcantidad = document.querySelector('p#cantidadProducto'+i);//por default sera 1
+            const imagenProducto = document.querySelector('p#imaPrin'+i);
+
+            console.log(numProductcantidad.innerText); 
+
+
+            const productoSeleccionado = {
+                id: parseInt(idProducto.innerText),
+                nombre: nombreProducto.innerText,
+                precio : parseFloat(precioProducto.innerText),
+                descuento : parseFloat(descuentoProducto.innerText),
+                cantidad : parseFloat(numProductcantidad.innerText),
+                imagen: imagenProducto.innerText
+            };
+
+            
+            // console.log(productoSeleccionado);
+            // console.log(typeof listaProductosSeleccinados);
+            // validacion si ya exite el producto ya no cargarlo al carrito 
+
+            let productoEncontrado = listaProductosSeleccinados.find( (producto) => {
+                return producto.id == parseInt(idProducto.innerText);
+            });
+
+            // console.log("----------->>>>"+productoEncontrado);
+
+            if(productoEncontrado == undefined){
+                // console.log("no existe");
+                listaProductosSeleccinados.push(productoSeleccionado);
+
+                localStorage.setItem('listaProductosSeleccinados', JSON.stringify(listaProductosSeleccinados));
+
+                location.reload();
+            }else{
+                alert("Este producto ya esta agregado a tu lista de productos");
+            }
+        });
+
+    }
+
+
+
 
     /**
      * manera optimisada sin agregar event listener a cada elemento con un solo al elemento lista 
