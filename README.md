@@ -22,4 +22,7 @@ Las tecnologias usadas en esta integracion a sido
  
  Este es el enlace al e-commerce
  https://eduardishion-eshop.herokuapp.com/
+ 
+ Aqui algunas vistas de su funcinamiento:
+ 
 
