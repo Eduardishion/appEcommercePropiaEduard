@@ -18,5 +18,8 @@ Las tecnologias usadas en esta integracion a sido
   -Method-override 
   -Bcryptjs
   
- Asi como algunos sercicios en la nube como Heroku para alojar el app y Clever Cloud para alohjar la base de datos 
+ Asi como algunos sercicios en la nube como Heroku para alojar el app y Clever Cloud para alohjar la base de datos.
+ 
+ Este es el enlace al e-commerce
+ https://eduardishion-eshop.herokuapp.com/
 
