@@ -25,4 +25,17 @@ Las tecnologias usadas en esta integracion a sido
  
  Aqui algunas vistas de su funcinamiento:
  
+ <img src="https://github.com/Eduardishion/appEcommercePropiaEduard/blob/servidorV5-operaciones-dataBase/Captura%20de%20pantalla%20(724).png">
+ 
+  <img src="https://github.com/Eduardishion/appEcommercePropiaEduard/blob/servidorV5-operaciones-dataBase/Captura%20de%20pantalla%20(725).png">
+  
+  <img src=" https://github.com/Eduardishion/appEcommercePropiaEduard/blob/servidorV5-operaciones-dataBase/Captura%20de%20pantalla%20(727).png">
+  
+   <img src="https://github.com/Eduardishion/appEcommercePropiaEduard/blob/servidorV5-operaciones-dataBase/Captura%20de%20pantalla%20(728).png">
+  
+
+ 
+ 
+ 
+
 
