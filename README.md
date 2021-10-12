@@ -18,5 +18,5 @@ Las tecnologias usadas en esta integracion a sido
   -Method-override 
   -Bcryptjs
   
- Asi como algunos sercicios en la nube como Heroku para alojar el app y Clever Cloud para alohjar la base de daros 
+ Asi como algunos sercicios en la nube como Heroku para alojar el app y Clever Cloud para alohjar la base de datos 
 
