@@ -1,6 +1,19 @@
 "# appEcommercePropiaEduard" 
 ### En este repositorio sea dado seguimiento, practica e integracion de lo aprendido en DIGITAL HOUSE, teniendo en cuenta cada uno de los sprints del proyecto integrador, donde como objetivo es crear una e-commerce.
 
+Donde llecan acabo las sigueintes acrividades:
+
+Front-end: Traducción y maquetación del diseño de la página web
+bajo principios responsive, creación de vistas, formularios, validaciones,
+conexiones asíncronas mediante fetch, interacción del DOM así como
+uso Session y Cookies para almacenado de información.
+
+Back-end: Creación y puesta en marcha del servidor web; integración
+de bases de datos relacionales remotas; autenticación, validación de
+datos y manejo de sesiones de usuarios; Integración con otras
+plataformas mediante apis.
+
+
 Las tecnologias usadas en esta integracion a sido 
   -Nodejs 
   -Mysql 
