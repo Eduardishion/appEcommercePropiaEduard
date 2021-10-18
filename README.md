@@ -1,5 +1,5 @@
-"# appEcommercePropiaEduard" 
-### En este repositorio sea dado seguimiento, practica e integracion de lo aprendido en DIGITAL HOUSE, teniendo en cuenta cada uno de los sprints del proyecto integrador, donde como objetivo es crear una e-commerce.
+
+### El siguiente proyecto se puso en practica e integracion de lo aprendido en el curso de DESARROLLO FULL STACK NODEJS  DE DIGITAL HOUSE, teniendo en cuenta cada uno de los sprints del proyecto integrador, donde como objetivo es crear una e-commerce desde frontend a backend.
 
 Donde llecan acabo las sigueintes acrividades:
 
