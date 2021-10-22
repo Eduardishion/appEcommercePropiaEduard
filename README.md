@@ -1,7 +1,7 @@
 
-### El siguiente proyecto se puso en practica e integracion de lo aprendido en el curso de DESARROLLO FULL STACK NODEJS  DE DIGITAL HOUSE, teniendo en cuenta cada uno de los sprints del proyecto integrador, donde como objetivo es crear una e-commerce desde frontend a backend.
+### El siguiente proyecto es una integracion de lo aprendido en el curso de DESARROLLO FULL STACK NODEJS  DE DIGITAL HOUSE, teniendo en cuenta cada uno de los sprints del proyecto integrador, donde como objetivo es crear una e-commerce desde frontend a backend.
 
-Donde llecan acabo las sigueintes acrividades:
+Donde llevan acabo las siguientes actividades:
 
 Front-end: Traducción y maquetación del diseño de la página web
 bajo principios responsive, creación de vistas, formularios, validaciones,
