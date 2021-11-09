@@ -37,10 +37,29 @@ Las tecnologias usadas en esta integracion a sido
  Este es el enlace al e-commerce
  https://eduardishion-eshop.herokuapp.com/
  
+
+ 
+ La rama de momento mas completa es la rama: servidorV5-operaciones-dataBase
+ 
+  -Recordar tener instalado primeramente mysql
+  -Saber la credenciales de nuestro mysql local para poder hacer la conexión y configuracion en archivo database/config/config.js 
+  
+ Para crear la base de datos en mysql, exiten varios comandos que se pueden usar para poder iniciarla
+ 
+  -primero debemos instalar todas la dependencias del poryecto en el comando 
+      
+      npm i 
+
+  -despues de tener todo instalado usar el comando preconfigurado de npm 
+    
+    npm run testLocal
+  
+  que crea la base datos donde se almacenaran los datos, hace la migracion de las tablas e inserta datos en las tablas 
+  
+  
+ 
+ 
  Aqui algunas vistas de su funcinamiento:
- 
- la rama de momento mas completa es la rama: ervidorV5-operaciones-dataBase
- 
  <img src="https://github.com/Eduardishion/appEcommercePropiaEduard/blob/servidorV5-operaciones-dataBase/Captura%20de%20pantalla%20(724).png">
  
   <img src="https://github.com/Eduardishion/appEcommercePropiaEduard/blob/servidorV5-operaciones-dataBase/Captura%20de%20pantalla%20(725).png">
