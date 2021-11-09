@@ -1,7 +1,7 @@
 
 ### El siguiente proyecto es una integracion de lo aprendido en el curso de DESARROLLO FULL STACK NODEJS  DE DIGITAL HOUSE, teniendo en cuenta cada uno de los sprints del proyecto integrador, donde como objetivo es crear una e-commerce desde frontend a backend.
 
-Donde llevan acabo las siguientes actividades:
+Donde llevan a cabo las siguientes actividades:
 
 Front-end: Traducción y maquetación del diseño de la página web
 bajo principios responsive, creación de vistas, formularios, validaciones,
@@ -38,6 +38,8 @@ Las tecnologias usadas en esta integracion a sido
  https://eduardishion-eshop.herokuapp.com/
  
  Aqui algunas vistas de su funcinamiento:
+ 
+ la rama de momento mas completa es la rama: ervidorV5-operaciones-dataBase
  
  <img src="https://github.com/Eduardishion/appEcommercePropiaEduard/blob/servidorV5-operaciones-dataBase/Captura%20de%20pantalla%20(724).png">
  
