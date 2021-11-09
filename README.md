@@ -57,6 +57,23 @@ Las tecnologias usadas en esta integracion a sido
   que crea la base datos donde se almacenaran los datos, hace la migracion de las tablas e inserta datos en las tablas 
   
   
+ Despues volvamos a parar el servidor con:
+ 
+    Ctrl-c
+ 
+ E iniciemos el servidor con:
+ 
+    npm start 
+    
+ El cual inicia el servirdor en el endpoint siguiente:
+    
+    http://localhost:3000/
+    
+ Recordar que la no hay imagenes cargadas, pero al hacer pruebas e incertar imagenes de un nuevo producto su se cargara y se mostrara
+ 
+ 
+  
+  
  
  
  Aqui algunas vistas de su funcinamiento:
