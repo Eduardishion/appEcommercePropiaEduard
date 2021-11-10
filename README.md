@@ -69,7 +69,7 @@ Las tecnologias usadas en esta integracion a sido
     
     http://localhost:3000/
     
- Recordar que la no hay imagenes cargadas, pero al hacer pruebas e incertar imagenes de un nuevo producto su se cargara y se mostrara
+ Recordar que la no hay imagenes cargadas, pero al hacer pruebas e insertar imagenes de un nuevo producto se cargara y se mostraran.
  
  
   
