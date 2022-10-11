@@ -134,18 +134,33 @@ const controladorDeProductosDB = {
     },
     vistaCatalogo: async (req, res) => {
       
-      //consulta a la base de datos para obtener productos 
-      const listaProductos = await db.product.findAll({
-            include:[{
-                association: 'image',
-            }]
-      }).catch((error) => {
-      console.log('Error de: '+ error);
-      });
+      //consulta a la base de datos para obtener productos  V1
+      // const listaProductos = await db.product.findAll({
+      //       include:[{
+      //           association: 'image',
+      //       }]
+      // }).catch((error) => {
+      //   console.log('Error de: '+ error);
+      // });
 
-      //envio de datos a vista index
-      res.render("Index", { productos: listaProductos});
+      //consulta a la base de datos para obtener productos  V2
+      try {
 
+        const listaProductos = await db.product.findAll({
+          include:[{
+              association: 'image',
+          }]
+        })
+        //envio de datos a vista index
+        console.warn(listaProductos)
+        res.render("Index", { productos: listaProductos});
+
+      } catch (error) {
+        console.log('Hubo un error de conexión con la base datos:'+ error);
+        res.render("Index", { productos: []});
+      }
+
+    
     },
     vistaRegistrarProducto: async (req, res) => {
 

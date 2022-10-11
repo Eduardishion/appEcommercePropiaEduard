@@ -8,32 +8,38 @@
             </section>
             <h2>Ofertas</h2>
             <section id="articulos" class="articulosCatalogo">
-                <% for(let i= 0; i< productos.length ; i++){ %> 
-                    <article class="articulo item">
-                        <a href="/productos/detalleProducto/<%= productos[i].id %> ">
-                            <img src="/images/imagenesDeProductos/<%= productos[i].image[0].name %>" alt="" srcset="">
-                            <div class="descripcionProducto">
-                                <div>
-                                    <p id="idProducto<%- i%>" hidden ><%= productos[i].id  %></p>
-                                    <p id="nombreProducto<%- i%>" hidden  ><%= productos[i].name  %></p>
-                                    <p id="precioProducto<%- i%>" hidden  ><%= productos[i].price  %></p>
-                                    <p id="descuentoProducto<%- i%>" hidden  ><%= productos[i].discount  %></p>
-                                    <p id="cantidadProducto<%- i%>" hidden >1</p>
-                                    <p id="imaPrin<%- i%>" hidden >/images/imagenesDeProductos/<%= productos[i].image[0].name %></p>
+                <% if( productos.length != 0 ){ %>
+                    <% for(let i= 0; i< productos.length ; i++){ %> 
+                        <article class="articulo item">
+                            <a href="/productos/detalleProducto/<%= productos[i].id %> ">
+                                <img src="/images/imagenesDeProductos/<%= productos[i].image[0].name %>" alt="" srcset="">
+                                <div class="descripcionProducto">
+                                    <div>
+                                        <p id="idProducto<%- i%>" hidden ><%= productos[i].id  %></p>
+                                        <p id="nombreProducto<%- i%>" hidden  ><%= productos[i].name  %></p>
+                                        <p id="precioProducto<%- i%>" hidden  ><%= productos[i].price  %></p>
+                                        <p id="descuentoProducto<%- i%>" hidden  ><%= productos[i].discount  %></p>
+                                        <p id="cantidadProducto<%- i%>" hidden >1</p>
+                                        <p id="imaPrin<%- i%>" hidden >/images/imagenesDeProductos/<%= productos[i].image[0].name %></p>
+                                    </div>
+                                    <div>
+                                        <p ><strong>$<%= productos[i].price %></strong> </p>
+                                        <p ><%= productos[i].discount %> % off</p>
+                                    </div>
+                                    <div>
+                                        <!-- <button class="add-cart-button">Añadir al Carrito</button> -->
+                                        <a id="boton<%- i+1%>" href="#" class="botonPrimario" style="color: white;"><i class="fas fa-cart-plus"></i></a>
+                                        <!-- <button class="botonPrimario" id="agregarCarrito">Añadir al carro</button> -->
+                                    </div>
                                 </div>
-                                <div>
-                                    <p ><strong>$<%= productos[i].price %></strong> </p>
-                                    <p ><%= productos[i].discount %> % off</p>
-                                </div>
-                                <div>
-                                    <!-- <button class="add-cart-button">Añadir al Carrito</button> -->
-                                    <a id="boton<%- i+1%>" href="#" class="botonPrimario" style="color: white;"><i class="fas fa-cart-plus"></i></a>
-                                    <!-- <button class="botonPrimario" id="agregarCarrito">Añadir al carro</button> -->
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </article>
+                    <%}%>
+                <% } else { %>
+                    <article >
+                        <p>De momento no hay productos a consultar...</p>
                     </article>
-                <%}%>
+                <% } %>
             </section>
             <h2>Remate</h2>
             <section id="articulos" class="articulosCatalogo">

@@ -75,5 +75,38 @@
     "image": "imagenUsuario-1632249893889.png",
     "registrationDate": "21/09/21",
     "checkInTime": "13:44 PM"
+  },
+  {
+    "id": 84844,
+    "firstName": "c",
+    "lastName": "c",
+    "email": "c@gmail.com",
+    "password": "$2a$10$11Gdg8Y4LyPpe1K6TKidB.sxwy35rkgUAi1iq39jGNJiXbYAkwDfy",
+    "category": " Administrador ",
+    "image": "imagenUsuario-1665519870337.gif",
+    "registrationDate": "11/10/22",
+    "checkInTime": "15:24 PM"
+  },
+  {
+    "id": 10144,
+    "firstName": "d",
+    "lastName": "d",
+    "email": "d@gmail.com",
+    "password": "$2a$10$BvI/qBAsA0Mfdz6VQiFcrOrnDAPHlDYOMoH.K3jSYVQN58AZB6.E6",
+    "category": " Administrador ",
+    "image": "imagenUsuario-1665520630667.png",
+    "registrationDate": "11/10/22",
+    "checkInTime": "15:37 PM"
+  },
+  {
+    "id": 95882,
+    "firstName": "e",
+    "lastName": "e",
+    "email": "e@gmail.com",
+    "password": "$2a$10$HRIFFIpo6XHKsdHmf0DSu.CVtDPUE1i1sDTywlYagAIaBmr970YO2",
+    "category": " Administrador ",
+    "image": "imagenUsuario-1665520786842.png",
+    "registrationDate": "11/10/22",
+    "checkInTime": "15:39 PM"
   }
 ]

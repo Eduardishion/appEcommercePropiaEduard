@@ -12,11 +12,11 @@
 							¿Ya tienes una cuenta? <a href="/usuarios/loginUsuario">Entra aqui.</a>
 						</strong>
 					</p>
-					<div id="botonVista">
+					<!-- <div id="botonVista">
 						<a type="submit" href="/usuarios/listaUsuarios" class="botonPrimario">
 							<i class="fas fa-list-alt"></i>
 						</a>
-					</div>
+					</div> -->
 
 					<div id="contenedorDeFormulario">
 						<!-- <% if( locals.msgsErrors ){ %>		
@@ -24,6 +24,10 @@
 								<p class="errorDatosE" ><%= msgsErrors[error].msg %></p>
 							<% } %>
 						<% } %> -->
+
+							<% if( locals.msgsErrors && msgsErrors){ %>
+								<p class="errorDatosE" ><%= msgsErrors %></p>
+							<% } %>
 							<form action="/usuarios/guardarUsuario" method="POST" enctype="multipart/form-data">
 								<div>
 									<label for="firstName">

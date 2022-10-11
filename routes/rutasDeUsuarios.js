@@ -16,6 +16,8 @@ const controladorDeUsuarios = require('../controllers/controladorDeUsuarios');
 const validacionesFormUsuario = require('../middlewares/validacionesFormUsuario');
 //validador de formulario de inicio sesion 
 const validacionesFormUsuarioLogin = require('../middlewares/validacionesFormUsuarioLogin');
+//validador de email exitente al registrar un nuevo asuario
+const validarUsuarioExitenteMiddleware = require('../middlewares/validarUsuarioExitente')
 
 let storage = multer.diskStorage({
     //carpeta donde almacenaremos 
@@ -54,7 +56,7 @@ router.get("/listaUsuarios",authMiddleware ,controladorDeUsuarios.listaDeUsuario
 router.get('/registrarUsuario', guestMiddleware , controladorDeUsuarios.vistaRegistrarUsuario);
 
 //Accion de guardar usuario en base de datos 
-router.post('/guardarUsuario',upload.single('imagenUsuario'), validacionesFormUsuario , controladorDeUsuarios.guardarUsuario);
+router.post('/guardarUsuario',upload.single('imagenUsuario'), validacionesFormUsuario, controladorDeUsuarios.guardarUsuario);
 
 //Acccion de entrara a la vistar de edicion de usuario
 router.get('/editarUsuario/:id',  controladorDeUsuarios.vistaEdicionUsuario);

@@ -65,19 +65,34 @@ const usuariosController ={
                 
                 //escritura de archivo
                 modeloDeUsuarios.escrituraDeArchivo(listaUsuarios);
-      
+
+
+                res.render('loginUsuario');
+
+                //busqueda de usuario
+                // let usuarioEncontrado = modeloDeUsuarios.buscarUsuario(listaUsuarios, req);
+          
+                // //verificacion de no estar vacio 
+                // if(usuarioEncontrado != null){
+                //   res.render("loginUsuario");
+                // }else{
+                //   res.render("not-found");
+                // }
                 //retorno a lista de usuarios
-                res.status(200);
+                //res.status(200);
                 //tiene que redirigir al perfil de usuario 
-                res.render('listaUsuarios',{ usuarios : listaUsuarios } );
+                //res.render('listaUsuarios',{ usuarios : listaUsuarios } );
 
             }else{
 
-              console.log('Ese email si exite no puedes registrate con el mismo email ingresa otro por favor')
+              // console.log('Ese email si exite no puedes registrate con el mismo email ingresa otro por favor');
+              const mensaje =  'Ese email si exite no puedes registrate con el mismo email ingresa otro por favor';
               //caso de que si exista ese email volvemos al formulario de registro 
               //indicando que no podemos guardar ese usuario ya que el email ya a sido usado 
               //y regresamos a la lista de usuarios 
-              res.render('registrarUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body } );
+              res.render('registrarUsuario', { msgsErrors : mensaje, DataOld  : req.body } );
+
+              // res.render('registrarUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body } );
 
             }
 
