@@ -152,7 +152,6 @@ const controladorDeProductosDB = {
           }]
         })
         //envio de datos a vista index
-        console.warn(listaProductos)
         res.render("Index", { productos: listaProductos});
 
       } catch (error) {

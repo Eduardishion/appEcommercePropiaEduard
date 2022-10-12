@@ -31,20 +31,21 @@ window.addEventListener('load', function () {
     //https://www.tech-wiki.online/es/add-click-event-to-dom-list.html
     const productos = document.querySelectorAll('.articulo.item');
 
-    for (let i = 0; i < productos.length; i++) {
+    //para poner animacion al pasar el mouse
+    // for (let i = 0; i < productos.length; i++) {
         
-        productos[i].addEventListener('mouseover', function () {
-            //  console.log('has pasado por encima de producto');
-             productos[i].style.transform = "scale(1.1)";
+    //     productos[i].addEventListener('mouseover', function () {
+    //         //  console.log('has pasado por encima de producto');
+    //          productos[i].style.transform = "scale(1.1)";
 
              
-        });
+    //     });
 
-        productos[i].addEventListener('mouseout', function () {
-            // console.log('has pasado por encima de producto');
-            productos[i].style.transform = "scale(1)";
+    //     productos[i].addEventListener('mouseout', function () {
+    //         // console.log('has pasado por encima de producto');
+    //         productos[i].style.transform = "scale(1)";
             
-       });
+    //    });
 
 
        /*-----------------------------captura de clic, para agregar a carrito de compra-----------------------------------*/ 
@@ -97,7 +98,7 @@ window.addEventListener('load', function () {
        */
        
 
-    }
+    // }
 
 
     let listaProductosSeleccinados = [];

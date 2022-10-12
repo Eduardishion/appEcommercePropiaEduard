@@ -17,9 +17,12 @@
 
 p{
     font-size: 3vw;
-    
+    text-align: center;
 }
 
+h3 {
+    text-align: center;
+}
 body{
     /* fondo de toda la pagina  */
     background-color: #F2F2F2;
@@ -165,6 +168,11 @@ section.articulosCatalogo{
     padding: 5px 10px;
 }
 
+section.articuloM {
+    /* border: solid 1pX red; */
+    padding: 24px 44px;
+}
+
 article.item{
     /* border: solid 1pX blue;  */
     width: 48%; 
@@ -197,7 +205,10 @@ article.item a{
   margin-bottom: 1rem;
 }
 
-
+.viewImage{
+    height: 300px;
+    width:  300px;
+}
 /* ------------------------area principal -------------------------------------- */
 
 
@@ -295,6 +306,13 @@ article.item a{
         flex-direction: column;
     }
     
+    /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>< */
+    section.articulosExclusivos{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
     section.articulosCatalogo{
         display: flex;
         flex-wrap: wrap;
@@ -421,6 +439,11 @@ article.item a{
             /* border: solid 1pX blue;  */
             width: 23%; 
         }
+
+        /* article.itemExclusivo{
+            border: solid 1pX blue; 
+            width: 29%; 
+        } */
     /*------------------------princplal----------------------------------*/
     /* ------------------------ footer ----------------------------------------*/
     #piePagina ul{
