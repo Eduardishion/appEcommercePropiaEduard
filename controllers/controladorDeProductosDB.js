@@ -128,6 +128,7 @@ const controladorDeProductosDB = {
       // })
 
       const productos = await db.product.findAll();
+      
       res.render("Index", {productos});
 
       // res.render("Index", {productos: products});

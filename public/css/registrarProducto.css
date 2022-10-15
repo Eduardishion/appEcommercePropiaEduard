@@ -12,7 +12,7 @@ h1, h5 {
 
 
 #contenedorDeFormulario{
-	/*border: solid 1px green; */
+	
 	width: 100%;
 	padding: 0 80px;
 	margin: auto;
@@ -105,9 +105,9 @@ h1, h5 {
 		width:335px; 
 	}
 
-	#contenedorDeFormulario{
+	/* #contenedorDeFormulario{
 		width: 80%;
-	}
+	} */
 
 	div #boton{
 	    width: 280px;

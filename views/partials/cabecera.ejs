@@ -30,16 +30,16 @@
         </a> -->
         <strong id="sesiones">
             <% if(locals.estaLoguado){ %>
-                    <% if(locals.usuarioLogeado){ %>
-                        <div class="miniaturaImage user minheader">
-                            <a href="/usuarios/perfilDeUsuario">
-                                <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
-                            </a>
-                        </div>
-                    <% } %>
-                <a href="/usuarios/cierreSession"> Cerrar session </a>
+                <% if(locals.usuarioLogeado){ %>
+                    <div class="miniaturaImage user minheader">
+                        <a href="/usuarios/perfilDeUsuario">    
+                            <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
+                        </a>
+                    </div>
+                <% } %>        
+                <a href="/usuarios/cierreSession" class="enlaceSession">Salir</a>                
             <% } else {%>
-                <a href="/usuarios/loginUsuario">Login</a>
+                <a href="/usuarios/loginUsuario" class="enlaceSession">Entrar</a>
             <% } %>
         </strong>
     </div>

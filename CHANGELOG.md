@@ -1,0 +1,29 @@
+# Changelog - appEcommercePropiaEduardiShop
+
+## 0.0.1 - 2022-10-14
+
+Eduardo Izquierdo Rojas 
+
+### Added:
+## E-commerce que contempla el proyecto integrador de Digital House:
+
+Esta es la primera version documentada del ecommerce EduardiShop
+- Ya se tiene una base de datos conectada en este caso MYQSL
+- Se trabaja con un API REST (JSON)
+- Se pueden dar de alta, eliminar, actulaizar, visualizar y ver detalle en productos
+- Se pueden agregar productos a sesta de compra 
+- Se tiene el inicio de sesion de uusarios, de momento se guarda en archivos JSON, solo como ejemplo de como hacerlo
+- Se mantiene la session activa si asi se requiere, asi como cierre e inicio se sesion 
+- Se pueden crear cuentas de usuario, editarlos, eliminarlos, visualizarlos
+- Se siente validaciones en formularios en backend y frontend
+- se trabajo con el generador de platillas EJS para el Frontend
+- Se tiene un servidor express como framework de backend
+- se usa ORM Sequize para poder tranajar con las base de datos 
+- Algunas de las librerias usadas son:
+    -JavaScript:Nodejs -Mysql -CSS -HTML -Json -JS -ExpressJs 
+    -Sequelize -Ejs -Multer -Express-session -Cookie-parser 
+    -Express-validator -Method-override -Bcryptjs
+
+### Changed:
+
+### Deleted:

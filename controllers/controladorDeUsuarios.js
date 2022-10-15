@@ -3,6 +3,8 @@ const modeloDeUsuarios = require('../models/modeloDeUsuarios');
 const {validationResult} = require('express-validator');
 //modulo para encriptacion y desencriptacion de contraseñas
 const bcryptjs = require('bcryptjs');
+//conexion a la base de datos
+const db = require('../database/models');
 
 const usuariosController ={
       loginUsuario:(req, res) => {
@@ -90,7 +92,7 @@ const usuariosController ={
               //caso de que si exista ese email volvemos al formulario de registro 
               //indicando que no podemos guardar ese usuario ya que el email ya a sido usado 
               //y regresamos a la lista de usuarios 
-              res.render('registrarUsuario', { msgsErrors : mensaje, DataOld  : req.body } );
+              res.render('registrarUsuario', { msgsErrors : mensaje, DataOld : req.body } );
 
               // res.render('registrarUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body } );
 
@@ -98,7 +100,7 @@ const usuariosController ={
 
         }else{
 
-          res.render('registrarUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body } );
+          res.render('registrarUsuario', { msgsErrors : errores.mapped(), DataOld : req.body } );
 
         }
   
@@ -204,7 +206,7 @@ const usuariosController ={
             res.render("not-found");
           } 
       },
-      verificaSesion(req, res){
+      verificaSesion: async (req, res) =>{
 
           //----------validacion de datos de entrada---------------------
 
@@ -247,18 +249,18 @@ const usuariosController ={
                 req.session.usuarioLogeado = usuarioALogeado;
 
 
-                
-
                 //en caso de que se halla deseado guardar session y ser recordado al cerrar el navegador 
                 //desde la vista hay que verificarlo 
 
-                //paa verificar que el checkbos de la vista esta tildado o no
+                //para verificar que el checkbox de la vista esta tildado o no
                 if(req.body.recordarme != undefined){
                   //recordar no podemos almacenar mucha informacion asi que, lo recomendable es guardarla informacion 
                   // mas importante para identificar de unuevo al usuario 
                   //en este caso usaremos email 
                   //pero para ser mas exacto serai recomendable usar el ID del usuario 
 
+
+                  //CREAR COOKIE CON DATOS
                   //otro parametro es que debemos mandar un objeto literal que seran como configuraciones para la cookie 
                   // en este ejemplo cuando tiempo que queremos que dure la cookie
                   // en este ejemplo 6 segundos 
@@ -266,9 +268,6 @@ const usuariosController ={
                   res.cookie('recordarme', usuarioALogeado.id, {maxAge : (1000 * 60) * 60});
                 }
 
-
-              
-              
                 // mandamos a la vista que deseamos ingresar despues de ser logeado 
                 // enviar sesion a vista 
                 // https://www.it-swarm-es.com/es/node.js/como-obtener-el-valor-de-la-sesion-en-ejs/824451350/
@@ -281,27 +280,39 @@ const usuariosController ={
                 
                 // console.log(req.session);
                 // res.render('perfilDeUsuario', {session: req.session.usuarioLogeado} );
-                res.redirect('perfilDeUsuario');
-              
+                // res.redirect('perfilDeUsuario');
+                
+                const productos = await db.product.findAll({
+                    include:[{
+                        association: 'image',
+                    }]
+                }).catch((error) => {
+                  console.log('Hubo un error al intentar conectar a a base de datos: '+ error);
+                });
+                
+                //mandar y recetear variables locales a la vista 
+                //para identidicar que el usuario esta correcta mente logeado 
+                res.locals.estaLoguado = true;
+                res.locals.usuarioLogeado = usuarioALogeado;
+
+                res.render("Index", {productos});
+                
               }else{
                 res.render('loginUsuario', { msgsErrors : errores.mapped(), errorValidacion: 'La información esta incorrecta. Por favor intenta de nuevo.' } );
               }
 
-          }else{
+            }else{
 
-            console.log('Ese email no exite en la base de datos, no le damos acceso ');
+              console.log('Ese email no exite en la base de datos, no le damos acceso ');
 
-            //caso de que si exista ese email volvemos al formulario de registro 
-            //indicando que no podemos guardar ese usuario ya que el email ya a sido usado 
-            //y regresamos a la lista de usuarios 
-            res.render('loginUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body, errorValidacion: 'No se encuentra este email en nuestra base de datos' } );
-            
+              //caso de que si exista ese email volvemos al formulario de registro 
+              //indicando que no podemos guardar ese usuario ya que el email ya a sido usado 
+              //y regresamos a la lista de usuarios 
+              res.render('loginUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body, errorValidacion: 'No se encuentra este email en nuestra base de datos' } );
+                
+        
+            }
     
-          }
-
-
-             
-
         }else{
 
           res.render('loginUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body } );

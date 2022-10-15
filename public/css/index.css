@@ -91,10 +91,23 @@ img{
 
 }
 
-#barraNavegacion a:hover{
+#barraNavegacion a:hover
+{
     /* color de letra en elaces */
     color: white; 
 }
+
+.enlaceSession{
+    text-decoration: none;
+    color: #c7c7c7dc; 
+    font-size: 13px;
+	/* padding:0 50px; */
+}
+
+.enlaceSession:hover{
+    color: white
+}
+
 
 #contadorProductos{
     color: white;
@@ -444,6 +457,10 @@ article.item a{
             border: solid 1pX blue; 
             width: 29%; 
         } */
+
+        div.divPrice{
+            display: flex;
+        }
     /*------------------------princplal----------------------------------*/
     /* ------------------------ footer ----------------------------------------*/
     #piePagina ul{

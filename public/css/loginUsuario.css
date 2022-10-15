@@ -115,6 +115,19 @@ h1, h5 {
 	color: crimson;
 }
 
+/* @media (min-width: 200px){
+	#contenedorDeFormulario{
+		border: #BC1010 solid 1px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	#contenedorDeFormulario div{
+
+		border: #0071E3 solid 1px;
+	}
+} */
+
 @media (min-width: 790px){
 
 	

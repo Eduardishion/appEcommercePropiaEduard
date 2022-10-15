@@ -12,17 +12,25 @@ function recordarmeMiddleware(req, res, next) {
 		let listaUsuarios = modeloDeUsuarios.aperturaDeArchivo();
 
 		//verificacion y comparacion de datos de que exita persona buscada
-		let usuarioALogeado;
+		
 
-		for (let i = 0; i < listaUsuarios.length; i++) {
-			if(listaUsuarios[i].id == req.cookies.recordarme){
-				console.log("------"+listaUsuarios[i].id);
+		//V1
+		//let usuarioALogeado;
+
+		// for (let i = 0; i < listaUsuarios.length; i++) {
+		// 	if(listaUsuarios[i].id == req.cookies.recordarme){
+		// 		console.log("------"+listaUsuarios[i].id);
 				
-				usuarioALogeado = listaUsuarios[i];
-				break;
+		// 		usuarioALogeado = listaUsuarios[i];
+		// 		break;
 	
-			}
-		}
+		// 	}
+		// }
+
+		//V2
+		let usuarioALogeado = listaUsuarios.filter(user =>{
+			return user.id == req.cookies.recordarme;
+		})
 
     	//console.log(usuarioALogeado);
 
