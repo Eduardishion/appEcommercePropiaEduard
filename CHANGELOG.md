@@ -1,6 +1,13 @@
 # Changelog - appEcommercePropiaEduardiShop
 
-## 0.0.1 - 2022-10-14
+## 1.0.1 - 2022-10-14
+
+Eduardo Izquierdo Rojas 
+
+### Changed:
+- Breve modificacion en cabecera y correccion de logos de incio de session
+
+## 1.0.0 - 2022-10-14
 
 Eduardo Izquierdo Rojas 
 
