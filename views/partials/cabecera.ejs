@@ -21,6 +21,17 @@
         <!-- <a href="/usuarios/loginUsuario"> 
             <img  id="logoShop" src="/images/imagenesIndex/perm_identity_white_24dp.svg"/>
         </a> -->
+        <!-- <div>
+            <a href="/productos/carritoCompra">
+                <label for="desplegar2" id="cart">        
+                        <img  id="logoShop" src="/images/imagenesIndex/shopping_cart_white_24dp.svg"/>
+                        <p  id="contadorProductos"> </p>
+                </label>
+            </a>
+        </div>
+        <div>
+
+        </div> -->
         <strong id="sesiones">
             <a href="/productos/carritoCompra">
                 <label for="desplegar2" id="cart">        
@@ -30,15 +41,28 @@
             </a>
             <% if(locals.estaLoguado){ %>
                 <% if(locals.usuarioLogeado){ %>
-                    <div class="miniaturaImage user minheader">
-                        <a href="/usuarios/perfilDeUsuario">    
-                            <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
-                        </a>
+                    <div  class="conteUser">
+                        <div class="miniaturaImage user minheader">
+                            <a href="/usuarios/perfilDeUsuario">    
+                                <img src="/images/imagenesUsuarios/<%= locals.usuarioLogeado.image ? locals.usuarioLogeado.image : 'default-image.png' %>" alt="imagenUsuario">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="/usuarios/cierreSession" class="enlaceSession">Salir</a> 
+                        </div>
                     </div>
-                <% } %>        
-                <a href="/usuarios/cierreSession" class="enlaceSession">Salir</a>                
+                <% } %>                  
             <% } else {%>
-                <a href="/usuarios/loginUsuario" class="enlaceSession">Entrar</a>
+                    <div class="conteUser">
+                        <div class="miniaturaImage user minheader conteUser">
+                            <a href="">
+                                <img src="/images/imagenesUsuarios/default-image2.png" alt="imagenUsuario">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="/usuarios/loginUsuario" class="enlaceSession">Entrar</a>
+                        </div>
+                    </div>
             <% } %>
         </strong>
     </div>

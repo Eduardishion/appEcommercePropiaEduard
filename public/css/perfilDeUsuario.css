@@ -27,6 +27,13 @@
 
 
 @media (min-width:200px){
+     .conteUser{
+        display: flex;
+        /* border: 1px red solid; */
+        align-items: center;
+        /* justify-content: center; */
+    }
+    
     #areaPrincipalPerfilUsuario{
         display: flex;
         flex-direction: column;
@@ -51,6 +58,13 @@
 
 
 @media (min-width: 790px){
+    /* .conteUser{
+        display: flex;
+        border: 1px red solid;
+        align-items: center;
+        justify-content: center;
+    } */
+
     .miniaturaImageUser.user img{
         border-radius: 90px;
         border: solid 3px black;
