@@ -1,5 +1,16 @@
 # Changelog - appEcommercePropiaEduardiShop
 
+## 1.0.2 - 2022-10-17
+
+Eduardo Izquierdo Rojas 
+
+Correccion de cabecera y logo de login
+
+### Changed:
+- public/css/index.css
+- public/css/perfilDeUsuario.css
+- views/partials/cabecera.ejs
+
 ## 1.0.1 - 2022-10-14
 
 Eduardo Izquierdo Rojas 
