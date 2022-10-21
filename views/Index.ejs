@@ -68,14 +68,13 @@
                     </article>
                 <% } %>
             </section>
-            <h2>Ofertas</h2>
+            <!-- <h2>Ofertas</h2>
             <section id="articulos" class="articulosCatalogo">
                 <% if( productos.length != 0 ){ %>
                     <% for(let i= 0; i< productos.length ; i++){ %> 
                         <article class="articulo item" >
                             <a href="/productos/detalleProducto/<%= productos[i].id %> ">
-                                <!-- <img class="viewImage" src="/images/imagenesDeProductos/<%= productos[i].image[0].name %>" alt="" srcset=""> -->
-                                <!-- <img src="/images/imagenesDeProductos/<%= productos[i].image[0].name %>" alt="" srcset=""> -->
+                                
                                 <div>
                                     <div>
                                         <img   src="/images/imagenesDeProductos/<%= productos[i].image[0].name %>" alt="" srcset="">
@@ -83,7 +82,7 @@
                                     <h3><strong><%= productos[i].name  %></strong></h3>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing</p>
                                     <p ><a style="color: red; font-size: large;" href=""><strong>$<%= productos[i].discount %> </strong><span style="color: black; font-size: small;">$<%= productos[i].price %></span></a></p>
-                                    <!-- <a id="boton<%- i+1%>" href="#" class="botonPrimario" style="color: white;"><i class="fas fa-cart-plus"></i></a> -->
+                                    
                                 </div>
                                 <div class="descripcionProducto">
                                     <div>
@@ -95,8 +94,7 @@
                                         <p id="imaPrin<%- i%>" hidden >/images/imagenesDeProductos/<%= productos[i].image[0].name %></p>
                                     </div>
                                     <div class="divPrice">
-                                        <!-- <p ><strong>$<%= productos[i].price %></strong> </p> -->
-                                        <!-- <p ><%= productos[i].discount %> % off</p> -->
+                            
                                         <div>
                                             <p>
                                                 <a style="color: red; font-size: large;" href="">
@@ -111,11 +109,7 @@
                                         </div>
 
                                     </div>
-                                    <!-- <div> -->
-                                        <!-- <button class="add-cart-button">Añadir al Carrito</button> -->
-                                        <!-- <a id="boton<%- i+1%>" href="#" class="botonPrimario" style="color: white;"><i class="fas fa-cart-plus"></i></a> -->
-                                        <!-- <button class="botonPrimario" id="agregarCarrito">Añadir al carro</button> -->
-                                    <!-- </div> -->
+                                   
                                 </div>
                             </a>
                         </article>
@@ -125,7 +119,7 @@
                         <p>De momento no hay productos a consultar...</p>
                     </article>
                 <% } %>
-            </section>
+            </section> -->
             <h2>Remate</h2>
             <section id="articulos" class="articulosCatalogo">
                 <% if( productos.length != 0 ){ %>
