@@ -46,7 +46,7 @@ const controladorDeProductosDB = {
         console.log('Error de: '+ error);
       });
 
-      return res.json(listaProductos);
+      return res.json(listaProductos).status(200);
 
       // db.product.findAll().then((productos) => {
       //   return res.json(productos);
@@ -62,7 +62,7 @@ const controladorDeProductosDB = {
                 association: 'image'
             }]
       }).then(productos => {
-               return res.json(productos);
+          return res.json(productos).status(200);
       }).catch((error) => {
         console.log('Error de: '+error);
       })
@@ -240,8 +240,8 @@ const controladorDeProductosDB = {
               });
 
               //retorno a crear otro producto
-              res.status(200);
-              res.render('listaProductos',{ productos : listaProductos });
+              // res.status(201);
+              res.render('listaProductos',{ productos : listaProductos }).status(201);
 
       }else{
 
@@ -252,7 +252,7 @@ const controladorDeProductosDB = {
               console.log('Error de: '+ error);
             });
       
-            res.render('registrarProducto', { msgsErrors : errores.mapped(), DataOld  : req.body,  categoriasDB : categorias  } );// otra forma de hacerlo 
+            res.render('registrarProducto', { msgsErrors : errores.mapped(), DataOld  : req.body,  categoriasDB : categorias  } ).status(422) ;// otra forma de hacerlo 
 
       }
 

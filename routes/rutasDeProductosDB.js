@@ -29,9 +29,26 @@ const storage = multer.diskStorage({
 //constante para almacenar 
 const upload = multer({ storage: storage });
 
-//prueba conexion a la base de datos 
+//prueba conexion a la base de datos
+/**
+ * @swagger
+ * /test:
+ *  get:
+ *      description: List of products for test.
+ *      responses:
+ *          200:
+ *              description: Return list of products
+ */ 
 router.get("/test", controladorDeProductosDB.test);
-
+/**
+ * @swagger
+ * /test2:
+ *  get:
+ *      description: List of products for test.
+ *      responses:
+ *          200:
+ *              description: Return list of products
+ */ 
 router.get("/test2", controladorDeProductosDB.test2);
 
 router.get("/test3", controladorDeProductosDB.test3);
@@ -51,8 +68,7 @@ router.get('/detalleProducto/:id', controladorDeProductosDB.vistaDetalleProducto
 //Accion de entrar al formulario de registrar un nuevo producto
 router.get('/registrarProducto', authMiddleware , controladorDeProductosDB.vistaRegistrarProducto);
 
-//version final 
-router.post('/guardarProducto',upload.any('imagesProducto'), validacionesFormProducto , controladorDeProductosDB.guardarProducto);
+router.post('/guardarProducto', upload.any('imagesProducto'), validacionesFormProducto , controladorDeProductosDB.guardarProducto);
 
 //Acccion de entrara a la vistar de edicion de producto
 router.get('/editarProducto/:id', authMiddleware , controladorDeProductosDB.vistaEdicionProducto);

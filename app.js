@@ -7,6 +7,25 @@
 	//modulo para sessiones y coookies 
 	const session = require('express-session');
 	const cookieParser = require('cookie-parser');
+
+	//swagger
+	var swaggerJsdoc = require("swagger-jsdoc");
+	var swaggerUi = require("swagger-ui-express");
+
+	//------------Configure swagger docs------------------
+	var options = {
+		swaggerDefinition: {
+		  info: {
+			title: "API products",
+			version: "0.0.1",
+			description: "API list of endpoints for products",
+		  },
+		},
+		apis: [path.join(__dirname, "/routes/*.js")],
+	  };
+	var swaggerSpecs = swaggerJsdoc(options);
+	//------------Configure swagger docs------------------
+
 	// middleware para recordar session 
 	const recordarmeMiddleware = require('./middlewares/recordarmeMiddleware');
 	//middleware para verificar si esta logueado y cambiar la barra de navegacion 
@@ -63,16 +82,14 @@
 	//------------------rutas------------------
 	
 	
-	//rutas de solo vistas
-
-	// rutas de productos 
+	//rutas de solo vistas principales
 	app.use('/',rutasPrincipales);
-
+	// rutas de productos 
 	app.use('/productos', rutasDeProductosDB);
 	// rutas de usuarios 
 	app.use('/usuarios', rutasUsuarios);
-	
-
+	// ruta de swagger
+	app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 	//------------------rutas------------------	
 
 
