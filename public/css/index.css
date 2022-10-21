@@ -121,6 +121,10 @@ img{
 
 /* ---------------menu verical---------------- */
 
+/* #menuDiv{
+    width: 100%;
+    background-color: green;
+} */
 
 #menuVertical{
     list-style: none;
@@ -141,7 +145,7 @@ img{
     /* color de letra en elaces */
     color: #c7c7c7dc; 
     /* tamaño de fuente */ 
-    font-size: 13px;
+    font-size: 16px;
    
 
     /* espacio exterior del elemento  */ 
@@ -159,6 +163,7 @@ img{
 #menuVertical a:hover{
     /* color de letra en elaces */
     color: white; 
+
 }
 
 /* selectores de atributos*/

@@ -4,14 +4,7 @@
     <body>
         <!-- vista parcial de header -->
         <%- include('partials/cabecera.ejs') %>
-        <input type="checkbox" name="desplegar" id="desplegar" hidden>
-        <ul id="menuVertical" >
-            <li><a href="Index">Index</a></li>
-            <li><a href="DetalleProducto">Producto</a></li>
-            <li><a href="CarritoCompra">Carrito</a></li>
-            <li><a href="#">Enlace</a></li>
-            <li><a href="#">Enlace</a></li>
-        </ul>
+        <%- include('partials/menuDesplegable.ejs') %>
         <div id="locacionPagina">
             <p>Home > Carrito</p>
         </div>

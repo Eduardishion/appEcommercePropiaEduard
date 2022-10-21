@@ -4,6 +4,7 @@
     <body>
         <!-- vista parcial de header -->
         <%- include('partials/cabecera.ejs') %>
+        <%- include('partials/menuDesplegable.ejs') %>
         <input type="checkbox" name="desplegar" id="desplegar" hidden>
         <ul id="menuVertical" >
             <li><a href="Index">Index</a></li>
@@ -79,7 +80,7 @@
                         <h3>
                             Descripción. 
                         </h3>
-                        <p>
+                        <p >
                             <%=  producto.description %> 
                         </p>
                         <h3>
