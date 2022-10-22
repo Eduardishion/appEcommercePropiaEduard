@@ -5,9 +5,41 @@ const {validationResult} = require('express-validator');
 const bcryptjs = require('bcryptjs');
 //conexion a la base de datos
 const db = require('../database/models');
+//encode and decote token 
+const jwt = require("jwt-simple");
+//key and config
+const config = require("../config.js");
 
 const usuariosController ={
-      loginUsuario:(req, res) => {
+      //para generar JWT token si solo exite el ususrio 
+      getTokens: (req, res) => {
+      
+
+        //apertura de archivo donde se encuentran los usuarios
+        const listaUsuarios = modeloDeUsuarios.aperturaDeArchivo();
+
+        //buscar usuario
+        const usuarioEncontrado = modeloDeUsuarios.buscarUsuario2(listaUsuarios, req);
+
+        //verificar si fue encontrado
+        if(!usuarioEncontrado){
+          //si el usuario no es encontrado manda error 
+          return res.json({
+            Error: "Exite un error de autenticacion"
+          }).status(404);
+        }else{
+          var payload = {
+            id: usuarioEncontrado.id,
+            // expire: Date.now() + 1000 * 60 * 60 * 24 * 7, //7 days
+            expire: Date.now() + 1000 * 60 * 60 * 24 , //1 day
+          };
+          var token = jwt.encode(payload, config.jwtSecret);
+          res.json({
+            token: token,
+          }).status(200);
+        }
+      },
+      loginUsuario: (req, res) => {
         res.status(200);
         res.render("loginUsuario");
       },
@@ -176,8 +208,6 @@ const usuariosController ={
                 res.render('editarUsuario', { msgsErrors : errores.mapped(), DataOld  : req.body } );
             }
       
-          
-  
       },
       eliminaUsuario(req, res){
   

@@ -10,7 +10,7 @@ const path = require("path");
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-//controlador de productos 
+//controlador de usuarios
 const controladorDeUsuarios = require('../controllers/controladorDeUsuarios');
 //validador de formulario de creacion y edicion de usuario 
 const validacionesFormUsuario = require('../middlewares/validacionesFormUsuario');
@@ -42,6 +42,21 @@ let upload = multer({ storage: storage });
 //aun debemos crear middleware para verificar el cargo del usuario si es administrador o solo cliente
 
 //y hacer middleware para bloquear rutas de procesos 
+
+//Accion para generar tokens conforme a la informacion enviada
+/**
+ * @swagger
+ * /getTokens:
+ *  post:
+ *      description: Generator of tokens for access to API products.
+ *      parameters:
+ *      -  name: id
+ *      -  name: name
+ *      responses:
+ *          200:
+ *              description: Return token 
+ */ 
+router.post("/getTokens", controladorDeUsuarios.getTokens);
 
 //Accion de mostrar todos los usuarios
 router.get("/loginUsuario" , guestMiddleware ,controladorDeUsuarios.loginUsuario);

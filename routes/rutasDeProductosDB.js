@@ -8,6 +8,8 @@ const path = require("path");
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 const validacionesFormProducto = require('../middlewares/validacionesFormProducto');
+const auth = require('../middlewares/auth')();
+
 
 //controlador de productosDB
 const controladorDeProductosDB = require('../controllers/controladorDeProductosDB');
@@ -29,7 +31,7 @@ const storage = multer.diskStorage({
 //constante para almacenar 
 const upload = multer({ storage: storage });
 
-//prueba conexion a la base de datos
+//prueba conexion a la base de datos, y autenticacion de API mediante JWT
 /**
  * @swagger
  * /test:
@@ -39,7 +41,7 @@ const upload = multer({ storage: storage });
  *          200:
  *              description: Return list of products
  */ 
-router.get("/test", controladorDeProductosDB.test);
+router.get("/test", auth.authenticate(),controladorDeProductosDB.test);
 /**
  * @swagger
  * /test2:
@@ -49,7 +51,7 @@ router.get("/test", controladorDeProductosDB.test);
  *          200:
  *              description: Return list of products
  */ 
-router.get("/test2", controladorDeProductosDB.test2);
+router.get("/test2", auth.authenticate(),controladorDeProductosDB.test2);
 
 router.get("/test3", controladorDeProductosDB.test3);
 

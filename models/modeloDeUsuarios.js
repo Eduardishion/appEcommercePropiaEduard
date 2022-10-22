@@ -67,8 +67,24 @@ let modeloDeUsuarios = {
         return userTmp;
     },
     buscarUsuario: function (listaUsuarios, req) {
+        console.log(req)
         let usuarioEncontrado = listaUsuarios.find( (usuario) => {
             return usuario.id == parseInt(req.params.id);
+        });
+
+        return usuarioEncontrado;
+    },
+    buscarUsuario2: function (listaUsuarios, req) {
+        //buscar usuario mediante el request body
+        let usuarioEncontrado = listaUsuarios.find( (usuario) => {
+            return usuario.id == parseInt(req.body.id);
+        });
+
+        return usuarioEncontrado;
+    },
+    buscarUsuariowithJwt: function (listaUsuarios, payload) {
+        let usuarioEncontrado = listaUsuarios.find( (usuario) => {
+            return usuario.id == parseInt(payload.id);
         });
 
         return usuarioEncontrado;

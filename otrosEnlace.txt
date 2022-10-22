@@ -1,0 +1,16 @@
+# generador de aplicaiciones express y documentacion swagger
+https://github.com/mpashkovskiy/express-oas-generator
+
+# autenticacion de api medisnte JWT
+https://jwt.io/
+https://snyk.io/advisor/npm-package/passport-jwt/functions/passport-jwt.Strategy
+https://blog.jscrambler.com/implementing-jwt-using-passport/
+https://holycoders.com/node-js-passport-jwt-token-api-authentication/
+https://stackleap.io/js/passport-jwt
+https://github.com/ceodigvijay/node.js-passport-jwt-boilerplate
+https://blog.jscrambler.com/implementing-jwt-using-passport/
+
+# documentacion swagger API
+https://swagger.io/docs/specification/describing-parameters/
+https://javascript.plainenglish.io/integrate-open-api-swagger-with-node-and-express-b5b77bdc081b
+    
