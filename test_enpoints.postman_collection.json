@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "3210c57e-e38c-45d8-b8e3-acc9ea2b6b29",
+		"name": "test_enpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18692678"
+	},
+	"item": [
+		{
+			"name": "getToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 68505,\r\n    \"name\":\"eduardo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/usuarios/getTokens",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"usuarios",
+						"getTokens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "requestDataJWT",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Njg1MDUsImV4cGlyZSI6MTY2NjQ4NjU3NDEyMH0.vQGFEe_DwpLy7ISG1whk_Nr09hrf6KkipYU1LOhJZD8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/productos/test2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"productos",
+						"test2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

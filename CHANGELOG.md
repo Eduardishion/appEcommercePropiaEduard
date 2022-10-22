@@ -1,5 +1,13 @@
 # Changelog - appEcommercePropiaEduardiShop
 
+## 1.0.3 - 2022-10-21
+
+Eduardo Izquierdo Rojas 
+
+### Added:
+- Adicion de generador de tokens para verificacion de mediante JWT
+- Adicion de documentacion swagger API
+
 ## 1.0.2 - 2022-10-17
 
 Eduardo Izquierdo Rojas 
