@@ -1,6 +1,7 @@
 	//modulos nativas necesarias
 	const express = require('express'); 
 	const path = require('path'); 
+	const cors = require('cors')
 	//modulos de terceros para  hacer peticiones put y delete
 	const methodOverride = require('method-override');
 
@@ -47,7 +48,10 @@
 	
 	//------------------midwares------------------
  
- 
+	  
+	//cors
+	app.use(cors())
+
 	//carpeta publica de archivos estaticos 
 	app.use(express.static('./public'));
 	
@@ -95,7 +99,7 @@
 
 	//------------------entry point------------------	
 	//configuracion de puerto
-	app.set('port', process.env.PORT || 3000 );
+	app.set('port', process.env.PORT || 4000 );
 	
 	//configuracion de ruta de acceso al servidor 
 	app.listen(app.get('port'), ()=>{
