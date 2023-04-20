@@ -31,7 +31,8 @@ module.exports = function() {
         return done(new Error("Usuario no encontrado"), null);
     } else if(payload.expire<=Date.now()) {
         //si ya exprido el token
-        return done(new Error("TokenExpired"), null);
+        return done(new Error("TokenExpired --"), null);
+        //return {"Error": "El token a expirado....", "Code": 403}
     } else {
         //si usuario es encontrado 
         return done(null, {

@@ -11,7 +11,9 @@ const jwt = require("jwt-simple");
 const config = require("../config.js");
 
 const usuariosController ={
-      //para generar JWT token si solo exite el ususrio 
+      //servicio de generacion de tokens JWT token si solo exite el ususrio
+      //en base de datos registrado si es asi encripta la informacion enviada al entpoint POST
+      //retrona un token  
       getTokens: (req, res) => {
       
 

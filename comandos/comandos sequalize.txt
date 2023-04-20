@@ -1,0 +1,145 @@
+
+
+0.- instalar los modulos en el proyecto de manera global y local 
+    
+    de manera de global 
+
+        npm install -g sequelize-cli
+    
+    de manera local en el proyecto 
+    
+        npm install sequelize --save
+        npm install mysql2 --save
+
+0.1.-verifica si se agrego sequlise de manera global, al escribir en la linea de comando
+
+    sequelize
+
+
+1.- Crear archivo .sequelizerc en ruta rais para empesar a configurar la conexion a la base de datos 
+
+    const path = require('path');
+
+    module.exports = {
+        config: path.resolve('./database/config/', 'config.js'),
+        'models-path': path.resolve('./database/models/'),
+        'seeders-path': path.resolve('./database/seeders/'),
+        'migrations-path': path.resolve('./database/migrations/'),
+    };
+
+2.- inicialiar carpetas sequelise este comando crea las carpetas escritas anteriormente como rutas 
+
+    sequelize init
+
+
+3.- configurar archivo config.js, no olvidar  module.exports = , ya que sequlise no lo agrega
+
+
+    module.exports = {
+        "development": {
+            "username": "root",
+            "password": "12345",
+            "database": "db_ecommerce",
+            "host": "127.0.0.1",
+            "dialect": "mysql"
+        },
+        "test": {
+            "username": "root",
+            "password": null,
+            "database": "database_test",
+            "host": "127.0.0.1",
+            "dialect": "mysql"
+        },
+        "production": {
+            "username": "root",
+            "password": null,
+            "database": "database_production",
+            "host": "127.0.0.1",
+            "dialect": "mysql"
+        }
+        }
+
+4.- crear base da datos 
+
+    por si ya exite la base de datos 
+        
+        sequelize db:drop
+
+    para crear la base de datos 
+        
+        sequelize db:create
+
+
+3.- crear archivos de migracion y modelos con la siguiente sentencia 
+
+    sequelize model:generate --name NombreDeTabla --attributes nombreDeAtributo:tipoDeRegistro
+
+    **.- tipos de datos https://sequelize.org/v5/manual/data-types.html
+
+
+    Desde la linea de comando podemos hacer los siguientes comandos 
+
+        tabla productos
+        sequelize model:generate --name Products --attributes name:string,category:string,price:decimal,discountRate:integer,discount:decimal,stock:integer,description:text,image:integer,features:text,registrationDate:date,checkInTime:dateonly,userWhoRegistered:string
+
+        tabla imagenes de productos 
+        sequelize model:generate --name ImagesProducts --attributes imageSec:string,product_id:integer 
+
+        tabla usuarios
+        sequelize model:generate --name Users --attributes firstName:string,lastName:string,email:string,password:string,category:string,image:string,registrationDate:date,checkInTime:dateonly
+
+
+    Esto crea dos tipos de archivos, los modelos y los migraciones a la base de datos 
+
+
+4.- crear relaciones en tablas y siguiendo configurando si aun es necesario, como agregar relaciones y agregar constrains 
+
+
+5.- migrar modelos hacia base de datos con el siguiente comando 
+
+    sequelize db:migrate
+
+6.- crear seeders 
+
+    sequelize seed:generate --name products
+    sequelize seed:generate --name users
+
+7.- despues debemos de agregar los datos para poblar la base de  en los seeders
+
+8.- ejecutar los seeders    
+    sequelize db:seed:all
+
+
+
+9.- otros comandos 
+sequelize db:seed:all`: correrá todos seeders.
+sequelize db:seed:undo`: revertirá el último seeder que se ejecutó.
+sequelize db:seed:undo:all`: revertirá todos los seeders ejecutados.
+sequelize db:seed:undo:all`: revertirá todos los seeders ejecutados.
+sequelize migration:generate`: generará un archivo *custom* de migració
+
+
+un buen tutorial de un profesor de digital house y el uso de sequelise
+https://github.com/japsolo/curso-sequelize-migrations-seeders
+
+
+migraciones automaticas 
+https://www.it-swarm-es.com/es/database/sequelize.js-como-usar-las-migraciones-y-la-sincronizacion/1044233816/
+
+ver paquetes instalados
+https://otroespacioblog.wordpress.com/2018/11/06/como-listar-modulos-globales-instalados-con-npm-g/
+
+
+buena referencia en lectura
+https://medium.com/@Ayra_Lux/a-guide-to-orm-sequelize-c276c7b6dd18
+https://medium.com/nowports-tech/sequelize-en-tiempos-de-sql-f4026a808f06
+
+//muy buena referencia en video 
+https://medium.com/@Ayra_Lux/a-guide-to-orm-sequelize-c276c7b6dd18
+https://www.youtube.com/watch?v=DUM1-uT51b8&list=PLn9Y084aviLmTy5TO6sw6Ky6NjEO5uCme&index=9
+
+
+
+    
+
+
